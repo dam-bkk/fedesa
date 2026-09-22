@@ -800,3 +800,10 @@ html,body{overflow-x:clip}
 @media(max-width:760px){
  .tbl tr{display:flex;flex-wrap:wrap;gap:8px 14px}.tbl td{flex:0 0 calc(50% - 7px)}.tbl td.c-main,.tbl td.c-pos{flex:0 0 100%}
 }
+/* mobile : la photo du hero revient, pleine largeur sous les boutons */
+.hero-mimg{display:none}
+@media(max-width:820px){
+ .hero-bg{display:none}.hero-scrim{background:var(--volt)}
+ .hero-mimg{display:block;width:calc(100% + 48px);max-width:none;margin:28px -24px 0;aspect-ratio:5/4;height:auto;object-fit:cover;object-position:50% 40%}
+ .hero-strip{margin-top:0}
+}

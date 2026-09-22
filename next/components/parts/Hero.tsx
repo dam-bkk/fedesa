@@ -19,6 +19,7 @@ export default function Hero({ t, stats }: { t: (s: string) => string; stats: { 
           <a  href="/licence" className="btn btn-ink">{t("Prendre sa licence")}</a>
           <a  href="/competitions" className="btn btn-oink">{t("Calendrier 26/27")}</a>
         </div>
+        <img className="hero-mimg" src="/img/hero-start.avif" width="1376" height="768" alt="" aria-hidden="true" />
       </div>
 
       <figure  className="hero-figure" style={{"margin":"0"}} hidden>
