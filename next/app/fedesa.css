@@ -711,3 +711,4 @@ section.tight{padding-top:28px}
 .cc-ladder{list-style:none;margin:0;padding:0}.cc-ladder li{display:grid;grid-template-columns:64px 1fr 1fr 1fr;gap:12px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}
 .cc-ladder li b{font-family:var(--poster);font-size:22px;line-height:1;padding-top:.06em}.cc-ladder li .mono{font-size:12.5px}
 @media(max-width:760px){.cc-l,.cc-r{padding:26px 22px}.cc-ladder li{grid-template-columns:52px 1fr 1fr 1fr;font-size:13px}}
+.nav .lang,.nav .lang button,.mnav .lang,.mnav .lang button{border-radius:0}
