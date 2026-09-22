@@ -10,7 +10,7 @@ export default function Footer({ t }: { t: (s: string) => string }) {
           <span  className="brand-mark" style={{"background":"var(--volt)"}}><svg  viewBox="0 0 184 163" width="26" height="23" aria-hidden="true"><g  transform="translate(0,163) scale(0.1,-0.1)" fill="#0B1410"><path  d="M610 1240 l0 -120 190 0 c105 0 190 -3 190 -8 0 -4 -85 -93 -190 -197 l-190 -190 -78 78 -77 77 -168 0 c-92 0 -167 -2 -167 -4 0 -6 483 -486 490 -486 3 0 61 56 130 125 69 69 129 125 135 125 6 0 91 -81 190 -180 l180 -180 170 0 170 0 -270 270 -270 270 270 270 270 270 -488 0 -487 0 0 -120z" /></g></svg></span>
           <span><span  className="brand-name">{t("FEDESA")}</span><span  className="brand-sub" style={{"display":"block","color":"var(--smoke)"}}>{t("Athlétisme Sénégal")}</span></span>
         </div>
-        <p  className="f-about">{t("Fédération Sénégalaise d'Athlétisme — Stade Léopold Sédar Senghor, route de l'Aéroport, Dakar. Membre de World Athletics et de la Confédération Africaine d'Athlétisme.")}</p>
+        <p  className="f-about">{t("Fédération Sénégalaise d'Athlétisme — Stade Iba Mar Diop, rue M'baye Worre, Dakar. Membre de World Athletics et de la Confédération Africaine d'Athlétisme.")}</p>
         <div  className="f-soc">
           <a  href="/" aria-label={t("Facebook")}><svg  width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path  d="M9.5 16V9h2.3l.35-2.7H9.5V4.6c0-.78.22-1.31 1.34-1.31h1.43V.87A19 19 0 0 0 10.18.76c-2.06 0-3.48 1.26-3.48 3.58V6.3H4.4V9h2.3v7h2.8Z" /></svg></a>
           <a  href="/" aria-label="X"><svg  width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path  d="M12.3 1h2.3L9.6 6.7 15.5 15h-4.6L7.3 10.3 3.2 15H.9l5.4-6.2L.6 1h4.7l3.3 4.3L12.3 1Zm-.8 12.6h1.3L4.6 2.3H3.2l8.3 11.3Z" /></svg></a>
