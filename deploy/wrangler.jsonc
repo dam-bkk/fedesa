@@ -1,0 +1,8 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "fedesa",
+  "account_id": "2d7ca5bfeb7d13e7adbb059e8a3e0f40",
+  "compatibility_date": "2026-09-01",
+  "assets": { "directory": "./public" },
+  "observability": { "enabled": true }
+}

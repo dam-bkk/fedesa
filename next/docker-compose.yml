@@ -1,0 +1,9 @@
+# Site public fedesa.damien.asia — rendu serveur + revalidation, lit l'API publique de l'app.
+services:
+  web:
+    build: { context: ., args: { FEDESA_API: https://appfedesa.damien.asia } }
+    restart: unless-stopped
+    environment:
+      FEDESA_API: https://appfedesa.damien.asia
+      FEDESA_APP_URL: https://appfedesa.damien.asia
+    ports: ["172.18.0.1:3031:3000"]
