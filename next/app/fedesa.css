@@ -688,3 +688,4 @@ section[id],div[id]{scroll-margin-top:92px;}
 .mcard .mc-perf{font-family:var(--poster);font-size:56px;line-height:1;padding-top:.06em;color:var(--volt);margin-top:8px}.mcard b{font-size:18px;margin-top:6px}.mcard .mc-ev{font-size:13px;color:var(--smoke)}.mcard p{font-size:13px;color:var(--smoke);margin:8px 0 0}
 .medal{font-family:var(--mono);font-size:10px;letter-spacing:.12em;padding:3px 8px;border:1px solid}.medal.or{color:#FFD100;border-color:#FFD100}.medal.argent{color:#D9DDE0;border-color:#D9DDE0}.medal.bronze{color:#E6C9A8;border-color:#E6C9A8}
 .mcard.next{background:var(--volt);color:var(--ink)}.mcard.next .mc-perf,.mcard.next .mc-top,.mcard.next .mc-ev,.mcard.next p{color:var(--ink)}
+.podiums{grid-template-columns:1fr 1fr;gap:14px 28px}@media(max-width:600px){.podiums{grid-template-columns:1fr}}
