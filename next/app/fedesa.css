@@ -793,3 +793,7 @@ html,body{overflow-x:clip}
  .hero-h1{font-size:clamp(56px,17vw,84px)}.hero-sub{font-size:17px;max-width:none}
  .hero-strip{border-radius:0;background:var(--ink);color:#fff}
 }
+@media(max-width:760px){
+ .tbl tr td{border:0}.tbl td.c-main{order:-2}.tbl td.c-perf{order:-1}.tbl td.c-pos{order:-3}
+ .tbl tr{gap:8px 14px;padding:14px}.tbl td[data-th="Niveau"],.tbl td[data-th="Level"]{color:var(--muted)}
+}
