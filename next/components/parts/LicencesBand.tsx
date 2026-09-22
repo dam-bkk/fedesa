@@ -18,7 +18,7 @@ export default function LicencesBand({ t }: { t: (s: string) => string }) {
         <div  className="eyebrow" style={{"color":"#6B5500"}}>{t("Saison 1")}<sup>{t("er")}</sup> {t("nov. — 31 oct.")}</div>
         <h2  style={{"marginTop":"14px"}}>{t("Trois étapes.")}<br />{t("72 heures.")}<br />{t("Un numéro.")}</h2>
         <p  className="intro">{t("Entraînement encadré, assurance, et le droit de porter un dossard sur toutes les compétitions homologuées — des poussins aux masters.")}</p>
-        <a  href="/" className="btn btn-ink" style={{"marginTop":"26px"}}>{t("Ouvrir mon dossier")}</a>
+        <a  href="/clubs" className="btn btn-ink" style={{"marginTop":"26px"}}>{t("Trouver un club")}</a>
       </div>
       <div  className="steps">
         <div  className="step"><div  className="step-n">{t("Étape 01")}</div><h4>{t("Rejoindre un club")}</h4>

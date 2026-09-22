@@ -712,3 +712,4 @@ section.tight{padding-top:28px}
 .cc-ladder li b{font-family:var(--poster);font-size:22px;line-height:1;padding-top:.06em}.cc-ladder li .mono{font-size:12.5px}
 @media(max-width:760px){.cc-l,.cc-r{padding:26px 22px}.cc-ladder li{grid-template-columns:52px 1fr 1fr 1fr;font-size:13px}}
 .nav .lang,.nav .lang button,.mnav .lang,.mnav .lang button{border-radius:0}
+@media(min-width:1200px){.mcard.next{grid-column:span 3}}
