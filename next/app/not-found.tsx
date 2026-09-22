@@ -1,2 +1,7 @@
 import Link from "next/link";
-export default function NotFound() { return <main><div className="wrap page-head"><div className="eyebrow">Erreur 404</div><h1>Faux<br />départ</h1><p className="intro">Cette page n&apos;existe pas ou plus. <Link href="/" className="sec-link">Retour à l&apos;accueil →</Link></p></div></main>; }
+import { getLang } from "@/lib/server/lang";
+import { tr } from "@/lib/i18n";
+export default async function NotFound() {
+  const t = tr(await getLang());
+  return <main><div className="wrap page-head"><div className="eyebrow">{t("Erreur 404")}</div><h1>{t("Faux")}<br />{t("départ")}</h1><p className="intro">{t("Cette page n'existe pas ou plus.")} <Link href="/" className="sec-link">{t("Retour à l'accueil →")}</Link></p></div></main>;
+}

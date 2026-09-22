@@ -1,5 +1,5 @@
 /* Généré depuis v3/index.html — ne pas éditer à la main, relancer le convertisseur. */
-export default function Athlete() {
+export default function Athlete({ t }: { t: (s: string) => string }) {
   return (
 <>
 <section  className="spot" id="athlete">
@@ -7,21 +7,21 @@ export default function Athlete() {
     <div  className="spot-in">
       <figure  className="spot-fig" style={{"margin":"0"}}>
         <span  className="spot-no" aria-hidden="true">01</span>
-        <div  className="oval"><img  src="/img/athlete.avif" alt="Ibrahima Ndiaye à l'entraînement" width="1100" height="1300" loading="lazy" /></div>
+        <div  className="oval"><img  src="/img/athlete.avif" alt={t("Ibrahima Ndiaye à l'entraînement")} width="1100" height="1300" loading="lazy" /></div>
       </figure>
       <div>
-        <div  className="eyebrow onvolt">Athlète du mois · septembre</div>
-        <h2  style={{"marginTop":"14px"}}>Ibrahima<br />Ndiaye</h2>
-        <div  className="spot-disc">Sprint — 100 m / 200 m · ASC Dakar Université</div>
+        <div  className="eyebrow onvolt">{t("Athlète du mois · septembre")}</div>
+        <h2  style={{"marginTop":"14px"}}>{t("Ibrahima")}<br />{t("Ndiaye")}</h2>
+        <div  className="spot-disc">{t("Sprint — 100 m / 200 m · ASC Dakar Université")}</div>
         <div  className="spot-stats">
-          <div  className="sstat"><div  className="sstat-v">10&quot;23</div><div  className="sstat-k">Record 100 m</div></div>
-          <div  className="sstat"><div  className="sstat-v">20&quot;41</div><div  className="sstat-k">Record 200 m</div></div>
-          <div  className="sstat"><div  className="sstat-v">4×</div><div  className="sstat-k">Sélections A</div></div>
-          <div  className="sstat"><div  className="sstat-v">24</div><div  className="sstat-k">Ans</div></div>
+          <div  className="sstat"><div  className="sstat-v">{t("10\"23")}</div><div  className="sstat-k">{t("Record 100 m")}</div></div>
+          <div  className="sstat"><div  className="sstat-v">{t("20\"41")}</div><div  className="sstat-k">{t("Record 200 m")}</div></div>
+          <div  className="sstat"><div  className="sstat-v">{t("4×")}</div><div  className="sstat-k">{t("Sélections A")}</div></div>
+          <div  className="sstat"><div  className="sstat-v">24</div><div  className="sstat-k">{t("Ans")}</div></div>
         </div>
         <div  className="spark">
-          <div  className="spark-h"><span>Progression 100 m — saison 2026</span><span  style={{"color":"var(--volt)"}}>−0,41 s</span></div>
-          <svg  viewBox="0 0 520 110" width="100%" height="110" role="img" aria-label="Progression du chrono sur 100 m : de 10,64 s en février à 10,23 s en septembre 2026">
+          <div  className="spark-h"><span>{t("Progression 100 m — saison 2026")}</span><span  style={{"color":"var(--volt)"}}>{t("−0,41 s")}</span></div>
+          <svg  viewBox="0 0 520 110" width="100%" height="110" role="img" aria-label={t("Progression du chrono sur 100 m : de 10,64 s en février à 10,23 s en septembre 2026")}>
             <line  x1="0" y1="92" x2="520" y2="92" stroke="rgba(255,255,255,.18)" strokeWidth="1" />
             <line  x1="0" y1="50" x2="520" y2="50" stroke="rgba(255,255,255,.1)" strokeWidth="1" />
             <line  x1="0" y1="12" x2="520" y2="12" stroke="rgba(255,255,255,.1)" strokeWidth="1" />
@@ -36,11 +36,10 @@ export default function Athlete() {
             <text  x="498" y="108" fill="#fff" fontSize="10" fontFamily="monospace" textAnchor="end">10,23</text>
           </svg>
         </div>
-        <p  className="spot-q">« Courir pour le Sénégal, c'est courir pour les gamins de Pikine qui s'entraînent pieds nus
-          sur le sable. Le record, il est à eux autant qu'à moi. »</p>
+        <p  className="spot-q">{t("« Courir pour le Sénégal, c'est courir pour les gamins de Pikine qui s'entraînent pieds nus sur le sable. Le record, il est à eux autant qu'à moi. »")}</p>
         <div  className="spot-cta">
-          <a  href="/" className="btn btn-ink">Profil complet</a>
-          <a  href="/" className="btn btn-oink">Tous les athlètes</a>
+          <a  href="/" className="btn btn-ink">{t("Profil complet")}</a>
+          <a  href="/" className="btn btn-oink">{t("Tous les athlètes")}</a>
         </div>
       </div>
     </div>

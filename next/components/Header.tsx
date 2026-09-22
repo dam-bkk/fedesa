@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { Logo } from "./Logo";
 import { LIGUES } from "@/lib/content";
 import { APP_URL } from "@/lib/api";
+import { tr, type Lang } from "@/lib/i18n";
 
 const NAV: [string, string][] = [["/actualites", "Actualités"], ["/competitions", "Compétitions"], ["/resultats", "Résultats"], ["/athletes", "Athlètes"], ["/medias", "Médias"], ["/clubs", "Clubs"], ["/federation", "La Fédé"]];
 const COLS: { h: string; links: [string, string][] }[] = [
@@ -13,7 +14,8 @@ const COLS: { h: string; links: [string, string][] }[] = [
   { h: "Pratiquer", links: [["/epreuves", "Les épreuves"], ["/clubs", "Trouver un club"], ["/licence", "Prendre une licence"], ["/licence#tarifs", "Tarifs des licences"], ["/federation#formations", "Formations"], ["/athletes", "Athlètes"], ["/medias", "Galerie"], ["/actualites", "Actualités · Top info"]] },
 ];
 
-export function Header() {
+export function Header({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => Promise<void> }) {
+  const t = tr(lang);
   const [open, setOpen] = useState(false);
   const [mobile, setMobile] = useState(false);
   const path = usePathname();
@@ -23,31 +25,31 @@ export function Header() {
   return (
     <header className="nav">
       <div className="wrap">
-        <Link href="/" className="brand" aria-label="FEDESA — accueil"><span className="brand-mark"><Logo size={26} /></span><span><span className="brand-name">FEDESA</span><span className="brand-sub" style={{ display: "block" }}>Athlétisme Sénégal</span></span></Link>
-        <nav className="nav-links" aria-label="Navigation principale">{NAV.map(([h, l]) => <Link key={h} href={h} className={path.startsWith(h) ? "on" : ""}>{l}</Link>)}</nav>
-        <div className="nav-cta"><a href={APP_URL} className="btn btn-oink btn-sm">Espace club</a><Link href="/licence" className="btn btn-ink btn-sm">Licences 26/27</Link></div>
-        <button className="mbtn mbtn-ico" type="button" aria-expanded={open} aria-controls="mega" aria-label={open ? "Fermer le menu" : "Ouvrir le menu"} onClick={() => setOpen((o) => !o)}><Burger x={open} /></button>
+        <Link href="/" className="brand" aria-label={t("FEDESA — accueil")}><span className="brand-mark"><Logo size={26} /></span><span><span className="brand-name">FEDESA</span><span className="brand-sub" style={{ display: "block" }}>{t("Athlétisme Sénégal")}</span></span></Link>
+        <nav className="nav-links" aria-label={t("Navigation principale")}>{NAV.map(([h, l]) => <Link key={h} href={h} className={path.startsWith(h) ? "on" : ""}>{t(l)}</Link>)}</nav>
+        <div className="nav-cta"><div className="lang" role="group" aria-label="Langue / Language">{(["fr", "en"] as const).map((k) => <button key={k} type="button" className={lang === k ? "on" : ""} aria-pressed={lang === k} onClick={() => setLang(k)}>{k.toUpperCase()}</button>)}</div><a href={APP_URL} className="btn btn-oink btn-sm">{t("Espace club")}</a><Link href="/licence" className="btn btn-ink btn-sm">{t("Licences 26/27")}</Link></div>
+        <button className="mbtn mbtn-ico" type="button" aria-expanded={open} aria-controls="mega" aria-label={open ? t("Fermer le menu") : t("Ouvrir le menu")} onClick={() => setOpen((o) => !o)}><Burger x={open} /></button>
       </div>
       {open && (
         <div className="mega" id="mega">
           <div className="wrap">
             <div className="mega-top">
-              <Link href="/" className="brand"><span className="brand-mark"><Logo size={26} /></span><div><span className="brand-name" style={{ color: "#fff", display: "block" }}>FEDESA</span><span className="brand-sub" style={{ display: "block" }}>Athlétisme Sénégal</span></div></Link>
-              <button className="mbtn mbtn-ico" type="button" aria-label="Fermer le menu" onClick={() => setOpen(false)}><Burger x /></button>
+              <Link href="/" className="brand"><span className="brand-mark"><Logo size={26} /></span><div><span className="brand-name" style={{ color: "#fff", display: "block" }}>FEDESA</span><span className="brand-sub" style={{ display: "block" }}>{t("Athlétisme Sénégal")}</span></div></Link>
+              <button className="mbtn mbtn-ico" type="button" aria-label={t("Fermer le menu")} onClick={() => setOpen(false)}><Burger x /></button>
             </div>
             <div className="mega-cols">
-              {COLS.map((c) => <div className="mcol" key={c.h}><h3>{c.h}</h3>{c.links.map(([h, l]) => <Link key={h + l} href={h}>{l}</Link>)}</div>)}
-              <div className="mcol"><h3>Les 14 ligues</h3><div className="two">{LIGUES.map((l) => <Link key={l.code} href={`/federation#ligue-${l.code}`}>{l.name}</Link>)}</div></div>
+              {COLS.map((c) => <div className="mcol" key={c.h}><h3>{t(c.h)}</h3>{c.links.map(([h, l]) => <Link key={h + l} href={h}>{t(l)}</Link>)}</div>)}
+              <div className="mcol"><h3>{t("Les 14 ligues")}</h3><div className="two">{LIGUES.map((l) => <Link key={l.code} href={`/federation#ligue-${l.code}`}>{l.name}</Link>)}</div></div>
             </div>
             <div className="mega-foot">
-              <div className="mega-cta"><Link href="/licence" className="btn btn-volt">Prendre une licence</Link><Link href="/clubs" className="btn btn-olight">Trouver un club</Link></div>
+              <div className="mega-cta"><Link href="/licence" className="btn btn-volt">{t("Prendre une licence")}</Link><Link href="/clubs" className="btn btn-olight">{t("Trouver un club")}</Link></div>
               <span className="mono" style={{ fontSize: 11, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--smoke)" }}>Stade Iba Mar Diop · Dakar · +221 33 821 77 98</span>
             </div>
           </div>
         </div>
       )}
-      <button className="burger" type="button" aria-expanded={mobile} aria-label="Menu mobile" onClick={() => setMobile((m) => !m)}><span /></button>
-      {mobile && <div className="mnav"><div className="wrap">{NAV.map(([h, l]) => <Link key={h} href={h}>{l}</Link>)}<Link href="/licence" className="btn btn-volt">Licences 26/27</Link></div></div>}
+      <button className="burger" type="button" aria-expanded={mobile} aria-label={t("Menu mobile")} onClick={() => setMobile((m) => !m)}><span /></button>
+      {mobile && <div className="mnav"><div className="wrap">{NAV.map(([h, l]) => <Link key={h} href={h}>{t(l)}</Link>)}<Link href="/licence" className="btn btn-volt">{t("Licences 26/27")}</Link></div></div>}
     </header>
   );
 }

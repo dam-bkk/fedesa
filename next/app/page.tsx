@@ -1,3 +1,5 @@
+import { getLang } from "@/lib/server/lang";
+import { tr } from "@/lib/i18n";
 import Link from "next/link";
 import Hero from "@/components/parts/Hero";
 import Actus from "@/components/parts/Actus";
@@ -11,40 +13,52 @@ import { Epreuves } from "@/components/Epreuves";
 import { RecordsMarquee, LiveMarquee, Agenda, LiveResults, RecordsTable } from "@/components/Data";
 import { ClubMap } from "@/components/ClubMap";
 import { api, nf } from "@/lib/api";
+import { Timeline, Monde, ClubStandings, Weekend } from "@/components/Features";
+import { CatCalc } from "@/components/CatCalc";
+import { Subscribe } from "@/components/Subscribe";
 
 export const revalidate = 300;
 
 export default async function Home() {
-  const [stats, records, clubs] = await Promise.all([api.stats(), api.records(), api.clubs()]);
+  const lang = await getLang(); const t = tr(lang);
+  const [stats, records, clubs, season, tarifs] = await Promise.all([api.stats(), api.records(), api.clubs(), api.season(), api.tarifs()]);
+  const today = new Date().toISOString().slice(0, 10); const soon = new Date(Date.now() + 8 * 864e5).toISOString().slice(0, 10);
+  const activeCities = season.items.filter((c) => c.dateTo >= today && c.dateFrom <= soon).map((c) => c.city);
   const st = { licensees: stats?.licensees ?? 0, clubs: stats?.clubs ?? clubs.count, ligues: 14, results: stats?.results ?? 0 };
   return (
     <main>
-      <Hero stats={st} />
+      <Hero stats={st}  t={t} />
       <RecordsMarquee />
-      <Epreuves />
-      <Actus />
+      <Epreuves lang={lang} />
+      <Actus  t={t} />
       <LiveResults />
       <LiveMarquee />
+      <Weekend />
       <Agenda />
-      <Galerie />
-      <Athlete />
+      <Monde />
+      <Galerie  t={t} />
+      <Athlete  t={t} />
+      <ClubStandings teaser />
       <section id="regions">
         <div className="wrap">
-          <div className="sec-head"><div><div className="eyebrow">De Dakar à Ziguinchor</div><h2 style={{ marginTop: 14 }}>{nf(st.clubs)} clubs.<br />Une porte<br />d&apos;entrée.</h2></div><Link href="/clubs" className="sec-link">Trouver le tien</Link></div>
-          <p className="intro" style={{ maxWidth: "62ch", marginBottom: 26 }}>On ne prend pas sa licence seul : on rejoint un club affilié, qui dépose la demande et reste l&apos;interlocuteur de l&apos;athlète toute la saison. Survolez la carte pour trouver le vôtre.</p>
-          <ClubMap clubs={clubs.items} />
+          <div className="sec-head"><div><div className="eyebrow">{t("De Dakar à Ziguinchor")}</div><h2 style={{ marginTop: 14 }}>{nf(st.clubs)} {t("clubs.")}<br />{t("Une porte")}<br />{t("d'entrée.")}</h2></div><Link href="/clubs" className="sec-link">{t("Trouver le tien")}</Link></div>
+          <p className="intro" style={{ maxWidth: "62ch", marginBottom: 26 }}>{t("On ne prend pas sa licence seul : on rejoint un club affilié, qui dépose la demande et reste l'interlocuteur de l'athlète toute la saison. Survolez la carte pour trouver le vôtre.")}</p>
+          <ClubMap clubs={clubs.items} active={activeCities} lang={lang} />
         </div>
       </section>
       <section id="records" style={{ paddingTop: 0 }}>
         <div className="wrap">
-          <div className="sec-head"><div><div className="eyebrow">Homologués · à battre</div><h2 style={{ marginTop: 14 }}>Records<br />du Sénégal</h2></div><Link href="/records" className="sec-link">Tous les records</Link></div>
+          <div className="sec-head"><div><div className="eyebrow">{t("Homologués · à battre")}</div><h2 style={{ marginTop: 14 }}>{t("Records")}<br />{t("du Sénégal")}</h2></div><Link href="/records" className="sec-link">{t("Tous les records")}</Link></div>
           <RecordsTable items={records.items} />
         </div>
       </section>
-      <LicencesBand />
-      <Federation />
-      <Partenaires />
-      <Faq />
+      <LicencesBand  t={t} />
+      <section style={{ paddingTop: 0 }}><div className="wrap"><CatCalc lang={lang} fees={tarifs?.fees ?? []} season={tarifs?.season} /></div></section>
+      <Timeline />
+      <Federation  t={t} />
+      <Partenaires  t={t} />
+      <Faq  t={t} />
+      <section style={{ paddingTop: 0 }}><div className="wrap"><Subscribe lang={lang} /></div></section>
     </main>
   );
 }

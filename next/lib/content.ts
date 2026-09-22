@@ -37,3 +37,15 @@ export const GALERIE = [
   { src: "/img/news-4.avif", alt: "Coureurs à l'entraînement au crépuscule", cap: "Entraînement — corniche de Dakar" },
   { src: "/img/clubs.avif", alt: "Piste d'un stade régional", cap: "Stade régional" },
 ];
+
+/** « Dans le monde » : Sénégalais sur les grands rendez-vous internationaux — faits publics (podiums olympiques, mondiaux, continentaux, Francophonie). */
+export const MONDE: { year: string; city: string; meet: string; athlete: string; event: string; mark: string; medal?: "or" | "argent" | "bronze"; note: string }[] = [
+  { year: "1988", city: "Séoul", meet: "Jeux olympiques", athlete: "Amadou Dia Ba", event: "400 m haies", mark: "47''23", medal: "argent", note: "Première médaille olympique de l'athlétisme sénégalais, toujours record national." },
+  { year: "2001", city: "Edmonton", meet: "Championnats du monde", athlete: "Amy Mbacké Thiam", event: "400 m", mark: "49''86", medal: "or", note: "Championne du monde — le record du Sénégal tient depuis." },
+  { year: "2007", city: "Alger", meet: "Jeux africains", athlete: "Ndiss Kaba Badji", event: "Longueur", mark: "8m46", medal: "or", note: "Record national de la longueur." },
+  { year: "2009", city: "Dakar", meet: "Meeting international", athlete: "Ndiss Kaba Badji", event: "Triple saut", mark: "17m07", note: "Record national du triple saut, devant son public." },
+  { year: "2023", city: "Kinshasa", meet: "Jeux de la Francophonie", athlete: "Louis François Mendy", event: "110 m haies", mark: "13''33", medal: "or", note: "Titre francophone et record national." },
+  { year: "2023", city: "Kinshasa", meet: "Jeux de la Francophonie", athlete: "Relais 4 × 100 m", event: "4 × 100 m", mark: "—", medal: "argent", note: "Deuxième marche du podium pour le relais sénégalais." },
+  { year: "2023", city: "Kinshasa", meet: "Jeux de la Francophonie", athlete: "Mamadou Fall Sarr", event: "Hauteur", mark: "2m26", note: "Record national égalé en finale." },
+  { year: "2027", city: "Dakar", meet: "Championnats d'Afrique", athlete: "Équipe du Sénégal", event: "Toutes épreuves", mark: "à écrire", note: "Le prochain chapitre, à domicile — 12 au 16 mai 2027." },
+];

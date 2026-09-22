@@ -644,3 +644,47 @@ section[id],div[id]{scroll-margin-top:92px;}
 .plogo .pmark{width:56px;height:56px;border-radius:0;flex:none}.plogo .pmark svg{width:30px;height:30px}
 .plogo .pname,.plogo b,.plogo span:not(.pmark){font-family:var(--poster);font-size:26px;letter-spacing:.01em;text-transform:uppercase;line-height:1;padding-top:.06em}
 @media(max-width:700px){.plogo-img{max-width:160px;max-height:56px}.plogo .pname,.plogo b,.plogo span:not(.pmark){font-size:20px}}
+/* compte à rebours : chiffres à largeur fixe, plus de saut horizontal */
+.hs-cd .v{display:inline-block;min-width:2.3ch;text-align:center;font-variant-numeric:tabular-nums}.hs-cd .v[data-u="d"]{min-width:3.3ch}
+
+/* ── #1 ticker records ─────────────────────────────────────────── */
+.mq-i em{font-style:normal;font-family:var(--mono);font-size:10px;letter-spacing:.14em;background:var(--ink);color:var(--volt);padding:3px 7px;margin-right:10px;animation:blink 1.4s steps(2) infinite}
+@keyframes blink{50%{opacity:.35}}
+/* ── #3 pulsation sur la carte ─────────────────────────────────── */
+.cmap .pulse{transform-origin:center;animation:pulse 1.8s ease-out infinite}
+@keyframes pulse{0%{transform:scale(.6);opacity:1}100%{transform:scale(2.4);opacity:0}}
+/* ── #5 week-end ───────────────────────────────────────────────── */
+.wk-stats{display:grid;grid-template-columns:repeat(4,1fr);border:1.5px solid var(--ink);margin:0 0 30px}.wk-stats div{padding:18px 20px;border-right:1.5px solid var(--ink)}.wk-stats div:last-child{border-right:0}.wk-stats b{display:block;font-family:var(--poster);font-size:44px;line-height:1;padding-top:.04em}.wk-stats span{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.wk-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:34px}.podiums{display:grid;gap:14px}.pod{border-top:1.5px solid var(--ink);padding-top:10px}.pod b{font-family:var(--poster);font-size:22px;text-transform:uppercase;letter-spacing:.01em}.pod small{display:block;font-size:12px;margin-bottom:6px}.pod ol{list-style:none;margin:0;padding:0;display:grid;gap:4px}.pod li{display:grid;grid-template-columns:28px 1fr auto;gap:10px;align-items:center;font-size:14px}
+@media(max-width:860px){.wk-stats{grid-template-columns:1fr 1fr}.wk-stats div:nth-child(2){border-right:0}.wk-stats div:nth-child(-n+2){border-bottom:1.5px solid var(--ink)}.wk-grid{grid-template-columns:1fr}}
+/* ── #8 frise horizontale ──────────────────────────────────────── */
+.tl-scroll{overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:0 max(20px,calc((100vw - 1240px)/2)) 20px;-webkit-overflow-scrolling:touch}.tl-scroll::-webkit-scrollbar{display:none}
+.tl-track{display:flex;gap:2px;border-top:1.5px solid var(--ink);width:max-content}
+.tl-card{scroll-snap-align:start;flex:0 0 320px;padding:22px 20px 24px;border-right:1.5px solid var(--ink);position:relative;background:var(--paper)}.tl-card::before{content:"";position:absolute;left:20px;top:-1.5px;width:12px;height:12px;background:var(--volt);border:1.5px solid var(--ink)}
+.tl-card .tl-y{font-family:var(--poster);font-size:64px;line-height:1;padding-top:.06em;margin-top:8px}.tl-card b{display:block;font-size:17px;margin-top:8px}.tl-card p{color:var(--muted);font-size:14px;margin:6px 0 0}.tl-card.next{background:var(--ink);color:var(--paper)}.tl-card.next p{color:var(--smoke)}.tl-card.next .tl-y{color:var(--volt)}
+/* ── #9 calculateur ────────────────────────────────────────────── */
+.catcalc{display:grid;grid-template-columns:1fr 1fr;border:1.5px solid var(--ink);background:var(--paper)}.cc-l{padding:30px;border-right:1.5px solid var(--ink)}.cc-r{padding:30px;background:var(--volt-tint,#EEFFF3)}
+.cc-field input{width:100%;height:56px;border:1.5px solid var(--ink);padding:0 16px;font-family:var(--mono);font-size:20px;background:var(--paper);margin-top:12px}
+.cc-cat{font-family:var(--poster);font-size:88px;line-height:1;padding-top:.04em}.cc-cat small{display:block;font-family:var(--body);font-size:15px;letter-spacing:0;text-transform:none;margin-top:4px}
+@media(max-width:760px){.catcalc{grid-template-columns:1fr}.cc-l{border-right:0;border-bottom:1.5px solid var(--ink)}.cc-cat{font-size:64px}}
+/* ── #10 abonnement ────────────────────────────────────────────── */
+.sub{border:1.5px solid var(--ink);padding:30px;display:grid;grid-template-columns:1fr 1.1fr;gap:30px;align-items:center;background:var(--paper)}.sub.compact{grid-template-columns:1fr;padding:18px}
+.sub-f{display:flex;gap:8px;flex-wrap:wrap}.sub-f select,.sub-f input{height:46px;border:1.5px solid var(--ink);padding:0 12px;background:var(--paper);font-family:var(--body);font-size:14px;flex:1 1 150px;min-width:0}.sub-f .btn{height:46px}
+.seg{display:flex;border:1.5px solid var(--ink)}.seg button{height:43px;padding:0 14px;background:none;border:0;font-family:var(--body);font-weight:600;cursor:pointer}.seg button.on{background:var(--ink);color:var(--paper)}
+@media(max-width:760px){.sub{grid-template-columns:1fr}}
+/* ── #13 progression ───────────────────────────────────────────── */
+.prog{border:1.5px solid var(--ink);padding:18px 20px;background:var(--paper)}.prog-h{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}.prog-svg{width:100%;height:auto;display:block}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}@media(max-width:860px){.grid2{grid-template-columns:1fr}}
+/* ── #15 replay ────────────────────────────────────────────────── */
+.replay{border:1.5px solid var(--ink);padding:14px 18px;margin-top:12px;background:var(--paper)}.rp-h{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}.rp-svg{width:100%;height:auto;display:block}
+/* ── #17 classement des clubs ──────────────────────────────────── */
+.stand{border:1.5px solid var(--ink)}.st-row{display:grid;grid-template-columns:60px 1fr repeat(3,84px) 120px;align-items:center;gap:12px;padding:14px 18px;border-top:1.5px solid var(--ink);transition:background .15s}.st-row:first-child{border-top:0}.st-row:hover{background:var(--volt-tint,#EEFFF3)}
+.st-rank{font-family:var(--poster);font-size:34px;line-height:1;padding-top:.04em}.st-club b{display:block;font-size:17px}.st-club small{color:var(--muted);font-size:12px}.st-n{text-align:center}.st-n b{display:block;font-family:var(--mono);font-size:18px}.st-n small{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.st-pts{text-align:right;font-family:var(--poster);font-size:30px;line-height:1;padding-top:.04em}.st-pts small{font-family:var(--mono);font-size:10px;margin-left:4px;letter-spacing:.1em;color:var(--muted)}
+@media(max-width:760px){.st-row{grid-template-columns:44px 1fr 90px}.st-n{display:none}.st-rank{font-size:26px}.st-pts{font-size:24px}}
+/* ── Dans le monde ─────────────────────────────────────────────── */
+.monde-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:2px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18)}
+.mcard{background:var(--ink);padding:22px 20px;display:grid;gap:4px;position:relative}.mcard .mc-top{display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--smoke)}
+.mcard .mc-perf{font-family:var(--poster);font-size:56px;line-height:1;padding-top:.06em;color:var(--volt);margin-top:8px}.mcard b{font-size:18px;margin-top:6px}.mcard .mc-ev{font-size:13px;color:var(--smoke)}.mcard p{font-size:13px;color:var(--smoke);margin:8px 0 0}
+.medal{font-family:var(--mono);font-size:10px;letter-spacing:.12em;padding:3px 8px;border:1px solid}.medal.or{color:#FFD100;border-color:#FFD100}.medal.argent{color:#D9DDE0;border-color:#D9DDE0}.medal.bronze{color:#E6C9A8;border-color:#E6C9A8}
+.mcard.next{background:var(--volt);color:var(--ink)}.mcard.next .mc-perf,.mcard.next .mc-top,.mcard.next .mc-ev,.mcard.next p{color:var(--ink)}

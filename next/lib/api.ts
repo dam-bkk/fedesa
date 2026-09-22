@@ -19,6 +19,9 @@ export type Club = { id: number; code: string; name: string; city: string; regio
 export type Tarifs = { season: string; campaignOpen: boolean; validFrom: string; validTo: string; fees: { code: string; label: string; amount: number; currency: string }[]; documents: { code: string; label: string }[]; howTo: string[] };
 export type Athlete = { id: number; name: string; sex: "M" | "F"; category: string; club: string | null; region: string; licensed: boolean; pbs: { eventCode: string; event: string; mark: string; points: number; competition: string; date: string }[]; results: { competitionId: number; competition: string; date: string; event: string; rank: number | null; mark: string }[] };
 
+export type Standing = { rank: number; id: number; club: string; code: string; region: string; regionCode: string; city: string; points: number; results: number; gold: number; podiums: number; athletes: number };
+export type Prog = { event: string; eventCode: string; sex: string; kind: string; lowerIsBetter: boolean; record: { raw: number; mark: string; holder: string; year: string | null } | null; years: { year: number; raw: number; mark: string; results: number }[] };
+export type { Lang } from "@/lib/i18n";
 export const api = {
   stats: () => get<Stats | null>("/api/public/stats", null, 600),
   calendar: () => get<{ items: CalItem[] }>("/api/public/calendrier", { items: [] }),
@@ -28,6 +31,8 @@ export const api = {
   records: () => get<{ items: Record_[] }>("/api/public/records", { items: [] }, 3600),
   clubs: () => get<{ count: number; items: Club[] }>("/api/public/clubs", { count: 0, items: [] }, 3600),
   tarifs: () => get<Tarifs | null>("/api/public/tarifs", null, 3600),
+  standings: () => get<{ items: Standing[] }>("/api/public/classement-clubs", { items: [] }),
+  progression: (ep: string, sexe: string) => get<Prog | null>(`/api/public/progression?ep=${ep}&sexe=${sexe}`, null, 3600),
   athlete: (id: number) => get<Athlete | null>(`/api/public/athletes/${id}`, null),
 };
 const M = ["janv.", "févr.", "mars", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];

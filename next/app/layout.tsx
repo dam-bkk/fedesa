@@ -4,6 +4,9 @@ import "./fedesa.css";
 import { Header } from "@/components/Header";
 import Footer from "@/components/parts/Footer";
 import { Enhance } from "@/components/Enhance";
+import { getLang } from "@/lib/server/lang";
+import { tr } from "@/lib/i18n";
+import { setLang } from "./actions";
 
 const poster = Anton({ weight: "400", subsets: ["latin"], variable: "--f-poster", display: "swap" });
 const body = Instrument_Sans({ subsets: ["latin"], variable: "--f-body", display: "swap" });
@@ -17,10 +20,11 @@ export const metadata: Metadata = {
 };
 export const viewport: Viewport = { themeColor: "#0B1410", width: "device-width", initialScale: 1, viewportFit: "cover" };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const lang = await getLang(); const t = tr(lang);
   return (
-    <html lang="fr" className={`${poster.variable} ${body.variable} ${mono.variable}`}>
-      <body><Header />{children}<Footer /><Enhance /></body>
+    <html lang={lang} className={`${poster.variable} ${body.variable} ${mono.variable}`}>
+      <body><Header lang={lang} setLang={setLang} />{children}<Footer t={t} /><Enhance /></body>
     </html>
   );
 }
