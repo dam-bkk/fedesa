@@ -830,3 +830,6 @@ html,body{overflow-x:clip}
 }
 .plogo.real .plogo-img{max-height:64px}
 @media(max-width:700px){.plogo.real .plogo-img{max-height:48px}}
+/* titre du hero : 3 lignes sur desktop, 2 lignes sur mobile (« Courir pour » / « le Sénégal ») */
+.hero-h1 .br-m{display:none}
+@media(max-width:820px){.hero-h1 .br-d{display:none}.hero-h1 .br-m{display:inline}}

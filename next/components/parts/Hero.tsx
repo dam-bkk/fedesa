@@ -13,7 +13,7 @@ export default function Hero({ t, stats }: { t: (s: string) => string; stats: { 
     <div  className="hero-in">
       <div  className="hero-copy">
         <span  className="hero-kick"><span  className="flagbar"><i  style={{"background":"#00853F"}}></i><i  style={{"background":"#FDEF42"}}></i><i  style={{"background":"#E31B23"}}></i></span>{t("Saison 26/27 · ouverte")}</span>
-        <h1  className="hero-h1">{t("Courir")}<br />{t("pour le")}<br /><span  className="ol">{t("Sénégal")}</span></h1>
+        <h1  className="hero-h1">{t("Courir")}<br className="br-d" /> {t("pour")}<br className="br-m" /> {t("le")}<br className="br-d" /> <span  className="ol">{t("Sénégal")}</span></h1>
         <p  className="hero-sub">{t("Une licence. Un club. Un dossard. Tout part d'ici — de la piste de quartier jusqu'à la ligne d'arrivée de Dakar 2027.")}</p>
         <div  className="hero-btns">
           <a  href="/licence" className="btn btn-ink">{t("Prendre sa licence")}</a>
