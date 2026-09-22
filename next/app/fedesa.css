@@ -828,3 +828,5 @@ html,body{overflow-x:clip}
  #actus .tab,#live .tab{flex:none;padding:8px 12px;font-size:10px}
  .best{grid-template-columns:32px minmax(0,1fr) auto;padding:10px 0}.best-rk{font-size:22px}.best-who b{font-size:14px}.best-mark .mono{font-size:16px}
 }
+.plogo.real .plogo-img{max-height:64px}
+@media(max-width:700px){.plogo.real .plogo-img{max-height:48px}}

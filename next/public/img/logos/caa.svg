@@ -1,0 +1,23 @@
+
+<svg width="400pt" height="111.68pt" version="1.2" viewBox="0 0 400 111.68" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <symbol id="glyph1-2" overflow="visible"></symbol>
+ </defs>
+ <g fill="#c21419">
+  <path d="m98.786 71.149c-2.0465 8.1859-12.719 22.683-37.028 22.683-22.836 0-40.528-12.891-40.528-37.334 0-22.09 12.279-38.634 41.714-38.634 24.883 0 33.088 15.071 34.235 18.724h20.79c-1.6066-5.6995-8.6258-36.588-56.211-36.588-42.287 0-61.758 23.123-61.758 54.165 0 38.787 26.489 57.512 60.151 57.512 48.886 0 57.378-28.689 59.443-40.528"/>
+  <path d="m125.49 109.06h22.11l11.265-24.462h61.337l11.131 24.462h21.937l-51.659-106.42h-23.716zm42.02-42.307 22.243-47.432 22.243 47.432" fill-rule="evenodd"/>
+  <path d="m272.2 109.06h22.11l11.265-24.462h61.337l11.131 24.462h21.957l-51.678-106.42h-23.716zm42.02-42.307 22.243-47.432 22.243 47.432" fill-rule="evenodd"/>
+ </g>
+ <g transform="translate(-452.14 -78.438)" fill="#919497">
+  <use x="37.174702" y="580.35498" width="100%" height="100%" xlink:href="#glyph1-2"/>
+  <use x="39.9547" y="580.35498" width="100%" height="100%" xlink:href="#glyph1-2"/>
+  <use x="42.734699" y="580.35498" width="100%" height="100%" xlink:href="#glyph1-2"/>
+ </g>
+ <g transform="translate(-452.14 -78.438)" fill="#211e1e">
+  <use x="329.1748" y="713.013" width="100%" height="100%" xlink:href="#glyph1-2"/>
+  <use x="331.9548" y="713.013" width="100%" height="100%" xlink:href="#glyph1-2"/>
+  <use x="334.7348" y="713.013" width="100%" height="100%" xlink:href="#glyph1-2"/>
+  <use x="337.5148" y="713.013" width="100%" height="100%" xlink:href="#glyph1-2"/>
+  <use x="340.2948" y="713.013" width="100%" height="100%" xlink:href="#glyph1-2"/>
+ </g>
+</svg>
