@@ -835,3 +835,17 @@ html,body{overflow-x:clip}
 @media(max-width:820px){.hero-h1 .br-d{display:none}.hero-h1 .br-m{display:inline}}
 /* hero mobile : les deux boutons sur une ligne */
 @media(max-width:820px){.hero-btns{flex-direction:row;gap:10px}.hero-btns .btn{flex:1 1 0;width:auto;padding-inline:14px;white-space:nowrap}}
+/* ── mobile : fiche d'épreuve centrée, flèches juste dessous ─────────── */
+@media(max-width:700px){
+ .epw{align-items:center;padding:16px 12px 90px}
+ .epm-nav{position:absolute;left:0;right:0;bottom:-58px;margin:0}.epm-nav button{height:42px}
+ /* à la une : pas d'extrait sur le premier article */
+ #actus .lead-body p{display:none}
+ /* les chiffres ne mentent pas : une ligne par athlète (rang · nom · perf) */
+ #live .tbl tr{display:grid;grid-template-columns:34px minmax(0,1fr) auto;align-items:center;gap:0 10px;padding:9px 12px;border-bottom:1px solid rgba(255,255,255,.1)}
+ #live .tbl td{padding:0}#live .tbl td::before{display:none}
+ #live .tbl td[data-th="Club"],#live .tbl td[data-th="Cat."],#live .tbl td[data-th="Vent"],#live .tbl td[data-th="Wind"],#live .tbl td[data-th="Pts"]{display:none}
+ #live .tbl td.c-pos{grid-column:auto;display:block}#live .tbl td.c-main{grid-column:auto;font-size:14px;font-weight:500}#live .tbl td.c-perf .perf{font-size:17px}
+ #live .who{gap:8px}#live .who .ava{display:none}#live .who-s{font-size:11px}
+ #live .panel{border-radius:14px}#live .panel-top{padding:14px 12px;flex-direction:column;gap:8px;align-items:flex-start}#live .panel-ev{font-size:20px}#live .panel-meta{font-size:11px}
+}
