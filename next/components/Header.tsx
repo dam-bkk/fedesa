@@ -49,7 +49,7 @@ export function Header({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => Pr
         </div>
       )}
       <button className="burger" type="button" aria-expanded={mobile} aria-label={t("Menu mobile")} onClick={() => setMobile((m) => !m)}><span /></button>
-      {mobile && <div className="mnav"><div className="wrap">{NAV.map(([h, l]) => <Link key={h} href={h}>{t(l)}</Link>)}<Link href="/licence" className="btn btn-volt">{t("Licences 26/27")}</Link></div></div>}
+      {mobile && <div className="mnav open"><div className="wrap">{NAV.map(([h, l]) => <Link key={h} href={h}>{t(l)}</Link>)}<Link href="/licence" className="btn btn-volt">{t("Licences 26/27")}</Link><div className="lang" role="group" aria-label="Langue / Language">{(["fr", "en"] as const).map((k) => <button key={k} type="button" className={lang === k ? "on" : ""} aria-pressed={lang === k} onClick={() => setLang(k)}>{k.toUpperCase()}</button>)}</div></div></div>}
     </header>
   );
 }

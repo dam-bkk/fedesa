@@ -689,3 +689,11 @@ section[id],div[id]{scroll-margin-top:92px;}
 .medal{font-family:var(--mono);font-size:10px;letter-spacing:.12em;padding:3px 8px;border:1px solid}.medal.or{color:#FFD100;border-color:#FFD100}.medal.argent{color:#D9DDE0;border-color:#D9DDE0}.medal.bronze{color:#E6C9A8;border-color:#E6C9A8}
 .mcard.next{background:var(--volt);color:var(--ink)}.mcard.next .mc-perf,.mcard.next .mc-top,.mcard.next .mc-ev,.mcard.next p{color:var(--ink)}
 .podiums{grid-template-columns:1fr 1fr;gap:14px 28px}@media(max-width:600px){.podiums{grid-template-columns:1fr}}
+/* sélecteur de langue dans la barre : segment aligné sur les boutons */
+.nav-cta{align-items:center}
+.nav .lang,.mnav .lang{display:inline-flex;align-items:stretch;border:1.5px solid var(--ink);height:34px;background:var(--paper)}
+.nav .lang button,.mnav .lang button{background:none;border:0;padding:0 12px;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--ink);cursor:pointer;line-height:1;display:flex;align-items:center;transition:background .15s,color .15s}
+.nav .lang button + button,.mnav .lang button + button{border-left:1.5px solid var(--ink)}
+.nav .lang button:hover,.mnav .lang button:hover{background:var(--volt-tint,#EEFFF3)}
+.nav .lang button.on,.nav .lang button[aria-pressed="true"],.mnav .lang button.on{background:var(--ink);color:var(--volt)}
+.mnav .lang{border-color:#fff;background:transparent;margin-top:14px}.mnav .lang button{color:#fff}.mnav .lang button + button{border-left-color:#fff}.mnav .lang button.on{background:var(--volt);color:var(--ink)}
