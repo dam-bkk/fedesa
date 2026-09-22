@@ -16,7 +16,7 @@ export default function Hero({ t, stats }: { t: (s: string) => string; stats: { 
         <h1  className="hero-h1">{t("Courir")}<br className="br-d" /> {t("pour")}<br className="br-m" /> {t("le")}<br className="br-d" /> <span  className="ol">{t("Sénégal")}</span></h1>
         <p  className="hero-sub">{t("Une licence. Un club. Un dossard. Tout part d'ici — de la piste de quartier jusqu'à la ligne d'arrivée de Dakar 2027.")}</p>
         <div  className="hero-btns">
-          <a  href="/licence" className="btn btn-ink">{t("Prendre sa licence")}</a>
+          <a  href="/licence" className="btn btn-ink">{t("Licence")}</a>
           <a  href="/competitions" className="btn btn-oink">{t("Calendrier 26/27")}</a>
         </div>
         <img className="hero-mimg" src="/img/hero-start.avif" width="1376" height="768" alt="" aria-hidden="true" />
