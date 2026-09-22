@@ -17,9 +17,8 @@ const COLS: { h: string; links: [string, string][] }[] = [
 export function Header({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => Promise<void> }) {
   const t = tr(lang);
   const [open, setOpen] = useState(false);
-  const [mobile, setMobile] = useState(false);
   const path = usePathname();
-  useEffect(() => { setOpen(false); setMobile(false); }, [path]);
+  useEffect(() => { setOpen(false); }, [path]);
   useEffect(() => { document.body.style.overflow = open ? "hidden" : ""; const k = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); }; window.addEventListener("keydown", k); return () => { window.removeEventListener("keydown", k); document.body.style.overflow = ""; }; }, [open]);
   const Burger = ({ x }: { x?: boolean }) => (<svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">{x ? <path d="M4 4l14 14M18 4L4 18" stroke="currentColor" strokeWidth="2.2" strokeLinecap="square" /> : <path d="M3 6h16M3 11h16M3 16h10" stroke="currentColor" strokeWidth="2.2" strokeLinecap="square" />}</svg>);
   return (
@@ -42,14 +41,12 @@ export function Header({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => Pr
               <div className="mcol"><h3>{t("Les 14 ligues")}</h3><div className="two">{LIGUES.map((l) => <Link key={l.code} href={`/federation#ligue-${l.code}`}>{l.name}</Link>)}</div></div>
             </div>
             <div className="mega-foot">
-              <div className="mega-cta"><Link href="/licence" className="btn btn-volt">{t("Prendre une licence")}</Link><Link href="/clubs" className="btn btn-olight">{t("Trouver un club")}</Link></div>
+              <div className="mega-cta"><Link href="/licence" className="btn btn-volt">{t("Prendre une licence")}</Link><Link href="/clubs" className="btn btn-olight">{t("Trouver un club")}</Link><a href={APP_URL} className="btn btn-olight">{t("Espace club")}</a><div className="lang mega-lang" role="group" aria-label="Langue / Language">{(["fr", "en"] as const).map((k) => <button key={k} type="button" className={lang === k ? "on" : ""} aria-pressed={lang === k} onClick={() => setLang(k)}>{k.toUpperCase()}</button>)}</div></div>
               <span className="mono" style={{ fontSize: 11, letterSpacing: ".14em", textTransform: "uppercase", color: "var(--smoke)" }}>Stade Iba Mar Diop · Dakar · +221 33 821 77 98</span>
             </div>
           </div>
         </div>
       )}
-      <button className="burger" type="button" aria-expanded={mobile} aria-label={t("Menu mobile")} onClick={() => setMobile((m) => !m)}><span /></button>
-      {mobile && <div className="mnav open"><div className="wrap">{NAV.map(([h, l]) => <Link key={h} href={h}>{t(l)}</Link>)}<Link href="/licence" className="btn btn-volt">{t("Licences 26/27")}</Link><div className="lang" role="group" aria-label="Langue / Language">{(["fr", "en"] as const).map((k) => <button key={k} type="button" className={lang === k ? "on" : ""} aria-pressed={lang === k} onClick={() => setLang(k)}>{k.toUpperCase()}</button>)}</div></div></div>}
     </header>
   );
 }

@@ -713,3 +713,8 @@ section.tight{padding-top:28px}
 @media(max-width:760px){.cc-l,.cc-r{padding:26px 22px}.cc-ladder li{grid-template-columns:52px 1fr 1fr 1fr;font-size:13px}}
 .nav .lang,.nav .lang button,.mnav .lang,.mnav .lang button{border-radius:0}
 @media(min-width:1200px){.mcard.next{grid-column:span 3}}
+/* un seul burger : le méga-menu sert aussi de menu mobile */
+.burger,.mnav{display:none!important}
+.mega-cta{align-items:center;flex-wrap:wrap}
+.mega .mega-lang{display:inline-flex;border:1.5px solid #fff;background:transparent;height:40px}.mega .mega-lang button{color:#fff;padding:0 14px}.mega .mega-lang button + button{border-left:1.5px solid #fff}.mega .mega-lang button.on{background:var(--volt);color:var(--ink)}
+@media(max-width:620px){.mega-top .brand-sub{display:none}.mega-foot{flex-direction:column;align-items:flex-start;gap:16px}}
