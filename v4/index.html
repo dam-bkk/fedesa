@@ -1,0 +1,1345 @@
+<title>FEDESA Athlétisme Sénégal</title>
+<style>
+/* ════ TOKENS ══════════════════════════════════════════════════════════ */
+:root{
+  color-scheme: light;
+  /* surfaces */
+  --bg:#F7F8F7; --surface:#FFFFFF; --tint:#F1F6F3; --ink-surface:#101512;
+  /* text */
+  --ink:#101512; --ink-2:#5C6661; --ink-3:#66706A; --on-dark:#FFFFFF; --on-dark-2:#A8B0AB;
+  /* lines */
+  --line:#E6E8E5; --line-2:#D9DDD8;
+  /* accent + semantic */
+  --accent:#0F6B43; --accent-strong:#0B5734; --accent-tint:#E9F3ED; --mint:#3ECF8E;
+  --tint-band:#EDF3EF; --tint-line:#DCE7E0; --pale-mint:#C9F0DC;
+  --red:#B42318; --red-tint:#FDECEA; --amber:#B54708; --amber-tint:#FDF3E7;
+  /* type */
+  --sans:'Geist','Inter Tight',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --mono:'Geist Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  /* geometry */
+  --r-sm:8px; --r:12px; --r-lg:16px; --r-xl:22px;
+  --wrap:1200px; --gutter:24px;
+  --shadow-1:0 1px 2px rgba(16,21,18,.05);
+  --shadow-2:0 4px 16px -4px rgba(16,21,18,.1),0 1px 3px rgba(16,21,18,.05);
+  --shadow-3:0 24px 48px -12px rgba(16,21,18,.18),0 2px 8px rgba(16,21,18,.06);
+}
+*,*::before,*::after{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;
+  letter-spacing:-.006em;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+img{max-width:100%;display:block;}
+[hidden]{display:none!important;}
+a{color:inherit;text-decoration:none;}
+button,input,select,textarea{font:inherit;color:inherit;}
+p{margin:0;}
+h1,h2,h3,h4,h5{margin:0;font-weight:600;letter-spacing:-.028em;line-height:1.1;text-wrap:balance;}
+h1{font-size:clamp(34px,4.4vw,54px);letter-spacing:-.036em;}
+h2{font-size:clamp(25px,2.7vw,33px);}
+h3{font-size:18px;letter-spacing:-.018em;line-height:1.3;}
+h4{font-size:15.5px;letter-spacing:-.012em;line-height:1.35;}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px;}
+::selection{background:var(--accent-tint);}
+.wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter);}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums;font-feature-settings:"tnum";}
+.num{font-variant-numeric:tabular-nums;}
+section{padding-block:clamp(48px,6.4vw,92px);}
+.sec-tint{background:var(--tint-band);border-block:1px solid var(--tint-line);}
+.sec-tint .card,.sec-tint .evt,.sec-tint .club,.sec-tint .qa-card{box-shadow:var(--shadow-1);}
+.sec-tint .field input,.sec-tint .field select,.sec-tint .seg{background:var(--surface);}
+.sec-tint .seg{border-color:var(--tint-line);}
+.sec-tint table.tbl th{background:var(--tint-band);}
+.label{font-size:11px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:500;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--accent);}
+.eyebrow::before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor;}
+.muted{color:var(--ink-2);}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:28px;}
+.sec-head p{color:var(--ink-2);margin-top:10px;max-width:56ch;}
+.tlink{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:500;color:var(--accent);
+  transition:gap .16s;}
+.tlink:hover{gap:10px;}
+
+/* ════ BUTTONS ═════════════════════════════════════════════════════════ */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:13.5px;font-weight:500;
+  letter-spacing:-.008em;padding:0 16px;height:40px;border:1px solid transparent;border-radius:var(--r-sm);
+  cursor:pointer;white-space:nowrap;transition:background .15s,border-color .15s,color .15s,box-shadow .15s,transform .15s;}
+.btn:active{transform:translateY(.5px);}
+.btn-primary{background:var(--ink);color:#fff;box-shadow:var(--shadow-1);}
+.btn-primary:hover{background:#000;}
+.btn-accent{background:var(--accent);color:#fff;box-shadow:var(--shadow-1);}
+.btn-accent:hover{background:var(--accent-strong);}
+.btn-ghost{border-color:var(--line-2);background:var(--surface);color:var(--ink);}
+.btn-ghost:hover{border-color:var(--ink-3);background:var(--bg);}
+.btn-quiet{color:var(--ink-2);}
+.btn-quiet:hover{background:var(--bg);color:var(--ink);}
+.btn-dark-ghost{border-color:rgba(255,255,255,.22);color:#fff;}
+.btn-dark-ghost:hover{background:rgba(255,255,255,.08);}
+.btn-sm{height:34px;font-size:13px;padding:0 12px;}
+.btn-lg{height:46px;font-size:14.5px;padding:0 22px;}
+
+/* ════ BADGES / PILLS ══════════════════════════════════════════════════ */
+.badge{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:500;line-height:1;
+  padding:5px 9px;border-radius:6px;border:1px solid transparent;white-space:nowrap;}
+.badge-accent{background:var(--accent-tint);color:var(--accent);border-color:#CDE6D9;}
+.badge-red{background:var(--red-tint);color:var(--red);border-color:#F7D4D0;}
+.badge-amber{background:var(--amber-tint);color:var(--amber);border-color:#F3DEC2;}
+.badge-neutral{background:var(--bg);color:var(--ink-2);border-color:var(--line-2);}
+.badge-dark{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.18);}
+.dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex:none;}
+.dot-live{background:var(--red);box-shadow:0 0 0 3px var(--red-tint);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* ════ CARDS ═══════════════════════════════════════════════════════════ */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);}
+.card-pad{padding:22px;}
+.card-hover{transition:border-color .16s,box-shadow .16s,transform .16s;}
+.card-hover:hover{border-color:var(--line-2);box-shadow:var(--shadow-2);transform:translateY(-2px);}
+
+/* ════ TOPBAR ══════════════════════════════════════════════════════════ */
+.topbar{background:var(--surface);border-bottom:1px solid var(--line);font-size:12.5px;color:var(--ink-2);}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:36px;}
+.tb-l{display:flex;align-items:center;gap:18px;}
+.tb-l a:hover,.tb-r a:hover{color:var(--ink);}
+.tb-r{display:flex;align-items:center;gap:14px;}
+.seg-mini{display:flex;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:2px;}
+.seg-mini button{border:0;background:none;padding:2px 8px;border-radius:4px;font-size:11.5px;font-weight:500;
+  color:var(--ink-3);cursor:pointer;}
+.seg-mini button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow-1);}
+@media(max-width:860px){.tb-l{display:none;}.topbar .wrap{justify-content:flex-end;}}
+
+/* ════ HEADER ══════════════════════════════════════════════════════════ */
+header.hd{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(255,255,255,.82);
+  backdrop-filter:saturate(180%) blur(16px);border-bottom:1px solid var(--line);}
+.hd .wrap{display:flex;align-items:center;gap:20px;height:60px;}
+.logo{display:flex;align-items:center;gap:10px;flex:none;}
+.logo-mark{width:30px;height:30px;border-radius:9px;background:var(--ink);display:grid;place-items:center;flex:none;}
+.logo-txt{font-size:15px;font-weight:600;letter-spacing:-.02em;}
+.logo-sub{font-size:10.5px;color:var(--ink-3);letter-spacing:.02em;margin-top:-2px;}
+nav.main{display:flex;align-items:center;gap:2px;margin-left:8px;}
+nav.main a{position:relative;white-space:nowrap;font-size:13.5px;font-weight:500;color:var(--ink-2);padding:7px 11px;border-radius:7px;
+  transition:color .15s,background .15s;}
+nav.main a:hover{color:var(--ink);background:var(--bg);}
+nav.main a.on{color:var(--ink);}
+nav.main a.on::after{content:"";position:absolute;left:11px;right:11px;bottom:-19px;height:2px;background:var(--accent);}
+.hd-r{display:flex;align-items:center;gap:8px;margin-left:auto;}
+.kbtn{display:flex;align-items:center;gap:8px;height:34px;padding:0 10px 0 11px;border:1px solid var(--line-2);
+  background:var(--surface);border-radius:var(--r-sm);color:var(--ink-3);font-size:13px;cursor:pointer;transition:border-color .15s;}
+.kbtn:hover{border-color:var(--ink-3);color:var(--ink-2);}
+kbd{font-family:var(--mono);font-size:10.5px;background:var(--bg);border:1px solid var(--line);border-radius:4px;
+  padding:2px 5px;color:var(--ink-3);line-height:1;}
+.burger{display:none;width:34px;height:34px;border:1px solid var(--line-2);background:var(--surface);border-radius:var(--r-sm);
+  cursor:pointer;align-items:center;justify-content:center;}
+@media(max-width:1080px){nav.main{display:none;}.hd-r .btn-ghost{display:none;}.burger{display:flex;}}
+@media(max-width:700px){.kbtn span.kl{display:none;}.kbtn kbd{display:none;}
+  .hd-r .btn-primary{display:none;}.hd .wrap{gap:12px;}}
+.mnav{display:none;border-bottom:1px solid var(--line);background:var(--surface);}
+.mnav.open{display:block;}
+.mnav .wrap{padding-block:10px 20px;}
+.mnav a{display:block;font-size:15px;font-weight:500;padding:11px 0;border-bottom:1px solid var(--line);}
+.mnav .btn{margin-top:16px;width:100%;}
+
+/* ════ HERO — full-bleed ═══════════════════════════════════════════════ */
+.hero{position:relative;isolation:isolate;min-height:clamp(500px,64vh,660px);display:flex;align-items:flex-end;
+  overflow:hidden;background:var(--ink-surface);}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 52%;z-index:0;}
+.hero-scrim{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(100deg,rgba(8,12,10,.92) 0%,rgba(8,12,10,.82) 38%,rgba(8,12,10,.5) 64%,rgba(8,12,10,.26) 100%),
+             linear-gradient(to top,rgba(8,12,10,.66) 0%,transparent 46%);}
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:flex-end;
+  padding-block:clamp(30px,4vw,52px) clamp(38px,4.4vw,58px);color:#fff;}
+.hero-copy{max-width:640px;}
+.chip-season{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.26);backdrop-filter:blur(8px);border-radius:999px;padding:5px 12px 5px 6px;
+  font-size:12.5px;color:rgba(255,255,255,.88);}
+.chip-season b{display:inline-flex;align-items:center;gap:5px;background:var(--mint);color:#0B2E1D;border-radius:999px;
+  padding:3px 8px;font-size:11px;font-weight:500;}
+.hero h1{margin-top:14px;color:#fff;text-shadow:0 1px 24px rgba(8,12,10,.28);}
+.hero h1 em{font-style:normal;color:var(--mint);}
+.hero-p{margin-top:14px;font-size:16.5px;color:rgba(255,255,255,.82);max-width:46ch;}
+.hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px;}
+.btn-onimg{background:#fff;color:var(--ink);}
+.btn-onimg:hover{background:var(--bg);}
+.btn-onimg-ghost{border-color:rgba(255,255,255,.4);color:#fff;backdrop-filter:blur(8px);background:rgba(255,255,255,.06);}
+.btn-onimg-ghost:hover{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.6);}
+.hero-facts{display:flex;gap:0;flex-wrap:wrap;margin-top:26px;padding-top:18px;border-top:1px solid rgba(255,255,255,.2);}
+.fact{padding-right:26px;margin-right:26px;border-right:1px solid rgba(255,255,255,.18);}
+.fact:last-child{border-right:0;margin-right:0;padding-right:0;}
+.fact-v{font-size:22px;font-weight:600;letter-spacing:-.03em;color:#fff;}
+.fact-k{font-size:12.5px;color:rgba(255,255,255,.72);margin-top:2px;}
+.live-card{width:min(330px,100%);background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);
+  box-shadow:var(--shadow-3);padding:14px 16px;color:var(--ink);}
+.live-top{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.live-row{display:flex;align-items:center;gap:10px;margin-top:12px;}
+.ava{width:34px;height:34px;border-radius:10px;background:var(--tint);color:var(--accent);display:grid;place-items:center;
+  font-size:12px;font-weight:600;flex:none;letter-spacing:-.01em;}
+.live-name{font-size:14px;font-weight:600;letter-spacing:-.012em;}
+.live-meta{font-size:12px;color:var(--ink-3);}
+.live-perf{margin-left:auto;text-align:right;}
+.live-perf .p{font-family:var(--mono);font-size:17px;font-weight:500;letter-spacing:-.02em;}
+.live-bar{margin-top:12px;padding-top:11px;border-top:1px solid var(--line);display:flex;align-items:center;
+  justify-content:space-between;gap:10px;font-size:12px;color:var(--ink-3);}
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr;gap:26px;}
+  .live-card{width:min(360px,100%);}
+}
+@media(max-width:640px){
+  .hero{min-height:0;}
+  .hero-inner{padding-block:26px 34px;}
+  .hero h1 br{display:none;}
+  .hero-facts{display:grid;grid-template-columns:1fr 1fr;gap:16px 14px;margin-top:22px;padding-top:16px;}
+  .fact{padding-right:0;margin-right:0;border-right:0;}
+  .fact-v{font-size:20px;}
+}
+/* overlap of the KPI strip on the hero */
+.kpi-lift{margin-top:clamp(-40px,-3vw,-24px);position:relative;z-index:3;}
+.kpi-lift .kpis{box-shadow:var(--shadow-2);}
+
+/* ════ KPI STRIP ═══════════════════════════════════════════════════════ */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:var(--r-lg);
+  background:var(--surface);overflow:hidden;}
+.kpi{padding:20px 22px;border-right:1px solid var(--line);}
+.kpi:last-child{border-right:0;}
+.kpi-v{font-size:26px;font-weight:600;letter-spacing:-.035em;}
+.kpi-k{font-size:12.5px;color:var(--ink-3);margin-top:3px;}
+.kpi-d{font-size:11.5px;color:var(--accent);margin-top:8px;display:flex;align-items:center;gap:5px;}
+@media(max-width:760px){.kpis{grid-template-columns:1fr 1fr;}
+  .kpi:nth-child(2){border-right:0;}.kpi:nth-child(-n+2){border-bottom:1px solid var(--line);}}
+
+/* ════ QUICK ACTIONS ═══════════════════════════════════════════════════ */
+.qa{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.qa-card{display:flex;flex-direction:column;gap:10px;padding:20px;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-lg);transition:border-color .16s,box-shadow .16s,transform .16s;}
+.qa-card:hover{border-color:var(--line-2);box-shadow:var(--shadow-2);transform:translateY(-2px);}
+.qa-ico{width:36px;height:36px;border-radius:10px;background:var(--tint);display:grid;place-items:center;color:var(--accent);}
+.qa-t{font-size:15px;font-weight:600;letter-spacing:-.015em;margin-top:4px;}
+.qa-m{font-size:13px;color:var(--ink-3);}
+.qa-go{margin-top:auto;padding-top:10px;font-size:13px;color:var(--accent);display:flex;align-items:center;gap:6px;
+  transition:gap .16s;}
+.qa-card:hover .qa-go{gap:10px;}
+@media(max-width:960px){.qa{grid-template-columns:1fr 1fr;}}
+@media(max-width:520px){.qa{grid-template-columns:1fr;}}
+
+/* ════ SEGMENTED CONTROL ═══════════════════════════════════════════════ */
+.seg{position:relative;display:inline-flex;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:3px;gap:2px;}
+.seg .ind{position:absolute;top:3px;bottom:3px;background:var(--surface);border:1px solid var(--line);border-radius:7px;
+  box-shadow:var(--shadow-1);transition:left .22s cubic-bezier(.32,.72,0,1),width .22s cubic-bezier(.32,.72,0,1);z-index:0;}
+.seg button{position:relative;z-index:1;border:0;background:none;padding:6px 13px;border-radius:7px;font-size:13px;
+  font-weight:500;color:var(--ink-3);cursor:pointer;transition:color .15s;white-space:nowrap;}
+.seg button:hover{color:var(--ink-2);}
+.seg button[aria-selected="true"]{color:var(--ink);}
+@media(max-width:760px){
+  .seg{max-width:100%;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+  .seg::-webkit-scrollbar{display:none;}
+  .seg button{flex:none;}
+}
+.seg-dark{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14);}
+.seg-dark .ind{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);box-shadow:none;}
+.seg-dark button{color:var(--on-dark-2);}
+.seg-dark button[aria-selected="true"]{color:#fff;}
+
+/* ════ TABLE ═══════════════════════════════════════════════════════════ */
+.tbl-wrap{overflow-x:auto;}
+table.tbl{width:100%;border-collapse:collapse;min-width:640px;color:var(--ink);}
+table.tbl th{text-align:left;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);
+  padding:10px 16px;background:var(--bg);border-bottom:1px solid var(--line);position:sticky;top:0;}
+table.tbl td{padding:13px 16px;border-bottom:1px solid var(--line);font-size:14px;vertical-align:middle;}
+table.tbl tbody tr:last-child td{border-bottom:0;}
+table.tbl tbody tr{transition:background .13s;}
+table.tbl tbody tr:hover{background:var(--bg);}
+.rk{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;font-size:12.5px;font-weight:600;
+  background:var(--bg);color:var(--ink-2);border:1px solid var(--line);}
+.rk.g{background:#FBF1D6;border-color:#EEDCA6;color:#7A5C00;}
+.rk.s{background:#F0F1EF;border-color:#DEE0DC;color:#5C6661;}
+.rk.b{background:#F6EADF;border-color:#E6D2BE;color:#7A5232;}
+.person{display:flex;align-items:center;gap:10px;}
+.p-n{font-weight:500;letter-spacing:-.012em;}
+.p-s{font-size:12px;color:var(--ink-3);}
+.perf{font-family:var(--mono);font-size:14.5px;font-weight:500;letter-spacing:-.02em;}
+.dimc{color:var(--ink-3);}
+.card-foot{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 16px;
+  border-top:1px solid var(--line);background:var(--bg);flex-wrap:wrap;}
+
+/* ════ FILTER BAR ══════════════════════════════════════════════════════ */
+.fbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px;}
+.field{position:relative;display:flex;align-items:center;}
+.field svg{position:absolute;left:11px;color:var(--ink-3);pointer-events:none;}
+.field input,.field select{height:38px;border:1px solid var(--line-2);background:var(--surface);border-radius:var(--r-sm);
+  padding:0 12px 0 34px;font-size:13.5px;min-width:210px;transition:border-color .15s,box-shadow .15s;appearance:none;}
+.field select{padding-left:12px;padding-right:32px;min-width:170px;}
+.field input:focus,.field select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-tint);}
+.field .chev{left:auto;right:11px;}
+.count{margin-left:auto;font-size:13px;color:var(--ink-3);}
+
+/* ════ CALENDAR LIST ═══════════════════════════════════════════════════ */
+.month-lab{display:flex;align-items:center;gap:10px;margin:26px 0 10px;}
+.month-lab span{font-size:11px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);}
+.month-lab i{flex:1;height:1px;background:var(--line);}
+.evt{display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:18px;align-items:center;padding:14px 18px;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r);margin-bottom:8px;
+  transition:border-color .16s,box-shadow .16s;}
+.evt:hover{border-color:var(--line-2);box-shadow:var(--shadow-2);}
+.evt-date{text-align:center;border-right:1px solid var(--line);padding-right:16px;}
+.evt-d{font-size:20px;font-weight:600;letter-spacing:-.03em;line-height:1;}
+.evt-m{font-size:10.5px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.07em;margin-top:3px;}
+.evt-n{font-size:15px;font-weight:600;letter-spacing:-.015em;}
+.evt-meta{display:flex;align-items:center;gap:8px 14px;flex-wrap:wrap;margin-top:6px;font-size:13px;color:var(--ink-3);}
+.evt-act{display:flex;align-items:center;gap:8px;}
+@media(max-width:720px){.evt{grid-template-columns:52px 1fr;gap:14px;}
+  .evt-act{grid-column:2;justify-self:start;}}
+
+/* ════ NEWS ════════════════════════════════════════════════════════════ */
+.news{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:30px;align-items:start;}
+.n-lead{display:block;}
+.n-lead-media{position:relative;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line);aspect-ratio:16/9.6;}
+.n-lead-media img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.32,.72,0,1);}
+.n-lead:hover .n-lead-media img{transform:scale(1.03);}
+.n-cat{display:flex;align-items:center;gap:8px;margin-top:16px;font-size:12px;color:var(--ink-3);}
+.n-cat b{color:var(--accent);font-weight:500;}
+.n-lead h3{font-size:clamp(19px,2vw,24px);margin-top:9px;}
+.n-lead:hover h3{text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px;}
+.n-lead p{margin-top:10px;color:var(--ink-2);font-size:14.5px;max-width:58ch;}
+.n-list{display:flex;flex-direction:column;}
+.n-item{display:grid;grid-template-columns:1fr 76px;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);align-items:center;}
+.n-item:first-child{padding-top:0;}
+.n-item:last-child{border-bottom:0;}
+.n-item h4:hover{text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:3px;}
+.n-thumb{width:76px;height:64px;border-radius:10px;overflow:hidden;border:1px solid var(--line);}
+.n-thumb img{width:100%;height:100%;object-fit:cover;}
+@media(max-width:900px){.news{grid-template-columns:1fr;}}
+
+/* ════ ATHLETE PROFILE ═════════════════════════════════════════════════ */
+.prof{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:0;overflow:hidden;}
+.prof-media{position:relative;border-right:1px solid var(--line);}
+.prof-media img{width:100%;height:100%;min-height:340px;object-fit:cover;}
+.prof-tag{position:absolute;left:16px;top:16px;}
+.prof-body{padding:26px 28px 24px;}
+.prof-h{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.prof-name{font-size:26px;font-weight:600;letter-spacing:-.032em;line-height:1.1;}
+.prof-sub{font-size:13.5px;color:var(--ink-3);margin-top:5px;}
+.tabs{display:flex;gap:22px;border-bottom:1px solid var(--line);margin-top:22px;position:relative;}
+.tabs button{border:0;background:none;padding:0 0 11px;font-size:13.5px;font-weight:500;color:var(--ink-3);cursor:pointer;
+  transition:color .15s;}
+.tabs button[aria-selected="true"]{color:var(--ink);}
+.tabs .tind{position:absolute;bottom:-1px;height:2px;background:var(--accent);transition:left .24s cubic-bezier(.32,.72,0,1),width .24s cubic-bezier(.32,.72,0,1);}
+.tabpane{padding-top:20px;}
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);
+  border-radius:var(--r);overflow:hidden;}
+.stat{background:var(--surface);padding:13px 14px;}
+.stat-v{font-family:var(--mono);font-size:16px;font-weight:500;letter-spacing:-.02em;}
+.stat-k{font-size:11.5px;color:var(--ink-3);margin-top:3px;}
+.chart-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:20px 0 6px;}
+.legend{display:flex;align-items:center;gap:14px;font-size:12px;color:var(--ink-3);}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:5px;vertical-align:-1px;}
+.plist{display:flex;flex-direction:column;}
+.prow{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14px;}
+.prow:last-child{border-bottom:0;}
+@media(max-width:860px){.prof{grid-template-columns:1fr;}.prof-media{border-right:0;border-bottom:1px solid var(--line);}
+  .prof-media img{min-height:260px;}.stat-row{grid-template-columns:1fr 1fr;}}
+
+/* ════ CLUBS ═══════════════════════════════════════════════════════════ */
+.clubs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.club{display:flex;align-items:center;gap:12px;padding:15px 16px;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r);transition:border-color .16s,box-shadow .16s;}
+.club:hover{border-color:var(--line-2);box-shadow:var(--shadow-2);}
+.club-mark{width:34px;height:34px;border-radius:10px;background:var(--tint);color:var(--accent);display:grid;
+  place-items:center;font-size:12px;font-weight:600;flex:none;}
+.club-n{font-size:14.5px;font-weight:500;letter-spacing:-.012em;}
+.club-m{font-size:12.5px;color:var(--ink-3);}
+.club-c{margin-left:auto;font-family:var(--mono);font-size:12.5px;color:var(--ink-3);}
+@media(max-width:900px){.clubs{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.clubs{grid-template-columns:1fr;}}
+.empty{padding:30px;text-align:center;color:var(--ink-3);font-size:13.5px;background:var(--surface);
+  border:1px dashed var(--line-2);border-radius:var(--r);}
+
+/* ════ DARK BAND ═══════════════════════════════════════════════════════ */
+.band{background:var(--accent);color:#fff;border-radius:var(--r-xl);padding:clamp(28px,4vw,48px);}
+.band h2{color:#fff;}
+.band p{color:rgba(255,255,255,.82);}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.2);border-radius:var(--r);
+  overflow:hidden;border:1px solid rgba(255,255,255,.2);}
+.step{background:var(--accent);padding:22px 20px;}
+.step-n{font-family:var(--mono);font-size:11.5px;color:var(--pale-mint);}
+.step h4{margin-top:12px;color:#fff;}
+.step p{margin-top:7px;font-size:13.5px;line-height:1.55;}
+@media(max-width:820px){.steps{grid-template-columns:1fr;}}
+
+/* ════ FAQ ═════════════════════════════════════════════════════════════ */
+.faq{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1.38fr);gap:clamp(24px,4vw,56px);align-items:start;}
+.faq-i{border-bottom:1px solid var(--line);}
+.faq-i:first-child{border-top:1px solid var(--line);}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;background:none;border:0;
+  padding:18px 0;text-align:left;cursor:pointer;}
+.faq-q span{font-size:15.5px;font-weight:500;letter-spacing:-.014em;}
+.faq-ico{width:24px;height:24px;border-radius:7px;border:1px solid var(--line-2);display:grid;place-items:center;flex:none;
+  transition:background .18s,border-color .18s,transform .18s;color:var(--ink-2);}
+.faq-i.open .faq-ico{background:var(--ink);border-color:var(--ink);color:#fff;transform:rotate(45deg);}
+.faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .26s cubic-bezier(.32,.72,0,1);}
+.faq-i.open .faq-a{grid-template-rows:1fr;}
+.faq-a>div{overflow:hidden;}
+.faq-a p{padding-bottom:20px;color:var(--ink-2);font-size:14.5px;max-width:64ch;}
+@media(max-width:820px){.faq{grid-template-columns:1fr;}}
+
+/* ════ NEWSLETTER + FOOTER ═════════════════════════════════════════════ */
+.nl{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,48px);align-items:center;}
+.nl-form{display:flex;gap:8px;flex-wrap:wrap;}
+.nl-form input{flex:1;min-width:200px;height:44px;border:1px solid var(--line-2);border-radius:var(--r-sm);
+  padding:0 14px;font-size:14px;background:var(--surface);transition:border-color .15s,box-shadow .15s;}
+.nl-form input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-tint);}
+.nl-note{font-size:12.5px;color:var(--ink-3);margin-top:10px;}
+@media(max-width:820px){.nl{grid-template-columns:1fr;}}
+footer{border-top:1px solid var(--line);background:var(--surface);padding-block:48px 0;margin-top:20px;}
+.f-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:32px;padding-bottom:36px;}
+footer h5{font-size:11px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin-bottom:14px;}
+.f-links{display:flex;flex-direction:column;gap:9px;font-size:13.5px;color:var(--ink-2);}
+.f-links a:hover{color:var(--ink);}
+.f-about{font-size:13.5px;color:var(--ink-2);line-height:1.6;max-width:34ch;margin-top:14px;}
+.f-soc{display:flex;gap:7px;margin-top:18px;}
+.f-soc a{width:34px;height:34px;border:1px solid var(--line);border-radius:9px;display:grid;place-items:center;
+  color:var(--ink-2);transition:all .15s;}
+.f-soc a:hover{border-color:var(--ink);color:var(--ink);}
+.f-bot{border-top:1px solid var(--line);padding-block:18px 24px;display:flex;justify-content:space-between;gap:14px;
+  flex-wrap:wrap;font-size:12.5px;color:var(--ink-3);}
+@media(max-width:860px){.f-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.f-grid{grid-template-columns:1fr;}}
+
+/* ════ COMMAND PALETTE ═════════════════════════════════════════════════ */
+.cmdk{position:fixed;inset:0;z-index:90;display:grid;place-items:start center;padding:12vh 20px 20px;
+  background:rgba(16,21,18,.32);backdrop-filter:blur(3px);animation:fade .16s ease-out;}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.cmdk-panel{width:min(620px,100%);background:var(--surface);border:1px solid var(--line-2);border-radius:var(--r-lg);
+  box-shadow:var(--shadow-3);overflow:hidden;animation:pop .18s cubic-bezier(.32,.72,0,1);}
+@keyframes pop{from{opacity:0;transform:translateY(-6px) scale(.985)}to{opacity:1;transform:none}}
+.cmdk-in{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line);}
+.cmdk-in input{flex:1;border:0;outline:none;font-size:15.5px;background:none;letter-spacing:-.014em;}
+.cmdk-in input::placeholder{color:var(--ink-3);}
+.cmdk-list{max-height:min(46vh,380px);overflow:auto;padding:6px;}
+.cmdk-group{font-size:10.5px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);
+  padding:10px 10px 6px;}
+.cmdk-item{display:flex;align-items:center;gap:11px;padding:9px 10px;border-radius:9px;cursor:pointer;}
+.cmdk-item[aria-selected="true"]{background:var(--bg);}
+.cmdk-ico{width:26px;height:26px;border-radius:7px;background:var(--tint);color:var(--accent);display:grid;
+  place-items:center;flex:none;}
+.cmdk-t{font-size:14px;font-weight:500;letter-spacing:-.012em;}
+.cmdk-s{font-size:12px;color:var(--ink-3);}
+.cmdk-r{margin-left:auto;font-family:var(--mono);font-size:12.5px;color:var(--ink-3);}
+.cmdk-foot{display:flex;align-items:center;gap:16px;padding:10px 16px;border-top:1px solid var(--line);
+  background:var(--bg);font-size:11.5px;color:var(--ink-3);}
+.cmdk-foot span{display:flex;align-items:center;gap:6px;}
+
+/* ════ TOAST ═══════════════════════════════════════════════════════════ */
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,14px);z-index:95;background:var(--ink);color:#fff;
+  border-radius:10px;padding:11px 16px;font-size:13.5px;box-shadow:var(--shadow-3);display:flex;align-items:center;gap:9px;
+  opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;}
+.toast.on{opacity:1;transform:translate(-50%,0);}
+
+/* ════ FEEDBACK ════════════════════════════════════════════════════════ */
+.fb-btn{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:70;height:38px;
+  padding:0 14px;background:var(--surface);color:var(--ink-2);border:1px solid var(--line-2);border-radius:999px;
+  box-shadow:var(--shadow-2);font-size:13px;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:8px;
+  transition:border-color .15s,color .15s;}
+.fb-btn:hover{border-color:var(--ink-3);color:var(--ink);}
+.fb-n{min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:var(--accent-tint);color:var(--accent);
+  font-family:var(--mono);font-size:11px;display:grid;place-items:center;}
+.fb-panel{position:fixed;right:20px;bottom:calc(68px + env(safe-area-inset-bottom,0px));z-index:71;
+  width:min(360px,calc(100vw - 40px));background:var(--surface);border:1px solid var(--line-2);border-radius:var(--r-lg);
+  box-shadow:var(--shadow-3);padding:18px;max-height:min(540px,calc(100vh - 140px));overflow:auto;}
+.fb-panel label{display:block;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-3);margin:14px 0 6px;}
+.fb-panel input,.fb-panel select,.fb-panel textarea{width:100%;border:1px solid var(--line-2);border-radius:var(--r-sm);
+  padding:9px 12px;font-size:13.5px;background:var(--surface);}
+.fb-panel textarea{min-height:82px;resize:vertical;}
+.fb-list{margin-top:16px;border-top:1px solid var(--line);padding-top:12px;display:flex;flex-direction:column;gap:8px;}
+.fb-note{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:13px;}
+.fb-note b{font-size:11px;color:var(--accent);font-weight:500;}
+.vis-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;
+  animation-iteration-count:1!important;transition-duration:.001ms!important;}}
+html{scroll-behavior:smooth;}
+section[id],div[id]{scroll-margin-top:84px;}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400..500&display=swap">
+
+<!-- ════ TOPBAR ═════════════════════════════════════════════════════════ -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="tb-l">
+      <span style="color:var(--ink-3)">Membre World Athletics · CAA</span>
+      <a href="#">Gouvernance</a><a href="#">Presse</a><a href="#">Contact</a>
+    </div>
+    <div class="tb-r">
+      <a href="#" style="color:var(--ink-2)">Espace officiels</a>
+      <div class="seg-mini" role="group" aria-label="Langue">
+        <button type="button" aria-pressed="true">FR</button><button type="button" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ HEADER ═════════════════════════════════════════════════════════ -->
+<header class="hd">
+  <div class="wrap">
+    <a href="#" class="logo" aria-label="FEDESA — accueil">
+      <span class="logo-mark">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+          <path d="M3.4 12.8C4.8 9.2 7.3 6.7 11.1 5.4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M5.6 14.4c1.1-2.8 3-4.8 5.9-5.9" stroke="#3ECF8E" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="12.4" cy="5.2" r="1.5" fill="#fff"/>
+        </svg>
+      </span>
+      <span><span class="logo-txt" style="display:block">FEDESA</span><span class="logo-sub">Athlétisme Sénégal</span></span>
+    </a>
+    <nav class="main" aria-label="Navigation principale">
+      <a href="#actus" class="on">Actualités</a><a href="#calendrier">Calendrier</a><a href="#resultats">Résultats</a>
+      <a href="#athlete">Athlètes</a><a href="#clubs">Clubs</a><a href="#licence">Licences</a><a href="#faq">La fédération</a>
+    </nav>
+    <div class="hd-r">
+      <button class="kbtn" type="button" id="openCmd" aria-label="Rechercher">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.6" stroke="currentColor" stroke-width="1.6"/><path d="M10.6 10.6L14 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <span class="kl">Rechercher</span><kbd>⌘K</kbd>
+      </button>
+      <a href="#" class="btn btn-ghost btn-sm">Espace club</a>
+      <a href="#licence" class="btn btn-accent btn-sm">Prendre une licence</a>
+      <button class="burger" type="button" id="burger" aria-expanded="false" aria-controls="mnav" aria-label="Menu">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4.5h12M2 8h12M2 11.5h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mnav" id="mnav">
+    <div class="wrap">
+      <a href="#actus">Actualités</a><a href="#calendrier">Calendrier</a><a href="#resultats">Résultats</a>
+      <a href="#athlete">Athlètes</a><a href="#clubs">Clubs</a><a href="#licence">Licences</a><a href="#faq">La fédération</a>
+      <a href="#licence" class="btn btn-accent">Prendre une licence</a>
+    </div>
+  </div>
+</header>
+
+<!-- ════ HERO — full-bleed ══════════════════════════════════════════════ -->
+<section class="hero">
+  <img class="hero-bg" src="img/hero-wide.avif" width="2400" height="1080"
+       alt="Départ d'une finale du 100 m sur la piste du stade Léopold Sédar Senghor">
+  <div class="hero-scrim" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <span class="chip-season"><b><span class="dot"></span>Ouverte</b> Saison 2026 / 2027 · licences en ligne</span>
+      <h1>L'athlétisme sénégalais,<br>de la ligue régionale<br>au <em>podium continental</em>.</h1>
+      <p class="hero-p">Licences, engagements, résultats homologués et détection des jeunes talents —
+        un guichet unique pour les 86 clubs affiliés et leurs 3 412 licenciés.</p>
+      <div class="hero-cta">
+        <a href="#licence" class="btn btn-onimg btn-lg">Prendre une licence</a>
+        <a href="#calendrier" class="btn btn-onimg-ghost btn-lg">Voir le calendrier</a>
+      </div>
+      <div class="hero-facts">
+        <div class="fact"><div class="fact-v num">3 412</div><div class="fact-k">Licenciés</div></div>
+        <div class="fact"><div class="fact-v num">86</div><div class="fact-k">Clubs affiliés</div></div>
+        <div class="fact"><div class="fact-v num">14</div><div class="fact-k">Ligues régionales</div></div>
+        <div class="fact"><div class="fact-v num">42</div><div class="fact-k">Épreuves homologuées</div></div>
+      </div>
+    </div>
+    <div class="live-card">
+      <div class="live-top">
+        <span class="badge badge-red"><span class="dot dot-live"></span>Dernier résultat</span>
+        <span class="live-meta mono">18.09.26</span>
+      </div>
+      <div class="live-row">
+        <span class="ava">IN</span>
+        <div><div class="live-name">Ibrahima Ndiaye</div><div class="live-meta">100 m · finale nationale</div></div>
+        <div class="live-perf"><div class="p">10&quot;23</div><div class="live-meta">+1,2 m/s</div></div>
+      </div>
+      <div class="live-bar"><span>Record national amélioré de 0,11 s</span><span class="badge badge-accent">RN</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ KPI + QUICK ACTIONS ════════════════════════════════════════════ -->
+<section style="padding-top:0">
+  <div class="wrap kpi-lift">
+    <div class="kpis">
+      <div class="kpi"><div class="kpi-v num">232</div><div class="kpi-k">Jours avant Dakar 2027</div>
+        <div class="kpi-d"><span class="dot"></span>Championnats d'Afrique, 12–16 mai</div></div>
+      <div class="kpi"><div class="kpi-v num">9</div><div class="kpi-k">Minima CAA réalisés</div>
+        <div class="kpi-d"><span class="dot"></span>+4 depuis juillet</div></div>
+      <div class="kpi"><div class="kpi-v num">42</div><div class="kpi-k">Compétitions au calendrier</div>
+        <div class="kpi-d"><span class="dot"></span>Saison 26/27</div></div>
+      <div class="kpi"><div class="kpi-v num">198</div><div class="kpi-k">Officiels techniques</div>
+        <div class="kpi-d"><span class="dot"></span>Dont 34 juges internationaux</div></div>
+    </div>
+
+    <div class="qa" style="margin-top:12px">
+      <a href="#clubs" class="qa-card">
+        <span class="qa-ico"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="7.4" r="2.6" stroke="currentColor" stroke-width="1.6"/><path d="M9 15.6s5-4.4 5-7.8A5 5 0 0 0 4 7.8c0 3.4 5 7.8 5 7.8Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+        <span class="qa-t">Trouver un club</span><span class="qa-m">86 clubs dans 14 régions</span>
+        <span class="qa-go">Rechercher <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a href="#calendrier" class="qa-card">
+        <span class="qa-ico"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2.5" y="3.6" width="13" height="11.4" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M2.5 7.4h13M6 2.4v2.4M12 2.4v2.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+        <span class="qa-t">S'engager en compétition</span><span class="qa-m">Engagements ouverts · octobre</span>
+        <span class="qa-go">Ouvrir <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a href="#resultats" class="qa-card">
+        <span class="qa-ico"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.5 14.5V9M7.5 14.5V4M11.5 14.5v-3.6M15.5 14.5V6.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+        <span class="qa-t">Résultats &amp; records</span><span class="qa-m">Chronos, vent et minima</span>
+        <span class="qa-go">Consulter <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a href="#" class="qa-card">
+        <span class="qa-ico"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2.5l2 4.3 4.5.6-3.3 3.2.8 4.6L9 13l-4 2.2.8-4.6L2.5 7.4l4.5-.6L9 2.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+        <span class="qa-t">Devenir officiel technique</span><span class="qa-m">Sessions avant chaque saison</span>
+        <span class="qa-go">Se former <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════ RÉSULTATS ══════════════════════════════════════════════════════ -->
+<section id="resultats" class="sec-tint">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">Feuille de résultats</span>
+        <h2 style="margin-top:12px">Championnats nationaux 2026</h2>
+        <p>Stade Léopold Sédar Senghor, Dakar — 16 au 18 septembre. Chronométrage électrique, vent relevé à chaque course.</p></div>
+      <div class="seg" id="resSeg" role="tablist" aria-label="Épreuve">
+        <span class="ind" aria-hidden="true"></span>
+        <button role="tab" aria-selected="true" data-p="r1">100 m H</button>
+        <button role="tab" aria-selected="false" data-p="r2">400 m F</button>
+        <button role="tab" aria-selected="false" data-p="r3">Longueur F</button>
+      </div>
+    </div>
+
+    <div class="card" style="overflow:hidden">
+      <div id="r1">
+        <div class="tbl-wrap"><table class="tbl">
+          <thead><tr><th style="width:62px">Pos</th><th>Athlète</th><th>Club</th><th>Perf.</th><th>Vent</th><th>Réaction</th><th>Statut</th></tr></thead>
+          <tbody>
+            <tr><td><span class="rk g">1</span></td>
+              <td><div class="person"><span class="ava">IN</span><div><div class="p-n">Ibrahima Ndiaye</div><div class="p-s">SEN · 24 ans</div></div></div></td>
+              <td class="dimc">ASC Dakar Université</td><td><span class="perf">10&quot;23</span></td><td class="dimc mono">+1,2</td><td class="dimc mono">0,142</td>
+              <td><span class="badge badge-red">Record national</span></td></tr>
+            <tr><td><span class="rk s">2</span></td>
+              <td><div class="person"><span class="ava">MB</span><div><div class="p-n">Moussa Ba</div><div class="p-s">SEN · 22 ans</div></div></div></td>
+              <td class="dimc">Sport Club Pikine</td><td><span class="perf">10&quot;41</span></td><td class="dimc mono">+1,2</td><td class="dimc mono">0,151</td>
+              <td><span class="badge badge-accent">Minima CAA</span></td></tr>
+            <tr><td><span class="rk b">3</span></td>
+              <td><div class="person"><span class="ava">OD</span><div><div class="p-n">Omar Diop</div><div class="p-s">SEN · 26 ans</div></div></div></td>
+              <td class="dimc">AC Saint-Louis</td><td><span class="perf">10&quot;58</span></td><td class="dimc mono">+1,2</td><td class="dimc mono">0,168</td>
+              <td><span class="badge badge-neutral">Meilleure perf. perso</span></td></tr>
+            <tr><td><span class="rk">4</span></td>
+              <td><div class="person"><span class="ava">SC</span><div><div class="p-n">Sékou Camara</div><div class="p-s">SEN · 21 ans</div></div></div></td>
+              <td class="dimc">Stade de Mbour</td><td><span class="perf">10&quot;67</span></td><td class="dimc mono">+1,2</td><td class="dimc mono">0,177</td>
+              <td class="dimc">—</td></tr>
+            <tr><td><span class="rk">5</span></td>
+              <td><div class="person"><span class="ava">AF</span><div><div class="p-n">Alioune Faye</div><div class="p-s">SEN · 19 ans</div></div></div></td>
+              <td class="dimc">UASZ Ziguinchor</td><td><span class="perf">10&quot;74</span></td><td class="dimc mono">+1,2</td><td class="dimc mono">0,159</td>
+              <td><span class="badge badge-amber">Record U20</span></td></tr>
+          </tbody></table></div>
+      </div>
+
+      <div id="r2" hidden>
+        <div class="tbl-wrap"><table class="tbl">
+          <thead><tr><th style="width:62px">Pos</th><th>Athlète</th><th>Club</th><th>Perf.</th><th>Couloir</th><th>Statut</th></tr></thead>
+          <tbody>
+            <tr><td><span class="rk g">1</span></td>
+              <td><div class="person"><span class="ava">FS</span><div><div class="p-n">Fatou Sow</div><div class="p-s">SEN · 25 ans</div></div></div></td>
+              <td class="dimc">ASFA Dakar</td><td><span class="perf">52&quot;18</span></td><td class="dimc mono">5</td><td><span class="badge badge-accent">Minima CAA</span></td></tr>
+            <tr><td><span class="rk s">2</span></td>
+              <td><div class="person"><span class="ava">KD</span><div><div class="p-n">Khady Diagne</div><div class="p-s">SEN · 23 ans</div></div></div></td>
+              <td class="dimc">CA Kaolack</td><td><span class="perf">52&quot;94</span></td><td class="dimc mono">4</td><td><span class="badge badge-accent">Minima CAA</span></td></tr>
+            <tr><td><span class="rk b">3</span></td>
+              <td><div class="person"><span class="ava">AN</span><div><div class="p-n">Aïssatou Ndour</div><div class="p-s">SEN · 20 ans</div></div></div></td>
+              <td class="dimc">Jaraaf Athlétisme</td><td><span class="perf">53&quot;41</span></td><td class="dimc mono">6</td><td><span class="badge badge-neutral">Meilleure perf. perso</span></td></tr>
+            <tr><td><span class="rk">4</span></td>
+              <td><div class="person"><span class="ava">MS</span><div><div class="p-n">Mame Sène</div><div class="p-s">SEN · 27 ans</div></div></div></td>
+              <td class="dimc">AS Louga</td><td><span class="perf">54&quot;02</span></td><td class="dimc mono">3</td><td class="dimc">—</td></tr>
+          </tbody></table></div>
+      </div>
+
+      <div id="r3" hidden>
+        <div class="tbl-wrap"><table class="tbl">
+          <thead><tr><th style="width:62px">Pos</th><th>Athlète</th><th>Club</th><th>Meilleur essai</th><th>Vent</th><th>Statut</th></tr></thead>
+          <tbody>
+            <tr><td><span class="rk g">1</span></td>
+              <td><div class="person"><span class="ava">AD</span><div><div class="p-n">Amy Diallo</div><div class="p-s">SEN · 23 ans</div></div></div></td>
+              <td class="dimc">ASC Dakar Université</td><td><span class="perf">6,71 m</span></td><td class="dimc mono">+1,4</td><td><span class="badge badge-red">Record national</span></td></tr>
+            <tr><td><span class="rk s">2</span></td>
+              <td><div class="person"><span class="ava">SN</span><div><div class="p-n">Saly Ndoye</div><div class="p-s">SEN · 21 ans</div></div></div></td>
+              <td class="dimc">Espoir de Thiès</td><td><span class="perf">6,38 m</span></td><td class="dimc mono">+0,8</td><td><span class="badge badge-accent">Minima CAA</span></td></tr>
+            <tr><td><span class="rk b">3</span></td>
+              <td><div class="person"><span class="ava">BS</span><div><div class="p-n">Binta Sy</div><div class="p-s">SEN · 19 ans</div></div></div></td>
+              <td class="dimc">AC Matam</td><td><span class="perf">6,12 m</span></td><td class="dimc mono">+1,1</td><td><span class="badge badge-amber">Record U20</span></td></tr>
+          </tbody></table></div>
+      </div>
+
+      <div class="card-foot">
+        <span style="font-size:13px;color:var(--ink-3)">Résultats homologués par la commission des statistiques · mise à jour 18.09.2026, 19 h 40</span>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-ghost btn-sm" type="button" id="csvBtn">Exporter en CSV</button>
+          <a href="#" class="btn btn-quiet btn-sm">Feuille complète</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ CALENDRIER ═════════════════════════════════════════════════════ -->
+<section id="calendrier">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">Saison 26/27</span><h2 style="margin-top:12px">Calendrier fédéral</h2>
+        <p>42 épreuves homologuées, d'octobre à juillet. Les engagements ouvrent 21 jours avant chaque compétition.</p></div>
+      <a href="#" class="tlink">Exporter le calendrier (.ics)
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 3v8M4.5 7.5L8 11l3.5-3.5M3 13h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+
+    <div class="fbar">
+      <div class="seg" id="calSeg" role="tablist" aria-label="Niveau de compétition">
+        <span class="ind" aria-hidden="true"></span>
+        <button role="tab" aria-selected="true" data-f="all">Toutes</button>
+        <button role="tab" aria-selected="false" data-f="nat">Nationales</button>
+        <button role="tab" aria-selected="false" data-f="reg">Régionales</button>
+        <button role="tab" aria-selected="false" data-f="jeu">Jeunes</button>
+        <button role="tab" aria-selected="false" data-f="int">Internationales</button>
+      </div>
+      <div class="field">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.6" stroke="currentColor" stroke-width="1.6"/><path d="M10.6 10.6L14 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <label for="calSearch" class="vis-hidden">Rechercher une compétition</label>
+        <input id="calSearch" type="search" placeholder="Compétition, ville, stade…">
+      </div>
+      <span class="count" id="calCount">15 compétitions</span>
+    </div>
+
+    <div id="calList">
+      <div class="month-lab" data-month><span>Octobre 2026</span><i></i></div>
+      <div class="evt" data-lvl="nat"><div class="evt-date"><div class="evt-d">04</div><div class="evt-m">Oct</div></div>
+        <div><div class="evt-n">Meeting d'ouverture de Dakar</div>
+          <div class="evt-meta"><span class="badge badge-accent">Nationale</span> Stade Iba Mar Diop, Dakar · toutes catégories</div></div>
+        <div class="evt-act"><span class="badge badge-neutral">Engagements ouverts</span><a href="#" class="btn btn-ghost btn-sm">S'engager</a></div></div>
+      <div class="evt" data-lvl="reg"><div class="evt-date"><div class="evt-d">11</div><div class="evt-m">Oct</div></div>
+        <div><div class="evt-n">Championnat régional de Thiès</div>
+          <div class="evt-meta"><span class="badge badge-neutral">Régionale</span> Stade Lat Dior, Thiès · cadets à seniors</div></div>
+        <div class="evt-act"><a href="#" class="btn btn-ghost btn-sm">S'engager</a></div></div>
+      <div class="evt" data-lvl="jeu"><div class="evt-date"><div class="evt-d">18</div><div class="evt-m">Oct</div></div>
+        <div><div class="evt-n">Challenge des Ligues — minimes &amp; cadets</div>
+          <div class="evt-meta"><span class="badge badge-amber">Jeunes</span> Stade Caroline Faye, Mbour · 14 ligues engagées</div></div>
+        <div class="evt-act"><a href="#" class="btn btn-ghost btn-sm">S'engager</a></div></div>
+      <div class="evt" data-lvl="nat"><div class="evt-date"><div class="evt-d">25</div><div class="evt-m">Oct</div></div>
+        <div><div class="evt-n">Meeting de Saint-Louis</div>
+          <div class="evt-meta"><span class="badge badge-accent">Nationale</span> Stade Me Babacar Sèye · chronométrage électrique</div></div>
+        <div class="evt-act"><a href="#" class="btn btn-ghost btn-sm">S'engager</a></div></div>
+
+      <div class="month-lab" data-month><span>Novembre 2026</span><i></i></div>
+      <div class="evt" data-lvl="nat"><div class="evt-date"><div class="evt-d">07</div><div class="evt-m">Nov</div></div>
+        <div><div class="evt-n">Championnats nationaux de marche athlétique</div>
+          <div class="evt-meta"><span class="badge badge-accent">Nationale</span> Corniche Ouest, Dakar · 10 km / 20 km</div></div>
+        <div class="evt-act"><a href="#" class="btn btn-ghost btn-sm">S'engager</a></div></div>
+      <div class="evt" data-lvl="int"><div class="evt-date"><div class="evt-d">14</div><div class="evt-m">Nov</div></div>
+        <div><div class="evt-n">Meeting International de Dakar</div>
+          <div class="evt-meta"><span class="badge badge-neutral">Continental Tour</span> Stade L. S. Senghor · 18 nations engagées</div></div>
+        <div class="evt-act"><span class="badge badge-red">Billetterie</span><a href="#" class="btn btn-ghost btn-sm">Billets</a></div></div>
+      <div class="evt" data-lvl="reg"><div class="evt-date"><div class="evt-d">22</div><div class="evt-m">Nov</div></div>
+        <div><div class="evt-n">Championnat régional de Ziguinchor</div>
+          <div class="evt-meta"><span class="badge badge-neutral">Régionale</span> Stade Aline Sitoé Diatta · Casamance</div></div>
+        <div class="evt-act"><a href="#" class="btn btn-ghost btn-sm">S'engager</a></div></div>
+      <div class="evt" data-lvl="reg"><div class="evt-date"><div class="evt-d">29</div><div class="evt-m">Nov</div></div>
+        <div><div class="evt-n">Cross de la ville de Kaolack</div>
+          <div class="evt-meta"><span class="badge badge-neutral">Régionale</span> Hippodrome de Kaolack · 4 / 8 / 10 km</div></div>
+        <div class="evt-act"><a href="#" class="btn btn-ghost btn-sm">S'engager</a></div></div>
+
+      <div class="month-lab" data-month><span>Décembre 2026</span><i></i></div>
+      <div class="evt" data-lvl="nat"><div class="evt-date"><div class="evt-d">06</div><div class="evt-m">Déc</div></div>
+        <div><div class="evt-n">Cross national FEDESA</div>
+          <div class="evt-meta"><span class="badge badge-accent">Nationale</span> Hippodrome de Thiès · 1 200 engagés attendus</div></div>
+        <div class="evt-act"><a href="#" class="btn btn-ghost btn-sm">S'engager</a></div></div>
+      <div class="evt" data-lvl="nat"><div class="evt-date"><div class="evt-d">13</div><div class="evt-m">Déc</div></div>
+        <div><div class="evt-n">Coupe du Sénégal des clubs</div>
+          <div class="evt-meta"><span class="badge badge-accent">Nationale</span> Dakar Arena, Diamniadio · 86 clubs qualifiables</div></div>
+        <div class="evt-act"><a href="#" class="btn btn-ghost btn-sm">S'engager</a></div></div>
+      <div class="evt" data-lvl="jeu"><div class="evt-date"><div class="evt-d">20</div><div class="evt-m">Déc</div></div>
+        <div><div class="evt-n">Championnats nationaux juniors</div>
+          <div class="evt-meta"><span class="badge badge-amber">Jeunes</span> Stade Lat Dior, Thiès · U18 / U20</div></div>
+        <div class="evt-act"><a href="#" class="btn btn-ghost btn-sm">S'engager</a></div></div>
+
+      <div class="month-lab" data-month><span>Janvier 2027</span><i></i></div>
+      <div class="evt" data-lvl="int"><div class="evt-date"><div class="evt-d">10</div><div class="evt-m">Jan</div></div>
+        <div><div class="evt-n">Cross international de Dakar</div>
+          <div class="evt-meta"><span class="badge badge-neutral">Label CAA</span> Parc forestier de Hann</div></div>
+        <div class="evt-act"><a href="#" class="btn btn-ghost btn-sm">Billets</a></div></div>
+      <div class="evt" data-lvl="nat"><div class="evt-date"><div class="evt-d">17</div><div class="evt-m">Jan</div></div>
+        <div><div class="evt-n">Championnats nationaux de cross-country</div>
+          <div class="evt-meta"><span class="badge badge-accent">Nationale</span> Saint-Louis · qualificatif Mondiaux de cross</div></div>
+        <div class="evt-act"><a href="#" class="btn btn-ghost btn-sm">S'engager</a></div></div>
+      <div class="evt" data-lvl="jeu"><div class="evt-date"><div class="evt-d">24</div><div class="evt-m">Jan</div></div>
+        <div><div class="evt-n">Stage national de détection — espoirs</div>
+          <div class="evt-meta"><span class="badge badge-amber">Détection</span> CNEPS Thiès · 60 athlètes convoqués</div></div>
+        <div class="evt-act"><a href="#" class="btn btn-quiet btn-sm">Convocations</a></div></div>
+      <div class="evt" data-lvl="int"><div class="evt-date"><div class="evt-d">31</div><div class="evt-m">Jan</div></div>
+        <div><div class="evt-n">Grand Prix Ouest-Africain</div>
+          <div class="evt-meta"><span class="badge badge-neutral">Internationale</span> Dakar Arena, Diamniadio · 9 fédérations</div></div>
+        <div class="evt-act"><a href="#" class="btn btn-ghost btn-sm">Billets</a></div></div>
+    </div>
+    <div class="empty" id="calEmpty" hidden>Aucune compétition ne correspond à ces filtres.</div>
+  </div>
+</section>
+
+<!-- ════ ATHLÈTE ════════════════════════════════════════════════════════ -->
+<section id="athlete" class="sec-tint">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">Athlète du mois</span><h2 style="margin-top:12px">Septembre — Ibrahima Ndiaye</h2></div>
+      <a href="#" class="tlink">Tous les athlètes
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+    <div class="card prof">
+      <div class="prof-media">
+        <span class="prof-tag badge badge-dark" style="background:rgba(16,21,18,.72);backdrop-filter:blur(6px)">Sprint · 100 m / 200 m</span>
+        <img src="img/athlete.avif" alt="Ibrahima Ndiaye à l'entraînement" width="1100" height="1300" loading="lazy">
+      </div>
+      <div class="prof-body">
+        <div class="prof-h">
+          <div><div class="prof-name">Ibrahima Ndiaye</div>
+            <div class="prof-sub">ASC Dakar Université · 24 ans · licence n° 2026-DK-0417</div></div>
+          <div style="display:flex;gap:8px"><a href="#" class="btn btn-ghost btn-sm">Palmarès</a><a href="#" class="btn btn-primary btn-sm">Profil complet</a></div>
+        </div>
+
+        <div class="tabs" id="profTabs" role="tablist" aria-label="Sections du profil">
+          <button role="tab" aria-selected="true" data-t="t1">Saison 2026</button>
+          <button role="tab" aria-selected="false" data-t="t2">Records personnels</button>
+          <button role="tab" aria-selected="false" data-t="t3">Sélections</button>
+          <span class="tind" aria-hidden="true"></span>
+        </div>
+
+        <div class="tabpane" id="t1">
+          <div class="stat-row">
+            <div class="stat"><div class="stat-v">10&quot;23</div><div class="stat-k">Meilleure perf. 100 m</div></div>
+            <div class="stat"><div class="stat-v">−0,41 s</div><div class="stat-k">Progression saison</div></div>
+            <div class="stat"><div class="stat-v">7</div><div class="stat-k">Courses disputées</div></div>
+            <div class="stat"><div class="stat-v">6</div><div class="stat-k">Victoires</div></div>
+          </div>
+          <div class="chart-head">
+            <span class="label">Chrono 100 m par meeting</span>
+            <span class="legend"><span><i style="background:var(--accent)"></i>Temps officiel</span><span><i style="background:var(--red)"></i>Record national</span></span>
+          </div>
+          <svg viewBox="0 0 560 170" width="100%" height="170" role="img"
+               aria-label="Chronos sur 100 m : 10,64 s en février, 10,52 en avril, 10,55 en mai, 10,38 en juin, 10,31 en juillet, 10,23 en septembre 2026">
+            <g font-family="Geist Mono, monospace" font-size="10" fill="#66706A">
+              <line x1="44" y1="14" x2="548" y2="14" stroke="#E6E8E5"/><text x="0" y="17">10,20</text>
+              <line x1="44" y1="58" x2="548" y2="58" stroke="#E6E8E5"/><text x="0" y="61">10,35</text>
+              <line x1="44" y1="102" x2="548" y2="102" stroke="#E6E8E5"/><text x="0" y="105">10,50</text>
+              <line x1="44" y1="140" x2="548" y2="140" stroke="#D9DDD8"/><text x="0" y="143">10,65</text>
+              <text x="60" y="160">Fév.</text><text x="152" y="160">Avr.</text><text x="248" y="160">Mai</text>
+              <text x="344" y="160">Juin</text><text x="438" y="160">Juil.</text><text x="524" y="160" text-anchor="end">Sep.</text>
+            </g>
+            <polyline points="66,138 160,103 254,112 348,64 442,44 530,18" fill="none" stroke="#0F6B43" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="66" cy="138" r="3.5" fill="#fff" stroke="#0F6B43" stroke-width="2"/>
+            <circle cx="160" cy="103" r="3.5" fill="#fff" stroke="#0F6B43" stroke-width="2"/>
+            <circle cx="254" cy="112" r="3.5" fill="#fff" stroke="#0F6B43" stroke-width="2"/>
+            <circle cx="348" cy="64" r="3.5" fill="#fff" stroke="#0F6B43" stroke-width="2"/>
+            <circle cx="442" cy="44" r="3.5" fill="#fff" stroke="#0F6B43" stroke-width="2"/>
+            <circle cx="530" cy="18" r="5" fill="#B42318" stroke="#fff" stroke-width="2"/>
+            <text x="530" y="36" font-family="Geist Mono, monospace" font-size="10.5" fill="#B42318" text-anchor="end">10,23 · RN</text>
+          </svg>
+        </div>
+
+        <div class="tabpane" id="t2" hidden>
+          <div class="plist">
+            <div class="prow"><span>100 m</span><span><span class="perf">10&quot;23</span> <span class="dimc" style="font-size:12.5px">Dakar · 18.09.2026</span></span></div>
+            <div class="prow"><span>200 m</span><span><span class="perf">20&quot;41</span> <span class="dimc" style="font-size:12.5px">Abidjan · 21.06.2025</span></span></div>
+            <div class="prow"><span>60 m (salle)</span><span><span class="perf">6&quot;68</span> <span class="dimc" style="font-size:12.5px">Rabat · 09.02.2026</span></span></div>
+            <div class="prow"><span>4 × 100 m (relais)</span><span><span class="perf">39&quot;84</span> <span class="dimc" style="font-size:12.5px">Le Caire · 14.08.2026</span></span></div>
+          </div>
+        </div>
+
+        <div class="tabpane" id="t3" hidden>
+          <div class="plist">
+            <div class="prow"><span>Championnats d'Afrique — Le Caire</span><span class="dimc">Demi-finale · 2026</span></div>
+            <div class="prow"><span>Jeux de la Francophonie — Kinshasa</span><span class="dimc">Finale, 5<sup>e</sup> · 2025</span></div>
+            <div class="prow"><span>Championnats du monde U20</span><span class="dimc">Séries · 2023</span></div>
+            <div class="prow"><span>Meeting International de Dakar</span><span class="dimc">Vainqueur · 2024, 2025</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ ACTUALITÉS ═════════════════════════════════════════════════════ -->
+<section id="actus">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">Salle de presse</span><h2 style="margin-top:12px">Actualités</h2></div>
+      <a href="#" class="tlink">Toutes les actualités
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+    <div class="news">
+      <a href="#" class="n-lead">
+        <div class="n-lead-media"><img src="img/news-1.avif" alt="Finale du 100 m au stade Léopold Sédar Senghor" width="1200" height="800" loading="lazy"></div>
+        <div class="n-cat"><b>Compétition</b><span>·</span><span>18 septembre 2026</span><span>·</span><span>3 min de lecture</span></div>
+        <h3>Ibrahima Ndiaye efface le record national du 100 m en 10&quot;23</h3>
+        <p>Vent légal (+1,2 m/s), photo-finish à trois millièmes : le sprinteur de l'ASC Dakar Université signe la meilleure
+          performance sénégalaise de tous les temps et valide d'entrée les minima pour Dakar 2027.</p>
+      </a>
+      <div class="n-list">
+        <a href="#" class="n-item">
+          <div><div class="n-cat" style="margin-top:0"><b>Formation</b><span>·</span><span>12 sept. 2026</span></div>
+            <h4 style="margin-top:6px">Plan national de détection : 14 centres régionaux ouverts en octobre</h4></div>
+          <div class="n-thumb"><img src="img/news-2.avif" alt="Séance de détection sur piste" width="800" height="600" loading="lazy"></div>
+        </a>
+        <a href="#" class="n-item">
+          <div><div class="n-cat" style="margin-top:0"><b>Sélection</b><span>·</span><span>09 sept. 2026</span></div>
+            <h4 style="margin-top:6px">Amy Diallo qualifiée pour la finale du Continental Tour à Rabat</h4></div>
+          <div class="n-thumb"><img src="img/news-3.avif" alt="Supporters dans les tribunes" width="800" height="600" loading="lazy"></div>
+        </a>
+        <a href="#" class="n-item">
+          <div><div class="n-cat" style="margin-top:0"><b>Compétition</b><span>·</span><span>02 sept. 2026</span></div>
+            <h4 style="margin-top:6px">Le cross national revient à Thiès le 6 décembre, 1 200 engagés attendus</h4></div>
+          <div class="n-thumb"><img src="img/news-4.avif" alt="Coureurs à l'entraînement" width="800" height="600" loading="lazy"></div>
+        </a>
+        <a href="#" class="n-item">
+          <div><div class="n-cat" style="margin-top:0"><b>Officiels</b><span>·</span><span>28 août 2026</span></div>
+            <h4 style="margin-top:6px">Homologation des juges-arbitres : inscriptions jusqu'au 15 octobre</h4></div>
+          <div class="n-thumb"><img src="img/blocks.avif" alt="Départ en starting-blocks" width="1200" height="800" loading="lazy"></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ CLUBS ══════════════════════════════════════════════════════════ -->
+<section id="clubs" class="sec-tint">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">Réseau</span><h2 style="margin-top:12px">Trouver un club</h2>
+        <p>86 clubs affiliés dans les 14 ligues régionales, du sprint au cross-country, des poussins aux masters.</p></div>
+    </div>
+    <div class="fbar">
+      <div class="field">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.6" stroke="currentColor" stroke-width="1.6"/><path d="M10.6 10.6L14 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <label for="clubSearch" class="vis-hidden">Rechercher un club</label>
+        <input id="clubSearch" type="search" placeholder="Nom du club ou ville…">
+      </div>
+      <div class="field">
+        <label for="clubRegion" class="vis-hidden">Région</label>
+        <select id="clubRegion">
+          <option value="">Toutes les régions</option>
+          <option>Dakar</option><option>Thiès</option><option>Saint-Louis</option><option>Ziguinchor</option>
+          <option>Kaolack</option><option>Louga</option><option>Matam</option>
+        </select>
+        <svg class="chev" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 6.5L8 10.5l4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="field">
+        <label for="clubDisc" class="vis-hidden">Discipline</label>
+        <select id="clubDisc">
+          <option value="">Toutes les disciplines</option>
+          <option>Sprint</option><option>Demi-fond</option><option>Sauts</option><option>Lancers</option>
+          <option>Marche</option><option>Cross</option>
+        </select>
+        <svg class="chev" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 6.5L8 10.5l4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <span class="count" id="clubCount">9 clubs</span>
+    </div>
+    <div class="clubs" id="clubList">
+      <a href="#" class="club" data-r="Dakar" data-d="Sprint"><span class="club-mark">DU</span>
+        <span><span class="club-n" style="display:block">ASC Dakar Université</span><span class="club-m">Dakar · sprint, sauts</span></span><span class="club-c">182</span></a>
+      <a href="#" class="club" data-r="Dakar" data-d="Sprint"><span class="club-mark">PK</span>
+        <span><span class="club-n" style="display:block">Sport Club Pikine</span><span class="club-m">Dakar · sprint, haies</span></span><span class="club-c">134</span></a>
+      <a href="#" class="club" data-r="Dakar" data-d="Marche"><span class="club-mark">AS</span>
+        <span><span class="club-n" style="display:block">ASFA Dakar</span><span class="club-m">Dakar · demi-fond, marche</span></span><span class="club-c">97</span></a>
+      <a href="#" class="club" data-r="Thiès" data-d="Sauts"><span class="club-mark">ET</span>
+        <span><span class="club-n" style="display:block">Espoir de Thiès</span><span class="club-m">Thiès · sauts, lancers</span></span><span class="club-c">88</span></a>
+      <a href="#" class="club" data-r="Saint-Louis" data-d="Demi-fond"><span class="club-mark">SL</span>
+        <span><span class="club-n" style="display:block">AC Saint-Louis</span><span class="club-m">Saint-Louis · demi-fond</span></span><span class="club-c">76</span></a>
+      <a href="#" class="club" data-r="Ziguinchor" data-d="Cross"><span class="club-mark">UZ</span>
+        <span><span class="club-n" style="display:block">UASZ Ziguinchor</span><span class="club-m">Ziguinchor · cross, fond</span></span><span class="club-c">64</span></a>
+      <a href="#" class="club" data-r="Kaolack" data-d="Sprint"><span class="club-mark">CK</span>
+        <span><span class="club-n" style="display:block">CA Kaolack</span><span class="club-m">Kaolack · sprint, relais</span></span><span class="club-c">58</span></a>
+      <a href="#" class="club" data-r="Louga" data-d="Demi-fond"><span class="club-mark">AL</span>
+        <span><span class="club-n" style="display:block">AS Louga</span><span class="club-m">Louga · demi-fond</span></span><span class="club-c">41</span></a>
+      <a href="#" class="club" data-r="Matam" data-d="Lancers"><span class="club-mark">MT</span>
+        <span><span class="club-n" style="display:block">AC Matam</span><span class="club-m">Matam · lancers, sauts</span></span><span class="club-c">37</span></a>
+    </div>
+    <div class="empty" id="clubEmpty" hidden>Aucun club ne correspond à cette recherche.</div>
+  </div>
+</section>
+
+<!-- ════ LICENCE ════════════════════════════════════════════════════════ -->
+<section id="licence">
+  <div class="wrap">
+    <div class="band">
+      <div style="display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(24px,4vw,48px);align-items:center" class="lic-grid">
+        <div>
+          <span class="eyebrow" style="color:var(--pale-mint)">Saison 1ᵉʳ octobre — 30 septembre</span>
+          <h2 style="margin-top:12px">Prendre sa licence<br>en trois étapes</h2>
+          <p style="margin-top:14px;max-width:38ch">Entraînement encadré, assurance et accès à toutes les compétitions
+            homologuées. Licence numérique délivrée sous 72 heures.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:24px">
+            <a href="#" class="btn btn-onimg">Ouvrir mon dossier</a>
+            <a href="#faq" class="btn btn-dark-ghost">Questions fréquentes</a>
+          </div>
+        </div>
+        <div class="steps">
+          <div class="step"><div class="step-n">01</div><h4>Rejoindre un club</h4>
+            <p>Choisissez un club affilié de votre ligue : il reste votre interlocuteur unique toute la saison.</p></div>
+          <div class="step"><div class="step-n">02</div><h4>Déposer le dossier</h4>
+            <p>Certificat médical de moins de trois mois, pièce d'identité, photo, autorisation parentale pour les mineurs.</p></div>
+          <div class="step"><div class="step-n">03</div><h4>Validation fédérale</h4>
+            <p>La ligue contrôle, la fédération homologue, le numéro national est attribué sous 72 heures.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ FAQ ════════════════════════════════════════════════════════════ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="faq">
+      <div>
+        <span class="eyebrow">Aide</span>
+        <h2 style="margin-top:12px">Questions fréquentes</h2>
+        <p style="margin-top:14px;color:var(--ink-2);max-width:32ch">Licences, affiliations, minima, homologation :
+          le secrétariat répond du lundi au vendredi, 9 h – 17 h.</p>
+        <a href="#" class="btn btn-ghost" style="margin-top:20px">Contacter la fédération</a>
+      </div>
+      <div id="faqList">
+        <div class="faq-i open"><button class="faq-q" type="button" aria-expanded="true"><span>Comment obtenir une licence d'athlétisme au Sénégal ?</span>
+          <span class="faq-ico" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 12 12"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></button>
+          <div class="faq-a"><div><p>Inscrivez-vous auprès d'un club affilié de votre ligue régionale. Le club transmet le dossier —
+            certificat médical de moins de trois mois, pièce d'identité, photo, autorisation parentale pour les mineurs. La licence
+            couvre la saison du 1<sup>er</sup> octobre au 30 septembre et vaut assurance à l'entraînement comme en compétition.</p></div></div></div>
+        <div class="faq-i"><button class="faq-q" type="button" aria-expanded="false"><span>À partir de quel âge peut-on participer aux compétitions officielles ?</span>
+          <span class="faq-ico" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 12 12"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></button>
+          <div class="faq-a"><div><p>Dès la catégorie poussins (8-9 ans), sur épreuves adaptées et engins allégés. Les championnats
+            nationaux se déclinent ensuite par catégorie : benjamins, minimes, cadets (U18), juniors (U20), espoirs (U23), seniors et masters.</p></div></div></div>
+        <div class="faq-i"><button class="faq-q" type="button" aria-expanded="false"><span>Comment un club s'affilie-t-il à la fédération ?</span>
+          <span class="faq-ico" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 12 12"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></button>
+          <div class="faq-a"><div><p>Le club dépose statuts, composition du bureau élu, justificatif de domiciliation et règlement de
+            l'affiliation annuelle auprès de sa ligue. Les dossiers passent en comité directeur chaque trimestre ; le numéro
+            d'affiliation ouvre l'accès aux engagements en ligne.</p></div></div></div>
+        <div class="faq-i"><button class="faq-q" type="button" aria-expanded="false"><span>Quels sont les critères de sélection en équipe nationale ?</span>
+          <span class="faq-ico" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 12 12"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></button>
+          <div class="faq-a"><div><p>La commission technique retient les athlètes ayant réalisé les minima World Athletics ou CAA lors
+            d'une compétition homologuée des douze derniers mois, avec licence FEDESA valide et nationalité sénégalaise. À performance
+            égale, le classement de la saison nationale départage.</p></div></div></div>
+        <div class="faq-i"><button class="faq-q" type="button" aria-expanded="false"><span>Comment faire homologuer un record national ?</span>
+          <span class="faq-ico" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 12 12"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></button>
+          <div class="faq-a"><div><p>Rapport du délégué technique, feuilles de résultats signées, relevé de vent, certificat de mesurage
+            de la piste et bandes du chronométrage électrique : le dossier est déposé sous dix jours à la commission des statistiques,
+            qui transmet à World Athletics pour les records nationaux.</p></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ NEWSLETTER ═════════════════════════════════════════════════════ -->
+<section class="sec-tint">
+  <div class="wrap">
+    <div class="card card-pad" style="padding:clamp(24px,3.4vw,40px)">
+      <div class="nl">
+        <div>
+          <span class="eyebrow">Lettre fédérale</span>
+          <h2 style="margin-top:12px;font-size:clamp(22px,2.3vw,28px)">Résultats, minima et convocations, chaque lundi</h2>
+          <p style="margin-top:10px;color:var(--ink-2);max-width:44ch">La feuille de route hebdomadaire des clubs,
+            des entraîneurs et de la presse sportive.</p>
+        </div>
+        <form class="nl-form" id="nlForm" novalidate>
+          <label for="nl-mail" class="vis-hidden">Adresse e-mail</label>
+          <input id="nl-mail" type="email" placeholder="vous@club.sn" required>
+          <button class="btn btn-primary" style="height:44px" type="submit">S'abonner</button>
+          <div class="nl-note" id="nlNote">Un envoi par semaine · désinscription en un clic</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ FOOTER ═════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="logo">
+          <span class="logo-mark"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <path d="M3.4 12.8C4.8 9.2 7.3 6.7 11.1 5.4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M5.6 14.4c1.1-2.8 3-4.8 5.9-5.9" stroke="#3ECF8E" stroke-width="1.8" stroke-linecap="round"/>
+            <circle cx="12.4" cy="5.2" r="1.5" fill="#fff"/></svg></span>
+          <span><span class="logo-txt" style="display:block">FEDESA</span><span class="logo-sub">Athlétisme Sénégal</span></span>
+        </div>
+        <p class="f-about">Fédération Sénégalaise d'Athlétisme — Stade Léopold Sédar Senghor, route de l'Aéroport, Dakar.
+          Membre de World Athletics et de la Confédération Africaine d'Athlétisme.</p>
+        <div class="f-soc">
+          <a href="#" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M9.5 16V9h2.3l.35-2.7H9.5V4.6c0-.78.22-1.31 1.34-1.31h1.43V.87A19 19 0 0 0 10.18.76c-2.06 0-3.48 1.26-3.48 3.58V6.3H4.4V9h2.3v7h2.8Z"/></svg></a>
+          <a href="#" aria-label="X"><svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M12.3 1h2.3L9.6 6.7 15.5 15h-4.6L7.3 10.3 3.2 15H.9l5.4-6.2L.6 1h4.7l3.3 4.3L12.3 1Zm-.8 12.6h1.3L4.6 2.3H3.2l8.3 11.3Z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><rect x="1.5" y="1.5" width="13" height="13" rx="4" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="8" r="3.2" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="4" r="1" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M15.3 4.8a1.9 1.9 0 0 0-1.3-1.4C12.8 3 8 3 8 3s-4.8 0-6 .4A1.9 1.9 0 0 0 .7 4.8C.4 6 .4 8 .4 8s0 2 .3 3.2a1.9 1.9 0 0 0 1.3 1.4c1.2.4 6 .4 6 .4s4.8 0 6-.4a1.9 1.9 0 0 0 1.3-1.4c.3-1.2.3-3.2.3-3.2s0-2-.3-3.2ZM6.5 10.4V5.6L10.6 8l-4.1 2.4Z"/></svg></a>
+        </div>
+      </div>
+      <div><h5>Compétitions</h5><div class="f-links"><a href="#calendrier">Calendrier fédéral</a><a href="#resultats">Résultats</a>
+        <a href="#">Records nationaux</a><a href="#">Minima de sélection</a><a href="#">Règlements sportifs</a></div></div>
+      <div><h5>Pratiquer</h5><div class="f-links"><a href="#clubs">Trouver un club</a><a href="#licence">Prendre une licence</a>
+        <a href="#">Athlétisme scolaire</a><a href="#">Para-athlétisme</a><a href="#">Formations</a></div></div>
+      <div><h5>La fédération</h5><div class="f-links"><a href="#">Comité directeur</a><a href="#">Ligues régionales</a>
+        <a href="#">Commissions</a><a href="#">Partenaires</a><a href="#">Médiathèque</a></div></div>
+    </div>
+    <div class="f-bot">
+      <span>© 2026 Fédération Sénégalaise d'Athlétisme · maquette de démonstration, contenus illustratifs</span>
+      <span style="display:flex;gap:16px"><a href="#">Mentions légales</a><a href="#">Données personnelles</a><a href="#">Accessibilité</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ════ COMMAND PALETTE ════════════════════════════════════════════════ -->
+<div class="cmdk" id="cmdk" hidden role="dialog" aria-modal="true" aria-label="Recherche">
+  <div class="cmdk-panel">
+    <div class="cmdk-in">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="color:var(--ink-3)"><circle cx="7" cy="7" r="4.6" stroke="currentColor" stroke-width="1.6"/><path d="M10.6 10.6L14 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <label for="cmdkInput" class="vis-hidden">Rechercher un athlète, une compétition, un record</label>
+      <input id="cmdkInput" type="text" placeholder="Athlète, compétition, record, page…" autocomplete="off">
+      <kbd>Esc</kbd>
+    </div>
+    <div class="cmdk-list" id="cmdkList"></div>
+    <div class="cmdk-foot">
+      <span><kbd>↑</kbd><kbd>↓</kbd> naviguer</span><span><kbd>↵</kbd> ouvrir</span><span><kbd>Esc</kbd> fermer</span>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- ════ FEEDBACK ═══════════════════════════════════════════════════════ -->
+<button class="fb-btn" type="button" id="fbBtn" aria-expanded="false" aria-controls="fbPanel">
+  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M14 10.5a1.5 1.5 0 0 1-1.5 1.5H5l-3 3V3.5A1.5 1.5 0 0 1 3.5 2h9A1.5 1.5 0 0 1 14 3.5v7Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+  Feedback <span class="fb-n" id="fbCount">0</span>
+</button>
+<div class="fb-panel" id="fbPanel" hidden>
+  <h4>Laisser un retour</h4>
+  <label for="fb-type">Type</label>
+  <select id="fb-type"><option>Change request</option><option>Bug</option><option>Question</option><option>Works for me</option></select>
+  <label for="fb-sec">Section</label>
+  <select id="fb-sec"><option>Hero</option><option>KPI / accès rapides</option><option>Résultats</option><option>Calendrier</option>
+    <option>Athlète</option><option>Actualités</option><option>Clubs</option><option>Licence</option><option>FAQ</option>
+    <option>Recherche ⌘K</option><option>Footer</option></select>
+  <label for="fb-msg">Note</label>
+  <textarea id="fb-msg" placeholder="Ce qui marche, ce qui ne marche pas…"></textarea>
+  <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
+    <button class="btn btn-primary btn-sm" type="button" id="fbSave">Enregistrer</button>
+    <button class="btn btn-ghost btn-sm" type="button" id="fbExport">Export JSON</button>
+    <button class="btn btn-quiet btn-sm" type="button" id="fbClear">Vider</button>
+  </div>
+  <div class="fb-list" id="fbList"></div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var $=function(s,c){return (c||document).querySelector(s);};
+  var $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s));};
+  var toastEl=$('#toast'), toastT;
+  function toast(msg){
+    toastEl.textContent=msg; toastEl.classList.add('on');
+    clearTimeout(toastT); toastT=setTimeout(function(){toastEl.classList.remove('on');},2600);
+  }
+
+  /* ── mobile nav ───────────────────────────────────────────────────── */
+  var burger=$('#burger'), mnav=$('#mnav');
+  burger.addEventListener('click',function(){
+    var open=mnav.classList.toggle('open');
+    burger.setAttribute('aria-expanded',open?'true':'false');
+  });
+  $$('#mnav a').forEach(function(a){a.addEventListener('click',function(){
+    mnav.classList.remove('open'); burger.setAttribute('aria-expanded','false');});});
+
+  /* ── segmented controls (sliding indicator) ───────────────────────── */
+  function initSeg(root,onChange){
+    if(!root) return;
+    var ind=$('.ind',root), btns=$$('button',root);
+    function move(){
+      var a=btns.filter(function(b){return b.getAttribute('aria-selected')==='true';})[0]||btns[0];
+      ind.style.left=(a.offsetLeft)+'px'; ind.style.width=(a.offsetWidth)+'px';
+    }
+    btns.forEach(function(b){b.addEventListener('click',function(){
+      btns.forEach(function(o){o.setAttribute('aria-selected',o===b?'true':'false');});
+      move(); onChange&&onChange(b);
+    });});
+    requestAnimationFrame(move);
+    window.addEventListener('resize',move);
+    if(document.fonts&&document.fonts.ready) document.fonts.ready.then(move);
+  }
+
+  initSeg($('#resSeg'),function(b){
+    ['r1','r2','r3'].forEach(function(id){$('#'+id).hidden=(id!==b.getAttribute('data-p'));});
+  });
+
+  /* ── profile tabs ─────────────────────────────────────────────────── */
+  (function(){
+    var root=$('#profTabs'); if(!root) return;
+    var ind=$('.tind',root), btns=$$('button',root);
+    function move(){
+      var a=btns.filter(function(b){return b.getAttribute('aria-selected')==='true';})[0]||btns[0];
+      ind.style.left=a.offsetLeft+'px'; ind.style.width=a.offsetWidth+'px';
+    }
+    btns.forEach(function(b){b.addEventListener('click',function(){
+      btns.forEach(function(o){o.setAttribute('aria-selected',o===b?'true':'false');});
+      ['t1','t2','t3'].forEach(function(id){$('#'+id).hidden=(id!==b.getAttribute('data-t'));});
+      move();
+    });});
+    requestAnimationFrame(move); window.addEventListener('resize',move);
+    if(document.fonts&&document.fonts.ready) document.fonts.ready.then(move);
+  })();
+
+  /* ── calendar filters ─────────────────────────────────────────────── */
+  var calLevel='all', calQ='';
+  function norm(s){return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');}
+  function filterCal(){
+    var evts=$$('#calList .evt'), shown=0;
+    evts.forEach(function(e){
+      var okL=calLevel==='all'||e.getAttribute('data-lvl')===calLevel;
+      var okQ=!calQ||norm(e.textContent).indexOf(calQ)>-1;
+      e.hidden=!(okL&&okQ); if(!e.hidden) shown++;
+    });
+    $$('#calList [data-month]').forEach(function(lab){
+      var n=lab.nextElementSibling, any=false;
+      while(n&&!n.hasAttribute('data-month')){ if(!n.hidden) any=true; n=n.nextElementSibling; }
+      lab.hidden=!any;
+    });
+    $('#calCount').textContent=shown+(shown>1?' compétitions':' compétition');
+    $('#calEmpty').hidden=shown!==0;
+  }
+  initSeg($('#calSeg'),function(b){calLevel=b.getAttribute('data-f');filterCal();});
+  $('#calSearch').addEventListener('input',function(){calQ=norm(this.value.trim());filterCal();});
+
+  /* ── club finder ──────────────────────────────────────────────────── */
+  function filterClubs(){
+    var q=norm($('#clubSearch').value.trim()), r=$('#clubRegion').value, d=$('#clubDisc').value, shown=0;
+    $$('#clubList .club').forEach(function(c){
+      var okQ=!q||norm(c.textContent).indexOf(q)>-1;
+      var okR=!r||c.getAttribute('data-r')===r;
+      var okD=!d||c.getAttribute('data-d')===d;
+      c.hidden=!(okQ&&okR&&okD); if(!c.hidden) shown++;
+    });
+    $('#clubCount').textContent=shown+(shown>1?' clubs':' club');
+    $('#clubEmpty').hidden=shown!==0;
+  }
+  ['#clubSearch','#clubRegion','#clubDisc'].forEach(function(s){
+    $(s).addEventListener(s==='#clubSearch'?'input':'change',filterClubs);});
+
+  /* ── FAQ ──────────────────────────────────────────────────────────── */
+  $$('#faqList .faq-q').forEach(function(btn){btn.addEventListener('click',function(){
+    var item=btn.parentElement, open=item.classList.contains('open');
+    $$('#faqList .faq-i').forEach(function(i){i.classList.remove('open');$('.faq-q',i).setAttribute('aria-expanded','false');});
+    if(!open){item.classList.add('open');btn.setAttribute('aria-expanded','true');}
+  });});
+
+  /* ── newsletter + csv ─────────────────────────────────────────────── */
+  $('#nlForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    var input=$('#nl-mail'), note=$('#nlNote'), v=input.value.trim();
+    if(!/^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(v)){
+      input.style.borderColor='var(--red)';
+      note.textContent='Adresse e-mail invalide — vérifiez la saisie.';
+      note.style.color='var(--red)'; input.focus(); return;
+    }
+    input.style.borderColor=''; note.style.color=''; input.value='';
+    note.textContent='Inscription enregistrée — confirmation envoyée.';
+    toast('Inscription à la lettre fédérale confirmée');
+  });
+  $('#csvBtn').addEventListener('click',function(){toast('Export CSV — maquette de démonstration');});
+
+  /* ── command palette ──────────────────────────────────────────────── */
+  var DATA=[
+    {g:'Athlètes',t:'Ibrahima Ndiaye',s:'Sprint 100 m / 200 m · ASC Dakar Université',r:'10"23',h:'#athlete'},
+    {g:'Athlètes',t:'Amy Diallo',s:'Longueur · ASC Dakar Université',r:'6,71 m',h:'#resultats'},
+    {g:'Athlètes',t:'Fatou Sow',s:'400 m · ASFA Dakar',r:'52"18',h:'#resultats'},
+    {g:'Athlètes',t:'Moussa Ba',s:'Sprint · Sport Club Pikine',r:'10"41',h:'#resultats'},
+    {g:'Compétitions',t:"Meeting d'ouverture de Dakar",s:'04 octobre 2026 · Stade Iba Mar Diop',r:'Nationale',h:'#calendrier'},
+    {g:'Compétitions',t:'Meeting International de Dakar',s:'14 novembre 2026 · Continental Tour',r:'Billets',h:'#calendrier'},
+    {g:'Compétitions',t:'Cross national FEDESA',s:'06 décembre 2026 · Hippodrome de Thiès',r:'Nationale',h:'#calendrier'},
+    {g:'Compétitions',t:"Championnats d'Afrique — Dakar",s:'12–16 mai 2027 · Stade L. S. Senghor',r:'J-232',h:'#calendrier'},
+    {g:'Records',t:'100 m Hommes',s:'Ibrahima Ndiaye · Dakar, 18.09.2026',r:'10"23',h:'#resultats'},
+    {g:'Records',t:'400 m Femmes',s:'Amy Mbacké Thiam · Edmonton, 08.08.2001',r:'49"86',h:'#resultats'},
+    {g:'Records',t:'400 m haies Hommes',s:'Amadou Dia Ba · Séoul, 25.09.1988',r:'47"23',h:'#resultats'},
+    {g:'Clubs',t:'ASC Dakar Université',s:'Dakar · sprint, sauts',r:'182',h:'#clubs'},
+    {g:'Clubs',t:'Espoir de Thiès',s:'Thiès · sauts, lancers',r:'88',h:'#clubs'},
+    {g:'Pages',t:'Prendre une licence',s:'Dossier, certificat médical, validation',r:'',h:'#licence'},
+    {g:'Pages',t:'Calendrier fédéral',s:'42 épreuves homologuées 26/27',r:'',h:'#calendrier'},
+    {g:'Pages',t:'Questions fréquentes',s:'Licences, affiliation, homologation',r:'',h:'#faq'}
+  ];
+  var cmdk=$('#cmdk'), cmdkInput=$('#cmdkInput'), cmdkList=$('#cmdkList'), cursor=0, matches=[];
+  function renderCmdk(){
+    var q=norm(cmdkInput.value.trim());
+    matches=DATA.filter(function(d){return !q||norm(d.t+' '+d.s+' '+d.g).indexOf(q)>-1;}).slice(0,9);
+    cursor=Math.min(cursor,Math.max(0,matches.length-1));
+    if(!matches.length){cmdkList.innerHTML='<div class="cmdk-group">Aucun résultat</div>';return;}
+    var html='', lastG='';
+    matches.forEach(function(m,i){
+      if(m.g!==lastG){html+='<div class="cmdk-group">'+m.g+'</div>';lastG=m.g;}
+      html+='<div class="cmdk-item" role="option" data-i="'+i+'" aria-selected="'+(i===cursor)+'">'+
+        '<span class="cmdk-ico"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>'+
+        '<span><span class="cmdk-t" style="display:block"></span><span class="cmdk-s"></span></span>'+
+        '<span class="cmdk-r"></span></div>';
+    });
+    cmdkList.innerHTML=html;
+    $$('.cmdk-item',cmdkList).forEach(function(el,i){
+      $('.cmdk-t',el).textContent=matches[i].t;
+      $('.cmdk-s',el).textContent=matches[i].s;
+      $('.cmdk-r',el).textContent=matches[i].r;
+      el.addEventListener('mouseenter',function(){cursor=i;syncSel();});
+      el.addEventListener('click',function(){go(i);});
+    });
+  }
+  function syncSel(){$$('.cmdk-item',cmdkList).forEach(function(el,i){el.setAttribute('aria-selected',i===cursor);});}
+  function go(i){
+    var m=matches[i]; if(!m) return;
+    closeCmdk();
+    var target=$(m.h); if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
+    toast(m.t);
+  }
+  function openCmdk(){
+    cmdk.hidden=false; cmdkInput.value=''; cursor=0; renderCmdk();
+    document.body.style.overflow='hidden'; setTimeout(function(){cmdkInput.focus();},20);
+  }
+  function closeCmdk(){cmdk.hidden=true; document.body.style.overflow='';}
+  $('#openCmd').addEventListener('click',openCmdk);
+  cmdk.addEventListener('mousedown',function(e){if(e.target===cmdk) closeCmdk();});
+  cmdkInput.addEventListener('input',function(){cursor=0;renderCmdk();});
+  document.addEventListener('keydown',function(e){
+    if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();cmdk.hidden?openCmdk():closeCmdk();return;}
+    if(cmdk.hidden) return;
+    if(e.key==='Escape'){e.preventDefault();closeCmdk();}
+    else if(e.key==='ArrowDown'){e.preventDefault();cursor=Math.min(cursor+1,matches.length-1);syncSel();}
+    else if(e.key==='ArrowUp'){e.preventDefault();cursor=Math.max(cursor-1,0);syncSel();}
+    else if(e.key==='Enter'){e.preventDefault();go(cursor);}
+  });
+
+  /* ── feedback widget ──────────────────────────────────────────────── */
+  var KEY='fedesa.v4.feedback';
+  var panel=$('#fbPanel'), fbBtn=$('#fbBtn'), list=$('#fbList'), badge=$('#fbCount');
+  function read(){try{return JSON.parse(localStorage.getItem(KEY))||[];}catch(e){return [];}}
+  function write(n){try{localStorage.setItem(KEY,JSON.stringify(n));}catch(e){}}
+  function render(){
+    var notes=read(); badge.textContent=notes.length; list.innerHTML='';
+    notes.slice().reverse().forEach(function(n){
+      var d=document.createElement('div'); d.className='fb-note';
+      d.innerHTML='<b></b> <span class="mono" style="font-size:11px;color:var(--ink-3)"></span><div style="margin-top:5px"></div>';
+      d.children[0].textContent=n.type+' · '+n.section;
+      d.children[1].textContent=new Date(n.at).toLocaleString('fr-FR');
+      d.children[2].textContent=n.text;
+      list.appendChild(d);
+    });
+  }
+  fbBtn.addEventListener('click',function(){
+    var open=panel.hidden; panel.hidden=!open; fbBtn.setAttribute('aria-expanded',open?'true':'false');
+  });
+  $('#fbSave').addEventListener('click',function(){
+    var t=$('#fb-msg').value.trim(); if(!t){$('#fb-msg').focus();return;}
+    var n=read(); n.push({type:$('#fb-type').value,section:$('#fb-sec').value,text:t,at:Date.now()});
+    write(n); $('#fb-msg').value=''; render(); toast('Retour enregistré');
+  });
+  $('#fbExport').addEventListener('click',function(){
+    var out=JSON.stringify({page:'FEDESA v4',exported:new Date().toISOString(),notes:read()},null,2);
+    if(navigator.clipboard) navigator.clipboard.writeText(out);
+    toast('Export JSON copié dans le presse-papier');
+  });
+  $('#fbClear').addEventListener('click',function(){write([]);render();toast('Retours effacés');});
+  render();
+})();
+</script>

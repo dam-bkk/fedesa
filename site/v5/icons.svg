@@ -1,0 +1,174 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+<!-- ═══════════════════════════════════════════════════════════════════
+     FEDESA discipline icons — drawn in the grammar of the federation mark:
+     solid fills only, 45° diagonals and orthogonal bars, sharp mitres,
+     one constant bar weight, no curves, no strokes. 32×32 grid.
+     ═══════════════════════════════════════════════════════════════════ -->
+
+<!-- the federation mark itself (SenTrack), kept at its native viewBox -->
+<symbol id="ic-mark" viewBox="0 0 184 163">
+  <g transform="translate(0,163) scale(0.1,-0.1)" fill="currentColor">
+    <path d="M610 1240 l0 -120 190 0 c105 0 190 -3 190 -8 0 -4 -85 -93 -190 -197
+    l-190 -190 -78 78 -77 77 -168 0 c-92 0 -167 -2 -167 -4 0 -6 483 -486 490 -486
+    3 0 61 56 130 125 69 69 129 125 135 125 6 0 91 -81 190 -180 l180 -180 170 0
+    170 0 -270 270 -270 270 270 270 270 270 -488 0 -487 0 0 -120z"/>
+  </g>
+</symbol>
+
+<!-- SPRINT — double chevron, pure speed -->
+<symbol id="ic-sprint" viewBox="0 0 32 32"><g fill="currentColor">
+  <polygon points="4,7 11,7 19,16 11,25 4,25 12,16"/>
+  <polygon points="15,7 22,7 30,16 22,25 15,25 23,16"/>
+</g></symbol>
+
+<!-- HAIES — the chevron meets a hurdle -->
+<symbol id="ic-hurdles" viewBox="0 0 32 32">
+  <g fill="currentColor">
+  <polygon points="2,3 8,3 15,10 8,17 2,17 9,10"/>
+  <rect x="16" y="11" width="15" height="4"/>
+  <rect x="21" y="15" width="4" height="13"/>
+  <rect x="16" y="28" width="15" height="3"/>
+</g>
+</symbol>
+
+<!-- DEMI-FOND — one lap of the ring -->
+<symbol id="ic-mid" viewBox="0 0 32 32"><g fill="currentColor" fill-rule="evenodd">
+  <path d="M10,3 H22 L29,10 V22 L22,29 H10 L3,22 V10 Z
+           M11.7,8 L8,11.7 V20.3 L11.7,24 H20.3 L24,20.3 V11.7 L20.3,8 Z"/>
+</g></symbol>
+
+<!-- FOND — the ring, lapped twice -->
+<symbol id="ic-long" viewBox="0 0 32 32"><g fill="currentColor" fill-rule="evenodd">
+  <path d="M10,1 H22 L31,10 V22 L22,31 H10 L1,22 V10 Z
+           M11.7,5 L5,11.7 V20.3 L11.7,27 H20.3 L27,20.3 V11.7 L20.3,5 Z"/>
+  <path d="M13,10 H19 L22,13 V19 L19,22 H13 L10,19 V13 Z
+           M14.2,13 L13,14.2 V17.8 L14.2,19 H17.8 L19,17.8 V14.2 L17.8,13 Z"/>
+</g></symbol>
+
+<!-- RELAIS — the baton crosses between two hands -->
+<symbol id="ic-relay" viewBox="0 0 32 32"><g fill="currentColor">
+  <polygon points="2,9 8,9 14,15 14,21 8,21 8,17 2,11"/>
+  <polygon points="30,23 24,23 18,17 18,11 24,11 24,15 30,21"/>
+  <polygon points="7,22 22,7 26,11 11,26"/>
+</g></symbol>
+
+<!-- LONGUEUR — the flight, then the pit -->
+<symbol id="ic-jump-long" viewBox="0 0 32 32">
+  <g fill="currentColor">
+  <rect x="1" y="21" width="7" height="4"/>
+  <polygon points="6,22 19,9 23,13 10,26"/>
+  <polygon points="17,6 26,6 26,15 22,11 21,12 17,8"/>
+  <rect x="17" y="25" width="14" height="5"/>
+</g>
+</symbol>
+
+<!-- TRIPLE SAUT — three bounds, one pit -->
+<symbol id="ic-triple" viewBox="0 0 32 32">
+  <g fill="currentColor">
+  <polygon points="1,20 5,16 9,20 5,24"/>
+  <polygon points="8,15 13,10 17,14 12,19"/>
+  <polygon points="17,9 23,3 27,7 21,13"/>
+  <rect x="1" y="26" width="10" height="4"/>
+  <rect x="17" y="25" width="14" height="5"/>
+</g>
+</symbol>
+
+<!-- HAUTEUR — over the bar, back first -->
+<symbol id="ic-high" viewBox="0 0 32 32"><g fill="currentColor">
+  <polygon points="6,20 15,4 18,4 27,20 22,20 16.5,10 11,20"/>
+  <rect x="2" y="22" width="28" height="4"/>
+  <rect x="3" y="22" width="4" height="8"/>
+  <rect x="25" y="22" width="4" height="8"/>
+</g></symbol>
+
+<!-- PERCHE — the pole bends nothing: it is a straight 45° -->
+<symbol id="ic-pole" viewBox="0 0 32 32">
+  <g fill="currentColor">
+  <rect x="24" y="2" width="5" height="26"/>
+  <rect x="12" y="4" width="17" height="4"/>
+  <polygon points="2,28 20,10 24,14 6,32"/>
+  <rect x="1" y="28" width="30" height="3"/>
+</g>
+</symbol>
+
+<!-- POIDS — the shot, and where it went -->
+<symbol id="ic-shot" viewBox="0 0 32 32">
+  <g fill="currentColor">
+  <polygon points="22,2 30,10 22,18 14,10"/>
+  <rect x="2" y="21" width="4" height="4"/>
+  <rect x="8" y="18" width="4" height="4"/>
+  <rect x="14" y="15" width="4" height="4"/>
+  <rect x="1" y="27" width="30" height="4"/>
+</g>
+</symbol>
+
+<!-- DISQUE — the plate, edge on -->
+<symbol id="ic-discus" viewBox="0 0 32 32"><g fill="currentColor" fill-rule="evenodd">
+  <path d="M16,2 L30,16 L16,30 L2,16 Z
+           M16,8 L8,16 L16,24 L24,16 Z"/>
+  <rect x="14" y="14" width="4" height="4"/>
+</g></symbol>
+
+<!-- JAVELOT — one line, thrown -->
+<symbol id="ic-javelin" viewBox="0 0 32 32"><g fill="currentColor">
+  <polygon points="2,28 22,8 25,11 5,31"/>
+  <polygon points="30,2 30,13 19,2"/>
+</g></symbol>
+
+<!-- MARTEAU — head, wire, handle -->
+<symbol id="ic-hammer" viewBox="0 0 32 32">
+  <g fill="currentColor">
+  <polygon points="8,2 16,10 8,18 0,10"/>
+  <polygon points="12,13 24,25 21,28 9,16"/>
+  <rect x="20" y="22" width="12" height="4" transform="rotate(45 26 24)"/>
+  <rect x="1" y="28" width="30" height="3"/>
+</g>
+</symbol>
+
+<!-- MARCHE — upright, one foot always down -->
+<symbol id="ic-walk" viewBox="0 0 32 32"><g fill="currentColor">
+  <rect x="13" y="2" width="5" height="13"/>
+  <polygon points="13,14 18,14 10,26 5,26"/>
+  <polygon points="13,14 18,14 26,26 21,26"/>
+  <rect x="2" y="27" width="28" height="4"/>
+</g></symbol>
+
+<!-- CROSS — the ground decides -->
+<symbol id="ic-cross" viewBox="0 0 32 32"><g fill="currentColor">
+  <polygon points="1,24 9,12 15,20 21,8 31,24 25,24 20,16 15,26 9,19 6,24"/>
+  <rect x="1" y="26" width="30" height="4"/>
+</g></symbol>
+
+<!-- ROUTE — the road narrows ahead -->
+<symbol id="ic-road" viewBox="0 0 32 32"><g fill="currentColor">
+  <polygon points="2,30 11,2 15,2 9,30"/>
+  <polygon points="30,30 21,2 17,2 23,30"/>
+  <rect x="15" y="4" width="3" height="5"/>
+  <rect x="15" y="13" width="3" height="6"/>
+  <rect x="15" y="23" width="3" height="7"/>
+</g></symbol>
+
+<!-- COMBINÉES — several events, one athlete -->
+<symbol id="ic-combined" viewBox="0 0 32 32"><g fill="currentColor">
+  <polygon points="2,4 7,4 12,9 7,14 2,14 7,9"/>
+  <polygon points="18,4 23,4 28,9 23,14 18,14 23,9"/>
+  <polygon points="2,18 7,18 12,23 7,28 2,28 7,23"/>
+  <polygon points="18,18 23,18 28,23 23,28 18,28 23,23"/>
+</g></symbol>
+
+<!-- PARA-ATHLÉTISME — the chevron rides the wheel -->
+<symbol id="ic-para" viewBox="0 0 32 32">
+  <g fill="currentColor" fill-rule="evenodd">
+  <path d="M13,17 L23,27 L13,37 L3,27 Z M13,23 L9,27 L13,31 L17,27 Z" transform="translate(0,-7)"/>
+  <rect x="11" y="4" width="5" height="10"/>
+  <polygon points="16,4 27,4 27,9 16,9"/>
+  <rect x="23" y="9" width="5" height="7"/>
+</g>
+</symbol>
+
+<!-- utility: arrow used by the mega menu -->
+<symbol id="ic-arrow" viewBox="0 0 32 32"><g fill="currentColor">
+  <rect x="2" y="14" width="22" height="4"/>
+  <polygon points="19,7 30,16 19,25 16,22 22,16 16,10"/>
+</g></symbol>
+</svg>

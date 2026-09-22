@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FEDESA — Fédération Sénégalaise d'Athlétisme (Light)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:       #008C44;
+      --green-dark:  #006B33;
+      --green-glow:  rgba(0,140,68,0.15);
+      --gold:        #D4A017;
+      --bg:          #F5F7FA;
+      --bg2:         #EAECF0;
+      --bg3:         #FFFFFF;
+      --border:      #D1D8E4;
+      --text:        #1A2233;
+      --muted:       #6B7A96;
+      --white:       #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ─── TICKER ─────────────────────────────────────────────────────────── */
+    .ticker-wrap {
+      background: var(--green);
+      padding: 7px 0;
+      overflow: hidden;
+    }
+    .ticker-inner {
+      display: flex;
+      align-items: center;
+    }
+    .ticker-label {
+      background: var(--gold);
+      color: #000;
+      font-family: 'Oswald', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      padding: 2px 16px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-right: 24px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+    .ticker-track {
+      display: flex;
+      gap: 64px;
+      animation: ticker 35s linear infinite;
+      white-space: nowrap;
+    }
+    .ticker-item {
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.95);
+    }
+    .ticker-item b { color: var(--gold); font-weight: 700; margin-right: 6px; }
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ─── NAV ─────────────────────────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 99;
+      background: rgba(245,247,250,0.97);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 32px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .nav-mark {
+      width: 44px;
+      height: 44px;
+      background: var(--green);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Oswald', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: white;
+      letter-spacing: 0.5px;
+      line-height: 1.2;
+      text-align: center;
+    }
+    .nav-wordmark { display: flex; flex-direction: column; }
+    .nav-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 1.5px;
+      line-height: 1;
+    }
+    .nav-sub {
+      font-size: 9px;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      flex: 1;
+    }
+    .nav-link {
+      font-family: 'Oswald', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 7px 13px;
+      border-radius: 6px;
+      transition: color 0.15s, background 0.15s;
+    }
+    .nav-link:hover { color: var(--text); background: var(--bg2); }
+    .nav-link.active { color: var(--green); }
+    .nav-ctas {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 20px;
+      border-radius: 6px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.18s;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--green);
+      color: white;
+    }
+    .btn-primary:hover { background: var(--green-dark); transform: translateY(-1px); box-shadow: 0 4px 16px var(--green-glow); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { border-color: var(--green); color: var(--green); }
+
+    /* ─── HERO ────────────────────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      height: calc(100vh - 104px);
+      min-height: 580px;
+      max-height: 920px;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?w=1900&q=90');
+      background-size: cover;
+      background-position: center 28%;
+      animation: heroZoom 10s ease-out forwards;
+    }
+    @keyframes heroZoom {
+      from { transform: scale(1.06); }
+      to   { transform: scale(1.00); }
+    }
+    .hero-ov1 {
+      position: absolute; inset: 0;
+      background: linear-gradient(108deg, rgba(245,247,250,0.92) 0%, rgba(245,247,250,0.68) 48%, rgba(245,247,250,0.08) 100%);
+    }
+    .hero-ov2 {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 220px;
+      background: linear-gradient(to top, var(--bg), transparent);
+    }
+    .hero-stripe {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+      background: linear-gradient(to bottom, var(--green) 0%, var(--gold) 50%, var(--green) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 64px 32px 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0,165,80,0.12);
+      border: 1px solid rgba(0,165,80,0.35);
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 6px 14px 6px 10px;
+      border-radius: 4px;
+      margin-bottom: 28px;
+      width: fit-content;
+      animation: up 0.55s ease 0.2s both;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 7px; height: 7px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: pulse 1.8s ease infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50%      { opacity:0.4; transform:scale(1.4); }
+    }
+    .hero-h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(52px, 7.5vw, 100px);
+      font-weight: 700;
+      line-height: 0.93;
+      text-transform: uppercase;
+      color: var(--text);
+      letter-spacing: -1px;
+      animation: up 0.55s ease 0.3s both;
+      max-width: 840px;
+    }
+    .hero-h1 em   { font-style:normal; color: var(--green); }
+    .hero-h1 .out { -webkit-text-stroke: 2px var(--text); color: transparent; }
+    .hero-p {
+      margin-top: 22px;
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--muted);
+      max-width: 480px;
+      line-height: 1.65;
+      animation: up 0.55s ease 0.4s both;
+    }
+    .hero-btns {
+      display: flex; gap: 14px;
+      margin-top: 38px;
+      animation: up 0.55s ease 0.5s both;
+    }
+    .hero-stats {
+      display: flex; gap: 44px;
+      margin-top: 60px;
+      animation: up 0.55s ease 0.6s both;
+    }
+    .hstat-n {
+      font-family: 'Oswald', sans-serif;
+      font-size: 38px; font-weight: 700;
+      color: var(--text); line-height: 1;
+    }
+    .hstat-n span { color: var(--green); }
+    .hstat-l {
+      font-size: 10px; font-weight: 600;
+      color: var(--muted); letter-spacing: 2px;
+      text-transform: uppercase; margin-top: 5px;
+    }
+    @keyframes up {
+      from { opacity:0; transform:translateY(22px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      color: var(--muted); font-size: 9px; letter-spacing: 2.5px;
+      text-transform: uppercase; z-index: 2;
+    }
+    .hero-scroll-line {
+      width: 1px; height: 44px;
+      background: linear-gradient(to bottom, transparent, var(--green));
+      animation: line 1.8s ease infinite;
+    }
+    @keyframes line {
+      0%  { transform:scaleY(0); transform-origin:top; }
+      49% { transform:scaleY(1); transform-origin:top; }
+      50% { transform:scaleY(1); transform-origin:bottom; }
+      100%{ transform:scaleY(0); transform-origin:bottom; }
+    }
+
+    /* ─── RAINBOW STRIPE ─────────────────────────────────────────────────── */
+    .rainbow {
+      height: 4px;
+      background: linear-gradient(to right, var(--green) 0%, var(--gold) 50%, var(--green) 100%);
+    }
+
+    /* ─── SECTION WRAPPER ────────────────────────────────────────────────── */
+    .sec { padding: 80px 32px; }
+    .wrap { max-width: 1440px; margin: 0 auto; }
+    .sec-hd {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      margin-bottom: 40px;
+    }
+    .sec-tag {
+      font-size: 10px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--green); margin-bottom: 8px;
+    }
+    .sec-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 700; text-transform: uppercase; color: var(--text); line-height: 1;
+    }
+
+    /* ─── NEWS GRID ──────────────────────────────────────────────────────── */
+    .news-bg { background: var(--bg); }
+    .news-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 2px;
+    }
+    .ncard {
+      position: relative; overflow: hidden; cursor: pointer; background: var(--bg3);
+    }
+    .ncard img {
+      width: 100%; height: 100%; min-height: 260px;
+      object-fit: cover; display: block;
+      transition: transform 0.45s ease;
+    }
+    .ncard.big img { min-height: 540px; }
+    .ncard:hover img { transform: scale(1.06); }
+    .nov {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.06) 65%);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 22px; transition: background 0.3s;
+    }
+    .ncard:hover .nov {
+      background: linear-gradient(to top, rgba(0,0,0,0.94) 0%, rgba(0,0,0,0.18) 65%);
+    }
+    .ncard { grid-row: span 1; }
+    .ncard.big { grid-row: span 2; }
+    .ncat {
+      display: inline-block;
+      background: var(--green);
+      color: white; font-size: 9px; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding: 3px 9px; margin-bottom: 10px; width: fit-content;
+    }
+    .ntitle {
+      font-family: 'Oswald', sans-serif;
+      color: #fff; line-height: 1.15; font-weight: 600; text-transform: uppercase;
+    }
+    .ncard.big .ntitle { font-size: 26px; }
+    .ntitle { font-size: 17px; }
+    .nmeta { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 7px; }
+
+    /* ─── EVENTS ─────────────────────────────────────────────────────────── */
+    .ev-bg { background: var(--bg2); }
+    .ev-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+    }
+    .ecard {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 8px; padding: 20px;
+      display: flex; gap: 18px; align-items: flex-start;
+      transition: border-color 0.2s, transform 0.2s; cursor: pointer;
+    }
+    .ecard:hover { border-color: var(--green); transform: translateY(-2px); }
+    .edate {
+      background: var(--green); border-radius: 6px;
+      padding: 10px 12px; text-align: center; flex-shrink: 0; min-width: 54px;
+    }
+    .eday {
+      font-family: 'Oswald', sans-serif;
+      font-size: 28px; font-weight: 700; color: white; line-height: 1;
+    }
+    .emon {
+      font-size: 9px; font-weight: 700; color: rgba(255,255,255,0.8);
+      text-transform: uppercase; letter-spacing: 1.5px;
+    }
+    .etype {
+      font-size: 9px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 6px;
+    }
+    .ename {
+      font-family: 'Oswald', sans-serif;
+      font-size: 15px; font-weight: 600; text-transform: uppercase;
+      color: var(--text); line-height: 1.2; margin-bottom: 8px;
+    }
+    .eloc {
+      font-size: 11px; color: var(--muted);
+      display: flex; align-items: center; gap: 5px;
+    }
+    .eloc::before {
+      content: '';
+      display: inline-block; width: 5px; height: 5px;
+      border-radius: 50%; background: var(--muted); flex-shrink: 0;
+    }
+    .efeat .edate { background: var(--gold); }
+    .efeat .eday  { color: #000; }
+    .efeat .emon  { color: rgba(0,0,0,0.65); }
+    .efeat .etype { color: var(--green); }
+
+    /* ─── ATHLETE SPOTLIGHT ───────────────────────────────────────────────── */
+    .ath-sec { background: var(--bg); padding: 0; overflow: hidden; }
+    .ath-inner {
+      max-width: 1440px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      min-height: 560px;
+    }
+    .ath-visual {
+      position: relative;
+      background: linear-gradient(135deg, #004d22 0%, #003018 100%);
+      overflow: hidden;
+    }
+    .ath-visual img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: top center;
+      mix-blend-mode: luminosity; opacity: 0.65; display: block;
+    }
+    .ath-ov {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, transparent 55%, var(--bg2) 100%);
+    }
+    .ath-num {
+      position: absolute; top: 32px; left: 32px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 140px; font-weight: 700;
+      color: rgba(255,255,255,0.06); line-height: 1;
+      pointer-events: none;
+    }
+    .ath-content {
+      background: var(--bg2); padding: 80px 64px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .ath-tag {
+      font-size: 10px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--green); margin-bottom: 12px;
+    }
+    .ath-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(38px, 4.5vw, 60px);
+      font-weight: 700; text-transform: uppercase;
+      color: var(--text); line-height: 1; margin-bottom: 8px;
+    }
+    .ath-disc {
+      font-size: 12px; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 2.5px; margin-bottom: 36px;
+    }
+    .ath-recs {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 16px; margin-bottom: 36px;
+    }
+    .rec {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 7px; padding: 16px;
+    }
+    .rec-v {
+      font-family: 'Oswald', sans-serif;
+      font-size: 26px; font-weight: 700; color: var(--gold); line-height: 1;
+    }
+    .rec-l {
+      font-size: 9px; font-weight: 600; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 1.5px; margin-top: 5px;
+    }
+    .ath-quote {
+      font-size: 14px; font-style: italic;
+      color: var(--muted); line-height: 1.75;
+      border-left: 3px solid var(--green);
+      padding-left: 16px; margin-bottom: 36px;
+    }
+
+    /* ─── RESULTS ─────────────────────────────────────────────────────────── */
+    .res-bg { background: var(--bg2); }
+    .res-header {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 8px; overflow: hidden; margin-bottom: 3px;
+      padding: 16px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .res-event-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 17px; font-weight: 600; color: var(--text); text-transform: uppercase;
+    }
+    .res-event-meta { font-size: 11px; color: var(--muted); margin-top: 3px; }
+    table.restable {
+      width: 100%; border-collapse: collapse;
+      background: var(--bg3); border: 1px solid var(--border); border-radius: 8px;
+      overflow: hidden;
+    }
+    table.restable th {
+      font-size: 9px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--muted);
+      text-align: left; padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    table.restable td {
+      padding: 13px 16px;
+      border-bottom: 1px solid rgba(30,39,51,0.5);
+      font-size: 14px; color: var(--text);
+    }
+    table.restable tr:last-child td { border-bottom: none; }
+    table.restable tbody tr:hover td { background: rgba(255,255,255,0.025); }
+    .rank {
+      font-family: 'Oswald', sans-serif;
+      font-size: 20px; font-weight: 700; color: var(--muted);
+    }
+    .rank.g { color: #FFD700; }
+    .rank.s { color: #C0C0C0; }
+    .rank.b { color: #CD7F32; }
+    .acell { display: flex; align-items: center; gap: 12px; }
+    .ava {
+      width: 36px; height: 36px; border-radius: 50%;
+      object-fit: cover; flex-shrink: 0;
+      border: 2px solid var(--border);
+      background: var(--bg3);
+    }
+    .ava-init {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--bg2); border: 2px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Oswald', sans-serif; font-size: 12px;
+      font-weight: 700; color: var(--muted); flex-shrink: 0;
+    }
+    .aname { font-weight: 600; color: var(--text); }
+    .asub  { font-size: 11px; color: var(--muted); }
+    .perf  {
+      font-family: 'Oswald', sans-serif;
+      font-size: 20px; font-weight: 600; color: var(--text);
+    }
+    .badge {
+      display: inline-block; padding: 3px 8px; border-radius: 4px;
+      font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+    }
+    .badge-nr {
+      background: rgba(245,197,24,0.12); color: var(--gold);
+      border: 1px solid rgba(245,197,24,0.28);
+    }
+    .badge-nq {
+      background: rgba(0,165,80,0.12); color: var(--green);
+      border: 1px solid rgba(0,165,80,0.28);
+    }
+
+    /* ─── PARTNERS ────────────────────────────────────────────────────────── */
+    .part-sec {
+      background: var(--bg2); padding: 48px 32px;
+      border-top: 1px solid var(--border);
+    }
+    .part-label {
+      text-align: center; font-size: 9px; font-weight: 700;
+      letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 32px;
+    }
+    .part-logos {
+      display: flex; align-items: center; justify-content: center;
+      gap: 48px; flex-wrap: wrap;
+    }
+    .plogo {
+      font-family: 'Oswald', sans-serif;
+      font-size: 17px; font-weight: 700; color: var(--muted);
+      letter-spacing: 2px; text-transform: uppercase;
+      opacity: 0.6; transition: opacity 0.2s, color 0.2s; cursor: pointer;
+    }
+    .plogo:hover { opacity: 1; color: var(--text); }
+
+    /* ─── FOOTER ──────────────────────────────────────────────────────────── */
+    footer {
+      background: #1A2233;
+      padding: 64px 32px 28px;
+      border-top: 1px solid var(--border);
+    }
+    .foot-inner { max-width: 1440px; margin: 0 auto; }
+    .foot-top {
+      display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 48px; margin-bottom: 52px;
+    }
+    .foot-tagline {
+      font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7;
+      max-width: 290px; margin-top: 16px;
+    }
+    .foot-socials {
+      display: flex; gap: 10px; margin-top: 22px;
+    }
+    .soc {
+      width: 34px; height: 34px;
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 6px; display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.4); text-decoration: none;
+      font-size: 11px; font-weight: 700;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .soc:hover { border-color: var(--green); color: var(--green); }
+    .fcol-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 12px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 2px; color: #fff; margin-bottom: 18px;
+    }
+    .flinks { list-style: none; }
+    .flinks li + li { margin-top: 11px; }
+    .flinks a {
+      font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none;
+      transition: color 0.15s;
+    }
+    .flinks a:hover { color: var(--green); }
+    .foot-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .fcopy { font-size: 12px; color: rgba(255,255,255,0.35); }
+    .flag {
+      display: flex; border-radius: 2px; overflow: hidden;
+      width: 32px; height: 20px; flex-shrink: 0;
+    }
+    .flag-g { flex: 1; background: #009A44; }
+    .flag-y {
+      flex: 1; background: #FCBB30;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 8px; color: #009A44; font-weight: 900;
+    }
+    .flag-r { flex: 1; background: #E31E24; }
+  </style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-inner">
+    <div class="ticker-label">Live</div>
+    <div class="ticker-track">
+      <span class="ticker-item"><b>100m H</b> Champ. Nat. Dakar — Ibrahima Ndiaye 10"23 NR</span>
+      <span class="ticker-item"><b>Saut en longueur</b> Amy Diallo 6,45m — Qualification CAA validée</span>
+      <span class="ticker-item"><b>400m F</b> Fatou Sow 52"18 — Record personnel</span>
+      <span class="ticker-item"><b>Marche 20km</b> Moussa Traoré sélectionné Mondiaux 2026</span>
+      <span class="ticker-item"><b>Championnats d'Afrique</b> Dakar 2026 — J-120</span>
+      <span class="ticker-item"><b>100m H</b> Champ. Nat. Dakar — Ibrahima Ndiaye 10"23 NR</span>
+      <span class="ticker-item"><b>Saut en longueur</b> Amy Diallo 6,45m — Qualification CAA validée</span>
+      <span class="ticker-item"><b>400m F</b> Fatou Sow 52"18 — Record personnel</span>
+      <span class="ticker-item"><b>Marche 20km</b> Moussa Traoré sélectionné Mondiaux 2026</span>
+      <span class="ticker-item"><b>Championnats d'Afrique</b> Dakar 2026 — J-120</span>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-mark">FED<br>ESA</div>
+      <div class="nav-wordmark">
+        <span class="nav-name">FEDESA</span>
+        <span class="nav-sub">Athlétisme Sénégal</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="#" class="nav-link active">Actualités</a>
+      <a href="#" class="nav-link">Compétitions</a>
+      <a href="#" class="nav-link">Athlètes</a>
+      <a href="#" class="nav-link">Résultats</a>
+      <a href="#" class="nav-link">Clubs</a>
+      <a href="#" class="nav-link">Calendrier</a>
+      <a href="#" class="nav-link">La Fédé</a>
+    </div>
+    <div class="nav-ctas">
+      <a href="#" class="btn btn-ghost">Espace Club</a>
+      <a href="#" class="btn btn-primary">Licences</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding:0">
+  <div class="hero-bg"></div>
+  <div class="hero-ov1"></div>
+  <div class="hero-ov2"></div>
+  <div class="hero-stripe"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Championnat National 2026</div>
+    <h1 class="hero-h1">
+      L'<em>Excellence</em><br>
+      <span class="out">Sénégalaise</span><br>
+      forge sa légende
+    </h1>
+    <p class="hero-p">
+      La Fédération Sénégalaise d'Athlétisme — performance, formation et développement de l'athlétisme national sur la scène continentale et mondiale.
+    </p>
+    <div class="hero-btns">
+      <a href="#" class="btn btn-primary" style="padding:12px 28px;font-size:14px">Voir le Calendrier</a>
+      <a href="#" class="btn btn-ghost" style="padding:12px 28px;font-size:14px">Nos Athlètes</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hstat-n">340<span>+</span></div>
+        <div class="hstat-l">Athlètes licenciés</div>
+      </div>
+      <div>
+        <div class="hstat-n">18</div>
+        <div class="hstat-l">Régions couvertes</div>
+      </div>
+      <div>
+        <div class="hstat-n">12<span>×</span></div>
+        <div class="hstat-l">Médailles africaines</div>
+      </div>
+      <div>
+        <div class="hstat-n">1960</div>
+        <div class="hstat-l">Année de fondation</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<div class="rainbow"></div>
+
+<!-- NEWS -->
+<section class="sec news-bg">
+  <div class="wrap">
+    <div class="sec-hd">
+      <div>
+        <div class="sec-tag">À la une</div>
+        <div class="sec-title">Dernières Actualités</div>
+      </div>
+      <a href="#" class="btn btn-ghost" style="font-size:12px">Toutes les news &rarr;</a>
+    </div>
+    <div class="news-grid">
+      <div class="ncard big">
+        <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?w=900&q=85" alt="Sprint" loading="lazy">
+        <div class="nov">
+          <span class="ncat">Championnats</span>
+          <div class="ntitle">Ibrahima Ndiaye pulvérise le record national du 100m à Dakar</div>
+          <div class="nmeta">08 mai 2026 &nbsp;·&nbsp; Championnats Nationaux</div>
+        </div>
+      </div>
+      <div class="ncard">
+        <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600&q=80" alt="Amy Diallo" loading="lazy">
+        <div class="nov">
+          <span class="ncat">Sélection</span>
+          <div class="ntitle">Amy Diallo qualifiée pour les Championnats d'Afrique 2026</div>
+          <div class="nmeta">05 mai 2026 &nbsp;·&nbsp; Saut en longueur</div>
+        </div>
+      </div>
+      <div class="ncard">
+        <img src="https://images.unsplash.com/photo-1540539234-c14a20fb7c7b?w=600&q=80" alt="Formation" loading="lazy">
+        <div class="nov">
+          <span class="ncat">Formation</span>
+          <div class="ntitle">Nouveau programme de détection des jeunes talents 2026</div>
+          <div class="nmeta">02 mai 2026 &nbsp;·&nbsp; Développement</div>
+        </div>
+      </div>
+      <div class="ncard">
+        <img src="https://images.unsplash.com/photo-1519766304817-4f37bda74a26?w=600&q=80" alt="Dakar" loading="lazy">
+        <div class="nov">
+          <span class="ncat">Événement</span>
+          <div class="ntitle">Dakar accueillera les Championnats d'Afrique en septembre 2026</div>
+          <div class="nmeta">28 avr. 2026 &nbsp;·&nbsp; Annonce</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section class="sec ev-bg">
+  <div class="wrap">
+    <div class="sec-hd">
+      <div>
+        <div class="sec-tag">Agenda</div>
+        <div class="sec-title">Prochaines Compétitions</div>
+      </div>
+      <a href="#" class="btn btn-ghost" style="font-size:12px">Voir le calendrier &rarr;</a>
+    </div>
+    <div class="ev-grid">
+      <div class="ecard">
+        <div class="edate"><div class="eday">17</div><div class="emon">Mai</div></div>
+        <div>
+          <div class="etype">National</div>
+          <div class="ename">Meeting Open de Dakar</div>
+          <div class="eloc">Stade L. S. Senghor, Dakar</div>
+        </div>
+      </div>
+      <div class="ecard">
+        <div class="edate"><div class="eday">24</div><div class="emon">Mai</div></div>
+        <div>
+          <div class="etype">Régional</div>
+          <div class="ename">Championnat de Saint-Louis</div>
+          <div class="eloc">Stade Saër Seck, Saint-Louis</div>
+        </div>
+      </div>
+      <div class="ecard efeat">
+        <div class="edate"><div class="eday">07</div><div class="emon">Juin</div></div>
+        <div>
+          <div class="etype">Continental ★</div>
+          <div class="ename">Championnats d'Afrique — Dakar</div>
+          <div class="eloc">Complexe Sportif LSS, Dakar</div>
+        </div>
+      </div>
+      <div class="ecard">
+        <div class="edate"><div class="eday">14</div><div class="emon">Juin</div></div>
+        <div>
+          <div class="etype">Jeunes</div>
+          <div class="ename">Championnat National Cadet/Junior</div>
+          <div class="eloc">Stade Municipal, Thiès</div>
+        </div>
+      </div>
+      <div class="ecard">
+        <div class="edate"><div class="eday">21</div><div class="emon">Juin</div></div>
+        <div>
+          <div class="etype">International</div>
+          <div class="ename">Grand Prix West Africa Athletics</div>
+          <div class="eloc">Dakar Arena, Diamniadio</div>
+        </div>
+      </div>
+      <div class="ecard">
+        <div class="edate"><div class="eday">05</div><div class="emon">Juil</div></div>
+        <div>
+          <div class="etype">National</div>
+          <div class="ename">Championnat National Absolu</div>
+          <div class="eloc">Stade L. S. Senghor, Dakar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ATHLETE SPOTLIGHT -->
+<section class="ath-sec">
+  <div class="ath-inner">
+    <div class="ath-visual">
+      <img src="https://images.unsplash.com/photo-1547941126-3d5322b218b0?w=800&q=85" alt="Ibrahima Ndiaye">
+      <div class="ath-ov"></div>
+      <div class="ath-num">01</div>
+    </div>
+    <div class="ath-content">
+      <div class="ath-tag">Athlète du mois</div>
+      <div class="ath-name">Ibrahima<br>Ndiaye</div>
+      <div class="ath-disc">Sprint &mdash; 100m / 200m</div>
+      <div class="ath-recs">
+        <div class="rec"><div class="rec-v">10"23</div><div class="rec-l">Record 100m</div></div>
+        <div class="rec"><div class="rec-v">20"41</div><div class="rec-l">Record 200m</div></div>
+        <div class="rec"><div class="rec-v">4×</div><div class="rec-l">Sélection nat.</div></div>
+      </div>
+      <div class="ath-quote">
+        "Représenter le Sénégal sur la piste est ma plus grande fierté. Chaque course est une occasion de montrer l'excellence africaine au monde entier."
+      </div>
+      <a href="#" class="btn btn-primary" style="width:fit-content">Voir le profil complet</a>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="sec res-bg">
+  <div class="wrap">
+    <div class="sec-hd">
+      <div>
+        <div class="sec-tag">Performance</div>
+        <div class="sec-title">Derniers Résultats</div>
+      </div>
+      <a href="#" class="btn btn-ghost" style="font-size:12px">Tous les résultats &rarr;</a>
+    </div>
+
+    <div class="res-header">
+      <div>
+        <div class="res-event-name">Championnats Nationaux 2026 — 100m Hommes Finale</div>
+        <div class="res-event-meta">07 mai 2026 &nbsp;·&nbsp; Stade Léopold Sédar Senghor, Dakar</div>
+      </div>
+      <span class="badge badge-nr">Record National</span>
+    </div>
+
+    <table class="restable">
+      <thead>
+        <tr>
+          <th style="width:56px">Pos.</th>
+          <th>Athlète</th>
+          <th>Club</th>
+          <th>Performance</th>
+          <th>Vent</th>
+          <th>Statut</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="rank g">1</span></td>
+          <td>
+            <div class="acell">
+              <img class="ava" src="https://images.unsplash.com/photo-1531384441138-2736e62e0919?w=80&q=80" alt="">
+              <div><div class="aname">Ibrahima Ndiaye</div><div class="asub">SEN · 24 ans</div></div>
+            </div>
+          </td>
+          <td style="color:var(--muted)">ASC Dakar Université</td>
+          <td><span class="perf">10"23</span></td>
+          <td style="color:var(--muted)">+1.2</td>
+          <td><span class="badge badge-nr">NR</span></td>
+        </tr>
+        <tr>
+          <td><span class="rank s">2</span></td>
+          <td>
+            <div class="acell">
+              <div class="ava-init" style="background:#E8EDF2;color:var(--muted)">MB</div>
+              <div><div class="aname">Moussa Ba</div><div class="asub">SEN · 22 ans</div></div>
+            </div>
+          </td>
+          <td style="color:var(--muted)">Sport Club Pikine</td>
+          <td><span class="perf">10"41</span></td>
+          <td style="color:var(--muted)">+1.2</td>
+          <td><span class="badge badge-nq">NQ</span></td>
+        </tr>
+        <tr>
+          <td><span class="rank b">3</span></td>
+          <td>
+            <div class="acell">
+              <div class="ava-init" style="background:#E8EDF2;color:var(--muted)">OD</div>
+              <div><div class="aname">Omar Diop</div><div class="asub">SEN · 26 ans</div></div>
+            </div>
+          </td>
+          <td style="color:var(--muted)">AC Saint-Louis</td>
+          <td><span class="perf">10"58</span></td>
+          <td style="color:var(--muted)">+1.0</td>
+          <td style="color:var(--muted)">—</td>
+        </tr>
+        <tr>
+          <td><span class="rank">4</span></td>
+          <td>
+            <div class="acell">
+              <div class="ava-init" style="background:#E8EDF2;color:var(--muted)">SC</div>
+              <div><div class="aname">Sékou Camara</div><div class="asub">SEN · 21 ans</div></div>
+            </div>
+          </td>
+          <td style="color:var(--muted)">Stade de Mbour</td>
+          <td><span class="perf">10"67</span></td>
+          <td style="color:var(--muted)">+0.9</td>
+          <td style="color:var(--muted)">—</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<div class="part-sec">
+  <div class="wrap">
+    <div class="part-label">Partenaires &amp; sponsors officiels</div>
+    <div class="part-logos">
+      <span class="plogo">World Athletics</span>
+      <span class="plogo">CAA</span>
+      <span class="plogo">CNOSEPS</span>
+      <span class="plogo">Min. Sports</span>
+      <span class="plogo">Orange Sénégal</span>
+      <span class="plogo">Sonatel</span>
+      <span class="plogo">Adidas</span>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-top">
+      <div>
+        <a href="#" style="display:flex;align-items:center;gap:12px;text-decoration:none">
+          <div class="nav-mark">FED<br>ESA</div>
+          <div class="nav-wordmark">
+            <span class="nav-name">FEDESA</span>
+            <span class="nav-sub">Athlétisme Sénégal</span>
+          </div>
+        </a>
+        <p class="foot-tagline">Fédération Sénégalaise d'Athlétisme — développer, promouvoir et représenter l'athlétisme national sur la scène africaine et mondiale.</p>
+        <div class="foot-socials">
+          <a href="#" class="soc">fb</a>
+          <a href="#" class="soc">tw</a>
+          <a href="#" class="soc">ig</a>
+          <a href="#" class="soc">yt</a>
+        </div>
+      </div>
+      <div>
+        <div class="fcol-title">Compétitions</div>
+        <ul class="flinks">
+          <li><a href="#">Calendrier 2026</a></li>
+          <li><a href="#">Championnats Nationaux</a></li>
+          <li><a href="#">Sélections nationales</a></li>
+          <li><a href="#">Records Nationaux</a></li>
+          <li><a href="#">Résultats</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fcol-title">Athlètes &amp; Clubs</div>
+        <ul class="flinks">
+          <li><a href="#">Annuaire des athlètes</a></li>
+          <li><a href="#">Clubs affiliés</a></li>
+          <li><a href="#">Licences en ligne</a></li>
+          <li><a href="#">Classements nationaux</a></li>
+          <li><a href="#">Programme Élite</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fcol-title">La Fédération</div>
+        <ul class="flinks">
+          <li><a href="#">Présentation</a></li>
+          <li><a href="#">Direction</a></li>
+          <li><a href="#">Statuts &amp; Règlements</a></li>
+          <li><a href="#">Partenaires</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div class="fcopy">© 2026 FEDESA — Fédération Sénégalaise d'Athlétisme. Tous droits réservés.</div>
+      <div style="display:flex;align-items:center;gap:14px">
+        <div class="flag">
+          <div class="flag-g"></div>
+          <div class="flag-y">★</div>
+          <div class="flag-r"></div>
+        </div>
+        <span style="font-size:11px;color:var(--muted)">République du Sénégal</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
