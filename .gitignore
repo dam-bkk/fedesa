@@ -2,3 +2,6 @@
 node_modules/
 dist/
 *.log
+fedesa-app/
+next/node_modules/
+next/.next/
