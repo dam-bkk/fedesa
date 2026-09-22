@@ -22,7 +22,6 @@ export default function Partenaires({ t }: { t: (s: string) => string }) {
       <div  className="prow">
         <div  className="plogo real"><img  className="plogo-img" src="/img/logos/orange.svg" alt={t("Orange Sénégal")} style={{"maxHeight":"48px"}} /></div>
         <div  className="plogo real"><img  className="plogo-img" src="/img/logos/sonatel.svg" alt={t("Sonatel")} style={{"maxHeight":"40px"}} /></div>
-        <div  className="plogo"><span  className="pmark"><svg  viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" aria-hidden="true"><path  d="M16 28V14" /><path  d="M7 12c2-4 5-5 9-5s7 1 9 5c-3 2-6 2-9 2s-6 0-9-2z" /><path  d="M12 14l-3-3M20 14l3-3" /></svg></span><span  className="pname">{t("Baobab Sport")}</span></div>
         <div  className="plogo real"><img  className="plogo-img" src="/img/logos/kirene.svg" alt={t("Kirène")} style={{"maxHeight":"72px"}} /></div>
       </div>
     </div>

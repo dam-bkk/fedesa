@@ -18,7 +18,7 @@ export const HISTOIRE = [
   { y: "2023", t: "Jeux de la Francophonie, Kinshasa", d: "Or de Louis François Mendy au 110 m haies, argent du 4 × 100 m, record national égalé par Mamadou Fall Sarr." },
   { y: "2027", t: "Championnats d'Afrique à Dakar", d: "Le grand rendez-vous continental sur la piste du stade Abdoulaye Wade de Diamniadio." },
 ];
-export const PARTENAIRES = { institutional: ["Ministère des Sports", "CNOSS", "World Athletics", "CAA — Confédération Africaine d'Athlétisme"], sponsors: ["Orange", "Sonatel", "Eiffage Sénégal", "Baobab Sport", "Kirène"] };
+export const PARTENAIRES = { institutional: ["Ministère des Sports", "CNOSS", "World Athletics", "CAA — Confédération Africaine d'Athlétisme"], sponsors: ["Orange", "Sonatel", "Eiffage Sénégal", "Kirène"] };
 export type Post = { slug: string; date: string; cat: "Compétition" | "Sélection" | "Formation" | "Fédération"; title: string; excerpt: string; img: string; body: string[]; demo?: boolean };
 export const POSTS: Post[] = [
   { slug: "mendy-or-110m-haies-kinshasa", date: "2023-08-02", cat: "Sélection", title: "Louis François Mendy en or sur 110 m haies aux Jeux de la Francophonie", excerpt: "À Kinshasa, le hurdler sénégalais s'impose en finale et offre au Sénégal son titre le plus marquant de la saison.", img: "/img/news-1.avif", body: ["Louis François Mendy a remporté la finale du 110 m haies des IXes Jeux de la Francophonie à Kinshasa. Une victoire nette, construite sur un départ rapide et un franchissement impeccable des dernières haies.", "La délégation sénégalaise a également décroché l'argent du relais 4 × 100 m, tandis que Mamadou Fall Sarr égalait le record national de la hauteur.", "La fédération félicite les athlètes, l'encadrement technique et les clubs formateurs."] },
