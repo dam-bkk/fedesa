@@ -36,7 +36,7 @@ export async function LiveMarquee() {
 }
 const PILL: Record<string, string> = { Régional: "", National: "nat", International: "intl", Club: "jeune" };
 export const Fx = async ({ c, res }: { c: CalItem; res?: React.ReactNode }) => { const t = tr(await getLang()); return (
-  <Link href={c.resultsUrl ? `/competitions/${c.id}` : `/competitions#c-${c.id}`} className="fx">
+  <Link href={c.resultsUrl ? `/competitions/${c.id}` : `/competitions#c-${c.id}`} className="fx" data-level={c.level.toLowerCase()}>
     <div className="fx-date"><div className="fx-d">{dd(c.dateFrom)}</div><div className="fx-m">{mon(c.dateFrom)}</div></div>
     <div><div className="fx-n">{c.name}</div><div className="fx-meta"><span className={`pill ${PILL[c.level] ?? ""}`}>{t(c.level)}</span> {c.venue} · {c.city}</div></div>
     {res ?? <div className="fx-go">{c.status === "entries_open" ? t("Engager →") : c.resultsUrl ? t("Résultats →") : t("Détail →")}</div>}
@@ -80,7 +80,7 @@ export async function LiveResults() {
           <div className="panel" id={`r${k + 1}`} key={k} hidden={k !== 0}>
             <div className="panel-top"><div><div className="panel-ev">{e.event} {e.sex === "F" ? "Femmes" : "Hommes"} {t("— Finale")}</div><div className="panel-meta">{fmtDate(comp.dateFrom)} · {comp.venue}, {comp.city} · {comp.name}</div></div>{e.results.some((r) => r.record) ? <span className="badge b-rn">{t("Record battu")}</span> : <span className="badge b-q">{e.results.length} {t("classés")}</span>}</div>
             <div className="scrollx"><table className="tbl"><thead><tr><th style={{ width: 64 }}>{t("Pos")}</th><th>{t("Athlète")}</th><th>{t("Club")}</th><th>{t("Perf.")}</th>{e.kind === "t" && <th>{t("Vent")}</th>}<th>{t("Pts")}</th></tr></thead><tbody>
-              {e.results.slice(0, 6).map((r) => <tr key={r.athleteId}><td><span className={`rank ${r.rank === 1 ? "g" : r.rank === 2 ? "s" : r.rank === 3 ? "b" : ""}`}>{r.rank}</span></td><td><div className="who"><span className="ava">{r.athlete.split(" ").map((w) => w[0]).slice(0, 2).join("")}</span><div><div><Link href={`/athletes/${r.athleteId}`}>{r.athlete}</Link></div><div className="who-s">{t("SEN ·")} {r.category}</div></div></div></td><td className="dim">{r.club}</td><td><span className="perf">{r.mark}</span></td>{e.kind === "t" && <td className="dim mono">{r.wind != null ? (r.wind > 0 ? "+" : "") + r.wind.toFixed(1) : "—"}</td>}<td className="dim mono">{r.points}</td></tr>)}
+              {e.results.slice(0, 6).map((r) => <tr key={r.athleteId}><td data-th="Pos" className="c-pos"><span className={`rank ${r.rank === 1 ? "g" : r.rank === 2 ? "s" : r.rank === 3 ? "b" : ""}`}>{r.rank}</span></td><td className="c-main" data-th={t("Athlète")}><div className="who"><span className="ava">{r.athlete.split(" ").map((w) => w[0]).slice(0, 2).join("")}</span><div><div><Link href={`/athletes/${r.athleteId}`}>{r.athlete}</Link></div><div className="who-s">{t("SEN ·")} {r.category}</div></div></div></td><td className="dim" data-th={t("Club")}>{r.club}</td><td className="c-perf" data-th={t("Perf.")}><span className="perf">{r.mark}</span></td>{e.kind === "t" && <td className="dim mono" data-th={t("Vent")}>{r.wind != null ? (r.wind > 0 ? "+" : "") + r.wind.toFixed(1) : "—"}</td>}<td className="dim mono" data-th="Pts">{r.points}</td></tr>)}
             </tbody></table></div>
           </div>
         ))}
@@ -96,7 +96,7 @@ export async function RecordsTable({ items, full }: { items: Record_[]; full?: b
   return (
     <div className="panel-l">
       <div className="scrollx"><table className="tbl" id="recTable"><thead><tr>{full && <th>{t("Niveau")}</th>}<th>{t("Épreuve")}</th><th>{t("Performance")}</th><th>{t("Athlète")}</th><th>{t("Lieu")}</th><th>{t("Date")}</th></tr></thead><tbody>
-        {list.map((r, k) => <tr key={k}>{full && <td className="dim">{r.scope === "national" ? "Sénégal" : r.region}</td>}<td>{r.event} — {r.sex === "F" ? "Femmes" : "Hommes"}</td><td><span className="perf">{r.mark}</span></td><td>{r.holder}{r.club ? <span className="dim"> · {r.club}</span> : null}</td><td className="dim">{r.venue ?? "—"}</td><td className="dim mono">{r.date ? fmtDate(r.date) : "—"}</td></tr>)}
+        {list.map((r, k) => <tr key={k}>{full && <td className="dim" data-th={t("Niveau")}>{r.scope === "national" ? "Sénégal" : r.region}</td>}<td data-th={t("Épreuve")} className="c-main">{r.event} — {r.sex === "F" ? t("Femmes") : t("Hommes")}</td><td data-th={t("Performance")} className="c-perf"><span className="perf">{r.mark}</span></td><td data-th={t("Athlète")}>{r.holder}{r.club ? <span className="dim"> · {r.club}</span> : null}</td><td className="dim" data-th={t("Lieu")}>{r.venue ?? "—"}</td><td className="dim mono" data-th={t("Date")}>{r.date ? fmtDate(r.date) : "—"}</td></tr>)}
       </tbody></table></div>
       <div className="empty" id="recEmpty" hidden>{t("Aucun record ne correspond à cette recherche.")}</div>
     </div>
