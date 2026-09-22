@@ -854,3 +854,4 @@ html,body{overflow-x:clip}
  #live .tbl td{order:0}#live .tbl td.c-pos{grid-area:pos}#live .tbl td.c-main{grid-area:main;min-width:0}#live .tbl td.c-perf{grid-area:perf;text-align:right}
  #live .who div div:first-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px}
 }
+@media(max-width:700px){.epm-nav button{font-size:10px;letter-spacing:.08em;padding:0 8px;white-space:nowrap}}
