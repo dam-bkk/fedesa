@@ -727,3 +727,5 @@ section.tight{padding-top:28px}
  .epm-x{right:0;top:0;width:40px;height:40px}
  .epm-nav{position:fixed;left:12px;right:12px;bottom:calc(14px + env(safe-area-inset-bottom,0px))}.epm-nav .epm-hint{display:none}.epm-nav button{flex:1;justify-content:center;height:42px;padding:0 10px;font-size:12px}
 }
+/* mobile : pas de tracés illustrés derrière le contenu */
+@media(max-width:860px){.illus{display:none}}
