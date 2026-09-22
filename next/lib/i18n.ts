@@ -254,5 +254,18 @@ export const DICT: Record<string, string> = {
   "— Finale": "— Final",
   "Ibrahima": "Ibrahima",
   "Ndiaye": "Ndiaye",
+  "Ta date": "Your date",
+  "de naissance suffit": "of birth is enough",
+  "ans": "years",
+  "Catégorie": "Age group",
+  "Âge en": "Age in",
+  "Poussins": "U12",
+  "Benjamins": "U14",
+  "Minimes": "U16",
+  "Cadets": "U18",
+  "Juniors": "U20",
+  "Espoirs": "U23",
+  "Seniors": "Seniors",
+  "Masters": "Masters",
 };
 export const tr = (lang: Lang) => (s: string) => (lang === "en" ? DICT[s] ?? s : s);

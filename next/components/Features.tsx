@@ -31,7 +31,7 @@ export async function ClubStandings({ limit = 6, teaser }: { limit?: number; tea
   const rows = data.items.slice(0, limit);
   if (!rows.length) return null;
   return (
-    <section id="classement" style={teaser ? { paddingTop: 0 } : undefined}><div className="wrap">
+    <section id="classement"><div className="wrap">
       {teaser && <div className="sec-head"><div><div className="eyebrow">{t("Classement des clubs · mis à jour à chaque publication")}</div><h2 style={{ marginTop: 14 }}>{t("Qui mène")}<br />{t("la saison")}</h2></div><Link href="/clubs/classement" className="sec-link">{t("Classement complet")}</Link></div>}
       <div className="stand">{rows.map((r) => <Link href={`/clubs?ligue=${r.regionCode}#ligue-${r.regionCode}`} className="st-row" key={r.id}><span className="st-rank">{String(r.rank).padStart(2, "0")}</span><span className="st-club"><b>{r.club}</b><small>{r.city} · {t("ligue de")} {r.region}</small></span><span className="st-n"><b>{r.gold}</b><small>{t("titres")}</small></span><span className="st-n"><b>{r.podiums}</b><small>{t("podiums")}</small></span><span className="st-n"><b>{r.athletes}</b><small>{t("athlètes")}</small></span><span className="st-pts">{r.points.toLocaleString("fr-FR")}<small>pts</small></span></Link>)}</div>
       <p className="dim" style={{ marginTop: 12, fontSize: 12.5 }}>{t("Compétitions nationales et internationales publiées, saison 2025-26. Points = somme des indices de performance (1 000 = record national).")}</p>

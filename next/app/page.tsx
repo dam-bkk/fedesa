@@ -46,19 +46,19 @@ export default async function Home() {
           <ClubMap clubs={clubs.items} active={activeCities} lang={lang} />
         </div>
       </section>
-      <section id="records" style={{ paddingTop: 0 }}>
+      <section id="records" className="tight">
         <div className="wrap">
           <div className="sec-head"><div><div className="eyebrow">{t("Homologués · à battre")}</div><h2 style={{ marginTop: 14 }}>{t("Records")}<br />{t("du Sénégal")}</h2></div><Link href="/records" className="sec-link">{t("Tous les records")}</Link></div>
           <RecordsTable items={records.items} />
         </div>
       </section>
       <LicencesBand  t={t} />
-      <section style={{ paddingTop: 0 }}><div className="wrap"><CatCalc lang={lang} fees={tarifs?.fees ?? []} season={tarifs?.season} /></div></section>
+      <section className="tight"><div className="wrap"><CatCalc lang={lang} fees={tarifs?.fees ?? []} season={tarifs?.season} /></div></section>
       <Timeline />
       <Federation  t={t} />
       <Partenaires  t={t} />
       <Faq  t={t} />
-      <section style={{ paddingTop: 0 }}><div className="wrap"><Subscribe lang={lang} /></div></section>
+      <section className="tight"><div className="wrap"><Subscribe lang={lang} /></div></section>
     </main>
   );
 }
