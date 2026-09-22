@@ -8,14 +8,12 @@ const isComp = (c: Competition | { error: string }): c is Competition => !("erro
 export async function RecordsMarquee() {
   const t = tr(await getLang());
   const { items } = await api.records();
-  const fresh = items.filter((r) => r.date && r.date >= "2025-11-01").sort((a, b) => (a.date! < b.date! ? 1 : -1)).slice(0, 6);
-  const nat = items.filter((r) => r.scope === "national").slice(0, 10);
-  const list = [...fresh.map((r) => ({ ...r, fresh: true })), ...nat.map((r) => ({ ...r, fresh: false }))];
-  if (!list.length) return null;
+  const nat = items.filter((r) => r.scope === "national").slice(0, 12);
+  if (!nat.length) return null;
   return (
-    <div className="mq mq-gold" aria-label={t("Records")}>
-      <div className="mq-tag">{fresh.length ? "Nouveaux records" : "Records du Sénégal"}</div>
-      <div className="mq-track">{list.map((r, k) => <span className={`mq-i ${r.fresh ? "new" : ""}`} key={k}>{r.fresh && <em>{t("NOUVEAU RECORD")}</em>}<b>{r.event} {r.sex === "F" ? "F" : "H"}</b> {r.holder} <span className="mono">{r.mark}</span>{r.fresh && r.region ? <span className="dim"> · {r.region}</span> : null}</span>)}</div>
+    <div className="mq mq-gold" aria-label={t("Records nationaux")}>
+      <div className="mq-tag">{t("Records du Sénégal")}</div>
+      <div className="mq-track">{nat.map((r, k) => <span className="mq-i" key={k}><b>{r.event} {r.sex === "F" ? "F" : "H"}</b> {r.holder} <span className="mono">{r.mark}</span></span>)}</div>
     </div>
   );
 }
