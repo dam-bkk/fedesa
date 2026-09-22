@@ -729,3 +729,21 @@ section.tight{padding-top:28px}
 }
 /* mobile : pas de tracés illustrés derrière le contenu */
 @media(max-width:860px){.illus{display:none}}
+/* ── mobile : partenaires 2 colonnes, pied de page 2 colonnes, en-tête compact ── */
+@media(max-width:700px){
+ .prow{grid-template-columns:1fr 1fr;gap:4px}
+ .plogo,.plogo.real{min-height:72px;padding:8px 0;justify-content:flex-start;gap:10px}.plogo.real{justify-content:center}
+ .plogo .pmark{width:40px;height:40px}.plogo .pmark svg{width:22px;height:22px}
+ .plogo .pname,.plogo b,.plogo span:not(.pmark){font-size:17px}.plogo-img{max-width:130px;max-height:44px}
+ .ptier{margin-top:18px}.plab{margin-bottom:6px}
+}
+@media(max-width:480px){
+ .f-top{grid-template-columns:1fr 1fr;gap:22px 18px;padding-bottom:26px}.f-top > div:first-child{grid-column:span 2}
+ .f-links{gap:8px;font-size:13.5px}footer{padding-block:40px 0}.f-about{margin-top:12px}.f-soc{margin-top:14px}
+ .f-bot{flex-direction:column;gap:8px;align-items:flex-start}
+}
+@media(max-width:1180px){
+ .nav .wrap{min-height:64px;padding-block:8px;align-items:center;justify-content:space-between}
+ .brand-mark{width:40px;height:40px}.brand-sub{display:none}
+ .mbtn.mbtn-ico{width:42px;height:42px}
+}
