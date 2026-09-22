@@ -849,3 +849,8 @@ html,body{overflow-x:clip}
  #live .who{gap:8px}#live .who .ava{display:none}#live .who-s{font-size:11px}
  #live .panel{border-radius:14px}#live .panel-top{padding:14px 12px;flex-direction:column;gap:8px;align-items:flex-start}#live .panel-ev{font-size:20px}#live .panel-meta{font-size:11px}
 }
+@media(max-width:700px){
+ #live .tbl tr{grid-template-columns:34px minmax(0,1fr) max-content;grid-template-areas:"pos main perf"}
+ #live .tbl td{order:0}#live .tbl td.c-pos{grid-area:pos}#live .tbl td.c-main{grid-area:main;min-width:0}#live .tbl td.c-perf{grid-area:perf;text-align:right}
+ #live .who div div:first-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px}
+}
