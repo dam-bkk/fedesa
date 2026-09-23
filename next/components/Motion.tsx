@@ -8,10 +8,9 @@ import { EP } from "@/lib/ep";
  * `prefers-reduced-motion` et les effets lourds s'arrêtent sous 821 px.
  * 1. titre du hero qui se lance + compte à rebours à volets
  * 2. chrono de scroll avec temps de passage et couloir courant
- * 3. couloirs de piste en parallaxe dans les sections claires
- * 4. bento des épreuves magnétique (icône, inclinaison, record en fond)
- * 5. portrait de l'athlète : photo qui court dans le masque, courbe qui se trace
- * 6. bascule en mode nuit avant le pied de page
+ * 3. bento des épreuves magnétique (icône, inclinaison, record en fond)
+ * 4. portrait de l'athlète : photo qui court dans le masque, courbe qui se trace
+ * 5. bascule en mode nuit avant le pied de page
  */
 export function Motion() {
   const path = usePathname();
@@ -77,28 +76,7 @@ export function Motion() {
     const hudSec = hud?.querySelector<HTMLElement>("[data-sec]") ?? null;
     let splitTimer = 0;
 
-    /* ── 3. couloirs en parallaxe ────────────────────────────────── */
-    const laneTargets = wide ? ["epreuves", "weekend", "faq", "classement", "agenda"].map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[] : [];
-    const lanes: { host: HTMLElement; layers: SVGGElement[] }[] = [];
-    laneTargets.forEach((host) => {
-      if (host.querySelector(":scope > .lanes")) return;
-      host.classList.add("has-lanes");
-      const ns = "http://www.w3.org/2000/svg";
-      const wrap = document.createElement("span"); wrap.className = "lanes"; wrap.setAttribute("aria-hidden", "true");
-      const svg = document.createElementNS(ns, "svg"); svg.setAttribute("viewBox", "0 0 1200 1200"); svg.setAttribute("preserveAspectRatio", "none");
-      const layers: SVGGElement[] = [];
-      for (let i = 0; i < 8; i++) {
-        const g = document.createElementNS(ns, "g"); g.setAttribute("data-s", String(0.08 + i * 0.05));
-        const x = 60 + i * 155;
-        const line = document.createElementNS(ns, "path"); line.setAttribute("d", `M${x} -400 V1600`); line.setAttribute("stroke", "currentColor"); line.setAttribute("stroke-width", "1.5"); g.appendChild(line);
-        for (let y = -400; y < 1600; y += 200) { const t = document.createElementNS(ns, "path"); t.setAttribute("d", `M${x - 9} ${y} H${x + 9}`); t.setAttribute("stroke", "currentColor"); t.setAttribute("stroke-width", i % 2 ? "3" : "6"); g.appendChild(t); }
-        svg.appendChild(g); layers.push(g);
-      }
-      wrap.appendChild(svg); host.insertBefore(wrap, host.firstChild);
-      lanes.push({ host, layers });
-    });
-
-    /* ── 4. bento magnétique ─────────────────────────────────────── */
+    /* ── 3. bento magnétique ─────────────────────────────────────── */
     const tiles = $$<HTMLElement>("#epreuves .bx");
     tiles.forEach((tile) => {
       const n = Number(tile.dataset.ep ?? 0), e = EP[n];
@@ -119,15 +97,15 @@ export function Motion() {
       on(tile, "mousemove", move as EventListener); on(tile, "mouseleave", leave as EventListener);
     });
 
-    /* ── 5. portrait de l'athlète ────────────────────────────────── */
+    /* ── 4. portrait de l'athlète ────────────────────────────────── */
     const oval = $<HTMLImageElement>(".spot-fig .oval img");
     const spark = $<SVGPolylineElement>(".spark polyline");
     if (spark) { const len = spark.getTotalLength(); spark.style.strokeDasharray = `${len}`; spark.style.strokeDashoffset = `${len}`; }
     const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "-12% 0px -12% 0px" });
-    $$(".spark, .cmap svg, .tl-track, .monde-grid").forEach((el) => io.observe(el));
+    $$(".spark, .tl-track, .monde-grid").forEach((el) => io.observe(el));
     off.push(() => io.disconnect());
 
-    /* ── 6. mode nuit avant le pied de page ──────────────────────── */
+    /* ── 5. mode nuit avant le pied de page ──────────────────────── */
     const nightZone = $$<HTMLElement>("main > section").slice(-1)[0] ?? null;
     nightZone?.classList.add("night-zone");
 
@@ -149,12 +127,6 @@ export function Motion() {
         if (hudLane && hudLane.textContent !== cur.lane) hudLane.textContent = cur.lane;
         if (hudSec && hudSec.textContent !== cur.label) hudSec.textContent = cur.label;
       }
-      lanes.forEach(({ host, layers }) => {
-        const r = host.getBoundingClientRect();
-        if (r.bottom < -200 || r.top > vh + 200) return;
-        const prog = (vh - r.top) / (vh + r.height);
-        layers.forEach((g) => { const s = Number(g.getAttribute("data-s")); g.style.transform = `translateY(${((prog - 0.5) * 340 * s).toFixed(1)}px)`; });
-      });
       if (oval && wide) { const r = oval.parentElement!.getBoundingClientRect(); if (r.bottom > -100 && r.top < vh + 100) { const prog = (vh - r.top) / (vh + r.height); oval.style.transform = `translateY(${((0.5 - prog) * 46).toFixed(1)}px) scale(1.12)`; } }
       if (nightZone) { const r = nightZone.getBoundingClientRect(); const n = Math.min(1, Math.max(0, (vh - r.top) / Math.max(1, Math.min(r.height, vh * 0.9)))); nightZone.style.setProperty("--night", n.toFixed(3)); }
     };

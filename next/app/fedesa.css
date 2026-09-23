@@ -885,13 +885,6 @@ html,body{overflow-x:clip}
 .chrono .ch-split.show{opacity:1;transform:none}
 @media(max-width:820px){.chrono{display:none}}
 
-/* 3 — couloirs de piste en parallaxe */
-.has-lanes{position:relative;overflow:hidden}
-.has-lanes>.wrap{position:relative;z-index:1}
-.lanes{position:absolute;inset:-120px 0;pointer-events:none;color:var(--ink);opacity:.07;z-index:0}
-.lanes svg{width:100%;height:100%;display:block}
-.lanes g{will-change:transform}
-.dark .lanes,.spot .lanes{color:#fff;opacity:.09}
 
 /* 4 — bento magnétique */
 .bx{overflow:hidden;transform:perspective(720px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--ty,0px));transform-style:preserve-3d;
@@ -920,16 +913,6 @@ html,body{overflow-x:clip}
 .monde-grid.in .mcard:nth-child(5),.tl-track.in .tl-card:nth-child(5){animation-delay:.28s}
 .monde-grid.in .mcard:nth-child(n+6),.tl-track.in .tl-card:nth-child(n+6){animation-delay:.35s}
 
-/* 6 — carte des clubs qui respire */
-.cmap svg .city{opacity:0}
-.cmap svg.in .city{animation:cityin .5s cubic-bezier(.16,.84,.34,1) both;animation-delay:calc(var(--i,0) * 38ms)}
-@keyframes cityin{from{opacity:0}to{opacity:1}}
-.cmap svg .city .dot{transform-box:fill-box;transform-origin:center;transform:scale(.4)}
-.cmap svg.in .city .dot{animation:dotin .55s cubic-bezier(.34,1.56,.64,1) both;animation-delay:calc(var(--i,0) * 38ms)}
-@keyframes dotin{from{transform:scale(.4)}to{transform:scale(1)}}
-.cmap svg .route{stroke-dasharray:1;stroke-dashoffset:1;opacity:.5}
-.cmap svg.in .route{animation:draw 2.4s cubic-bezier(.4,0,.2,1) .25s both}
-@keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
 
 /* 7 — mode nuit avant le pied de page */
 .night-zone{background:color-mix(in oklab,var(--paper),var(--ink) calc(var(--night,0) * 100%));color:color-mix(in oklab,var(--ink),var(--paper) calc(var(--night,0) * 100%))}
@@ -950,13 +933,10 @@ html,body{overflow-x:clip}
 
 @media(prefers-reduced-motion:reduce){
  .hero-h1.go .hl-i,.hero-copy .hero-kick,.hero-copy .hero-sub,.hero-copy .hero-btns,.hero-mimg,.hero-strip,.hero-stats,
- .monde-grid .mcard,.tl-track .tl-card,.cmap svg .city,.cmap svg .city .dot,.cmap svg .route{animation:none!important;opacity:1!important;transform:none!important;clip-path:none!important}
+ .monde-grid .mcard,.tl-track .tl-card{animation:none!important;opacity:1!important;transform:none!important;clip-path:none!important}
  .spark polyline{stroke-dashoffset:0!important}.wipe{display:none}
 }
 /* réglages après relecture à l'écran */
 .bx-lg:hover .bx-big{color:var(--volt);opacity:.22}
-.lanes{-webkit-mask-image:linear-gradient(180deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(180deg,transparent,#000 12%,#000 88%,transparent)}
-.lanes g path:not(:first-child){opacity:.55}
 .chrono .ch-split{right:auto;left:0;bottom:calc(100% + 8px);transform:translateY(6px)}
 .chrono .ch-split.show{transform:none}
-.cmap svg.in .route{opacity:.42}
