@@ -18,7 +18,7 @@ export default async function CompetitionPage({ params }: { params: Promise<{ id
       <section><div className="wrap">
         {c.events.map((e) => (
           <div className="res-ev" key={e.eventCode + e.sex}>
-            <h3>{e.event} <span className={`badge ${e.sex === "F" ? "b-q" : "b-n"}`}>{e.sex === "F" ? "Femmes" : "Hommes"}</span></h3>
+            <h2>{e.event} <span className={`badge ${e.sex === "F" ? "b-q" : "b-n"}`}>{e.sex === "F" ? "Femmes" : "Hommes"}</span></h2>
             <div className="panel-l"><div className="scrollx"><table className="tbl"><thead><tr><th style={{ width: 60 }}>{t("Pos")}</th><th>{t("Athlète")}</th><th>{t("Club")}</th><th>{t("Cat.")}</th><th>{t("Perf.")}</th>{e.kind === "t" && <th>{t("Vent")}</th>}<th>{t("Pts")}</th></tr></thead><tbody>
               {e.results.map((r) => <tr key={r.athleteId}><td data-th="Pos" className="c-pos"><span className={`rank ${r.rank === 1 ? "g" : r.rank === 2 ? "s" : r.rank === 3 ? "b" : ""}`}>{r.rank ?? "—"}</span></td><td className="c-main" data-th={t("Athlète")}><Link href={`/athletes/${r.athleteId}`}>{r.athlete}</Link>{r.record && <span className="badge b-rn" style={{ marginLeft: 8 }}>{r.record}</span>}</td><td className="dim" data-th={t("Club")}>{r.club}</td><td className="dim" data-th={t("Cat.")}>{r.category}</td><td className="c-perf" data-th={t("Perf.")}><span className="perf">{r.mark}</span></td>{e.kind === "t" && <td className="dim mono" data-th={t("Vent")}>{r.wind != null ? (r.wind > 0 ? "+" : "") + r.wind.toFixed(1) : "—"}</td>}<td className="dim mono" data-th="Pts">{r.points || ""}</td></tr>)}
             </tbody></table></div></div>

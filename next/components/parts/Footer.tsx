@@ -18,11 +18,11 @@ export default function Footer({ t }: { t: (s: string) => string }) {
           <a  href="/" aria-label={t("YouTube")}><svg  width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path  d="M15.3 4.8a1.9 1.9 0 0 0-1.3-1.4C12.8 3 8 3 8 3s-4.8 0-6 .4A1.9 1.9 0 0 0 .7 4.8C.4 6 .4 8 .4 8s0 2 .3 3.2a1.9 1.9 0 0 0 1.3 1.4c1.2.4 6 .4 6 .4s4.8 0 6-.4a1.9 1.9 0 0 0 1.3-1.4c.3-1.2.3-3.2.3-3.2s0-2-.3-3.2ZM6.5 10.4V5.6L10.6 8l-4.1 2.4Z" /></svg></a>
         </div>
       </div>
-      <div><h5>{t("Compétitions")}</h5><div  className="f-links"><a  href="/competitions">{t("Calendrier fédéral")}</a><a  href="/resultats">{t("Résultats")}</a>
+      <div><h2>{t("Compétitions")}</h2><div  className="f-links"><a  href="/competitions">{t("Calendrier fédéral")}</a><a  href="/resultats">{t("Résultats")}</a>
         <a  href="/records">{t("Records nationaux")}</a><a  href="/">{t("Minima de sélection")}</a><a  href="/">{t("Règlements sportifs")}</a></div></div>
-      <div><h5>{t("Pratiquer")}</h5><div  className="f-links"><a  href="/clubs">{t("Trouver un club")}</a><a  href="/licence">{t("Prendre une licence")}</a>
+      <div><h2>{t("Pratiquer")}</h2><div  className="f-links"><a  href="/clubs">{t("Trouver un club")}</a><a  href="/licence">{t("Prendre une licence")}</a>
         <a  href="/">{t("Athlétisme scolaire")}</a><a  href="/">{t("Para-athlétisme")}</a><a  href="/">{t("Formations")}</a></div></div>
-      <div><h5>{t("La fédération")}</h5><div  className="f-links"><a  href="/federation">{t("Comité directeur")}</a><a  href="/">{t("Ligues régionales")}</a>
+      <div><h2>{t("La fédération")}</h2><div  className="f-links"><a  href="/federation">{t("Comité directeur")}</a><a  href="/">{t("Ligues régionales")}</a>
         <a  href="/">{t("Commissions")}</a><a  href="/federation#partenaires">{t("Partenaires")}</a><a  href="/medias">{t("Médiathèque")}</a></div></div>
     </div>
     <div  className="f-bot">

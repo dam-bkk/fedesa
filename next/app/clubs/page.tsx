@@ -28,7 +28,7 @@ export default async function Clubs({ searchParams }: { searchParams: Promise<{ 
         <div className="tools" style={{ marginTop: 40 }}><form><label htmlFor="ligue" className="vis-hidden">{t("Ligue")}</label><select id="ligue" name="ligue" defaultValue={ligue} className="sel"><option value="">{t("Toutes les ligues")}</option>{LIGUES.map((l) => <option key={l.code} value={l.code}>{l.name}</option>)}</select><button className="btn btn-ink btn-sm" style={{ marginLeft: 10 }}>{t("Filtrer")}</button></form></div>
         {byRegion.map((l) => (
           <div key={l.code} id={`ligue-${l.code}`}>
-            <div className="dir-h"><h3>{t("Ligue de")} {l.name}</h3><span>{l.clubs.length} {t("club")}{l.clubs.length > 1 ? "s" : ""} · {l.venue}</span></div>
+            <div className="dir-h"><h2>{t("Ligue de")} {l.name}</h2><span>{l.clubs.length} {t("club")}{l.clubs.length > 1 ? "s" : ""} · {l.venue}</span></div>
             <div className="dir">{l.clubs.map((c) => <div className="dir-i" key={c.id}><b>{c.name}</b><span>{c.city}{c.founded ? ` · fondé en ${c.founded}` : ""} · {c.licensees} {t("licenciés")}</span>{c.president && <span>{t("Président·e :")} {c.president}</span>}<span className="mono">{c.phone}{c.email ? ` · ${c.email}` : ""}</span></div>)}</div>
           </div>
         ))}
