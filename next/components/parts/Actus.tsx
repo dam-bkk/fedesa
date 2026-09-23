@@ -7,10 +7,10 @@ export default function Actus({ t }: { t: (s: string) => string }) {
     <div  className="sec-head">
       <div><div  className="eyebrow">{t("Ce qui vient de se passer")}</div><h2  style={{"marginTop":"14px"}}>{t("À la une")}</h2></div>
       <div  className="tabs" id="newsChips" role="group" aria-label={t("Filtrer les actualités")}>
-        <button  className="tab" type="button" data-f="all" aria-selected="true">{t("Tout")}</button>
-        <button  className="tab" type="button" data-f="compet" aria-selected="false">{t("Compétition")}</button>
-        <button  className="tab" type="button" data-f="selection" aria-selected="false">{t("Sélection")}</button>
-        <button  className="tab" type="button" data-f="formation" aria-selected="false">{t("Formation")}</button>
+        <button  className="tab" type="button" data-f="all" aria-pressed="true">{t("Tout")}</button>
+        <button  className="tab" type="button" data-f="compet" aria-pressed="false">{t("Compétition")}</button>
+        <button  className="tab" type="button" data-f="selection" aria-pressed="false">{t("Sélection")}</button>
+        <button  className="tab" type="button" data-f="formation" aria-pressed="false">{t("Formation")}</button>
       </div>
     </div>
 

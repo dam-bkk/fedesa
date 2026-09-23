@@ -9,7 +9,7 @@ export async function Timeline() {
   const t = tr(await getLang());
   return (
     <section id="histoire" className="tl-sec"><div className="wrap"><div className="sec-head"><div><div className="eyebrow">1960 → 2027</div><h2 style={{ marginTop: 14 }}>{t("Soixante ans")}<br />{t("de piste")}</h2></div><span className="mono dim" style={{ fontSize: 11, letterSpacing: ".14em", textTransform: "uppercase" }}>{t("Faites défiler →")}</span></div></div>
-      <div className="tl-scroll"><div className="tl-track">{HISTOIRE.map((h, i) => <article className={`tl-card ${i === HISTOIRE.length - 1 ? "next" : ""}`} key={h.y}><div className="tl-y">{h.y}</div><b>{t(h.t)}</b><p>{t(h.d)}</p></article>)}</div></div>
+      <div className="tl-scroll" tabIndex={0} role="group" aria-label={t("Frise 1960 → 2027, défilement horizontal")}><div className="tl-track">{HISTOIRE.map((h, i) => <article className={`tl-card ${i === HISTOIRE.length - 1 ? "next" : ""}`} key={h.y}><div className="tl-y">{h.y}</div><b>{t(h.t)}</b><p>{t(h.d)}</p></article>)}</div></div>
     </section>
   );
 }

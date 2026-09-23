@@ -267,5 +267,6 @@ export const DICT: Record<string, string> = {
   "Espoirs": "U23",
   "Seniors": "Seniors",
   "Masters": "Masters",
+  "Frise 1960 → 2027, défilement horizontal": "Timeline 1960 → 2027, horizontal scroll",
 };
 export const tr = (lang: Lang) => (s: string) => (lang === "en" ? DICT[s] ?? s : s);

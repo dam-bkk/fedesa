@@ -230,7 +230,7 @@ h1.hero-h1 .ol{-webkit-text-stroke:2.5px var(--ink);color:transparent;}
 .tab{border:0;background:none;padding:9px 18px;border-radius:999px;font-family:var(--mono);font-size:11px;
   letter-spacing:.12em;text-transform:uppercase;color:inherit;opacity:.62;cursor:pointer;transition:all .16s;}
 .tab:hover{opacity:1;}
-.tab[aria-selected="true"]{background:var(--volt);color:var(--ink);opacity:1;}
+.tab[aria-selected="true"],.tab[aria-pressed="true"],.tab[aria-current="page"]{background:var(--volt);color:var(--ink);opacity:1;}
 .panel{margin-top:24px;border:1px solid rgba(255,255,255,.16);border-radius:22px;overflow:hidden;background:rgba(255,255,255,.03);}
 .panel-top{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:20px 24px;
   border-bottom:1px solid rgba(255,255,255,.16);}
@@ -765,7 +765,7 @@ html,body{overflow-x:clip}
 .fx:hover{background:var(--paper);transform:none;box-shadow:6px 6px 0 var(--volt)}
 .pill{border-radius:0}.pill.reg{background:#FFD100;border-color:#E6BC00;color:var(--ink)}
 /* onglets : jamais de chevauchement */
-.tabs{border-radius:0;flex-wrap:wrap;gap:6px;padding:0;border:0}.tab{border-radius:0;border:1.5px solid currentColor}.tab[aria-selected="true"]{background:var(--volt);color:var(--ink);border-color:var(--volt)}
+.tabs{border-radius:0;flex-wrap:wrap;gap:6px;padding:0;border:0}.tab{border-radius:0;border:1.5px solid currentColor}.tab[aria-selected="true"],.tab[aria-pressed="true"],.tab[aria-current="page"]{background:var(--volt);color:var(--ink);border-color:var(--volt)}
 @media(max-width:760px){
  .catcalc{grid-template-columns:1fr}.cc-l{border-right:0;border-bottom:1.5px solid var(--ink);padding:24px 20px}.cc-r{padding:24px 20px}.cc-l h2{font-size:32px}.cc-cat{font-size:64px}
  .cc-ladder-h{grid-template-columns:1fr 1fr 1fr}.cc-ladder li{grid-template-columns:48px 1fr 1fr 1fr;gap:8px;font-size:12.5px}.cc-ladder li b{font-size:20px}
@@ -939,3 +939,16 @@ table.tbl tbody tr:hover .rank.g{background:var(--gold);color:var(--ink)}
 .step h4{font-size:clamp(19px,1.6vw,23px);margin:0;line-height:1.15}
 .step p{font-size:14.5px;margin-top:6px;color:#4A3B00;max-width:46ch}
 @media(max-width:900px){.step{padding:16px 0;gap:0 18px}.step p{font-size:14px}}
+
+/* ═══ ACCESSIBILITÉ : contrastes ≥ 4,5:1 ══════════════════════════════ */
+/* .dim sur fond clair : --smoke (2,38:1) → --muted (5,52:1) ; --smoke reste réservé aux fonds sombres */
+.dim{color:var(--muted)}
+.dark .dim,.spot .dim,footer .dim,.mcard .dim,.night .dim,.epm-r .dim,[class*="b-ink"] .dim{color:var(--smoke)}
+.pod small,.best-who small,.cc-ladder li .mono{color:var(--muted)}
+/* texte sur le vert vif */
+.tarif:first-child .s,.tarif:first-child .l{color:#0F2A1C}
+.fx[data-level="national"] .fx-m,.fx[data-level="régional"] .fx-m,.fx[data-level="regional"] .fx-m{color:#0F2A1C}
+.spot .dim,.spot small{color:#123322}
+/* badges verts sur fond vert pâle */
+.b-q,.panel-l .b-q{color:#0A6B33}
+.dark .b-q,.panel .b-q,.panel-top .b-q{color:var(--volt)}

@@ -24,7 +24,7 @@ export function ClubMap({ clubs, active = [], lang = "fr" }: { clubs: Club[]; ac
         <polygon points={poly(GM)} fill="var(--paper)" stroke="var(--ink)" strokeWidth="1" strokeDasharray="3 3" />
         <text x={X(-15.3)} y={Y(13.36)} fontSize="9" fill="var(--muted)" fontFamily="var(--mono)" letterSpacing="2">{t("GAMBIE")}</text>
         {cities.map((c) => { const r = 4 + Math.min(10, Math.sqrt(c.clubs.length) * 2.2); const on = (pinned ?? hover) === c.city; return (
-          <g key={c.city} transform={`translate(${X(c.lon)} ${Y(c.lat)})`} onMouseEnter={() => setHover(c.city)} onClick={() => setPinned(pinned === c.city ? null : c.city)} style={{ cursor: "pointer" }} tabIndex={0} onFocus={() => setHover(c.city)} aria-label={`${c.city} : ${c.clubs.length} club${c.clubs.length > 1 ? "s" : ""}`}>
+          <g key={c.city} transform={`translate(${X(c.lon)} ${Y(c.lat)})`} onMouseEnter={() => setHover(c.city)} onClick={() => setPinned(pinned === c.city ? null : c.city)} style={{ cursor: "pointer" }} tabIndex={0} role="img" onFocus={() => setHover(c.city)} aria-label={`${c.city} : ${c.clubs.length} club${c.clubs.length > 1 ? "s" : ""}`}>
             {active.includes(c.city) && <circle r={r + 4} className="pulse" fill="none" stroke="var(--volt)" strokeWidth="2" />}<circle r={r + 6} fill={on ? "rgba(0,224,90,.25)" : "transparent"} />
             <circle r={r} fill={on ? "var(--ink)" : "var(--volt)"} stroke="var(--ink)" strokeWidth="1.5" />
             {c.clubs.length > 4 && <text textAnchor="middle" dy="3.5" fontSize="9" fontWeight="700" fill={on ? "var(--volt)" : "var(--ink)"} fontFamily="var(--mono)">{c.clubs.length}</text>}
