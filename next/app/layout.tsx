@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import Footer from "@/components/parts/Footer";
 import { Enhance } from "@/components/Enhance";
 import { Motion } from "@/components/Motion";
+import { OrgJsonLd } from "@/components/Jsonld";
 import { getLang } from "@/lib/server/lang";
 import { tr } from "@/lib/i18n";
 import { setLang } from "./actions";
@@ -18,6 +19,11 @@ export const metadata: Metadata = {
   title: { default: "FEDESA — Fédération Sénégalaise d'Athlétisme", template: "%s · FEDESA" },
   description: "Le site de la Fédération Sénégalaise d'Athlétisme : calendrier, résultats officiels, records, clubs, licences et actualités.",
   openGraph: { type: "website", locale: "fr_SN", siteName: "FEDESA" },
+  alternates: { canonical: "/" },
+  applicationName: "FEDESA",
+  authors: [{ name: "Fédération Sénégalaise d'Athlétisme" }],
+  keywords: ["athlétisme", "Sénégal", "FEDESA", "licence", "compétitions", "records", "clubs"],
+  formatDetection: { telephone: false },
 };
 export const viewport: Viewport = { themeColor: "#0B1410", width: "device-width", initialScale: 1, viewportFit: "cover" };
 
@@ -25,7 +31,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const lang = await getLang(); const t = tr(lang);
   return (
     <html lang={lang} className={`${poster.variable} ${body.variable} ${mono.variable}`}>
-      <body><Header lang={lang} setLang={setLang} />{children}<Footer t={t} /><Enhance /><Motion /></body>
+      <body><OrgJsonLd /><Header lang={lang} setLang={setLang} />{children}<Footer t={t} /><Enhance /><Motion /></body>
     </html>
   );
 }
