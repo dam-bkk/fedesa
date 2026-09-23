@@ -870,21 +870,6 @@ html,body{overflow-x:clip}
 .hs-cd .v.flip{animation:flipd .34s cubic-bezier(.4,0,.2,1)}
 @keyframes flipd{0%{transform:rotateX(0)}45%{transform:rotateX(-84deg);opacity:.25}100%{transform:rotateX(0)}}
 
-/* 2 — chrono de scroll */
-.chrono{position:fixed;right:20px;bottom:20px;z-index:60;display:grid;gap:7px;padding:14px 16px 12px;background:var(--ink);color:#fff;
-  opacity:0;transform:translateY(14px);transition:opacity .35s var(--ease,ease),transform .35s var(--ease,ease);pointer-events:none;min-width:212px}
-.chrono.on{opacity:1;transform:none}
-.chrono .ch-t{font-family:var(--poster);font-size:38px;line-height:.9;letter-spacing:.01em;color:var(--volt);font-variant-numeric:tabular-nums}
-.chrono .ch-t i{font-style:normal;font-family:var(--mono);font-size:18px;opacity:.7;padding:0 1px}
-.chrono .ch-l{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--smoke)}
-.chrono .ch-l span:first-child{color:var(--volt)}
-.chrono .ch-bar{display:block;height:2px;background:rgba(255,255,255,.18)}
-.chrono .ch-bar i{display:block;height:100%;background:var(--volt);transform-origin:0 50%;transform:scaleX(0)}
-.chrono .ch-split{position:absolute;right:calc(100% + 10px);bottom:14px;white-space:nowrap;font-family:var(--mono);font-size:10px;letter-spacing:.14em;
-  text-transform:uppercase;background:var(--volt);color:var(--ink);padding:6px 10px;opacity:0;transform:translateX(8px);transition:opacity .25s,transform .25s}
-.chrono .ch-split.show{opacity:1;transform:none}
-@media(max-width:820px){.chrono{display:none}}
-
 
 /* 4 — bento magnétique */
 .bx{overflow:hidden;transform:perspective(720px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--ty,0px));transform-style:preserve-3d;
@@ -898,9 +883,7 @@ html,body{overflow-x:clip}
 .bx-ink .bx-big,.bx-ink:hover .bx-big{color:var(--volt)}.bx-ink:hover .bx-big{opacity:.22}
 .bx-lg:hover .bx-big,.bx-ink:hover .bx-big{transform:none}
 
-/* 5 — portrait : la photo court dans le masque, la courbe se trace */
-.spot-fig .oval{overflow:hidden}
-.spot-fig .oval img{will-change:transform}
+/* 3 — la courbe de progression se trace à l'entrée */
 .spark polyline{transition:stroke-dashoffset 1.5s cubic-bezier(.16,.84,.34,1)}
 .spark.in polyline{stroke-dashoffset:0!important}
 

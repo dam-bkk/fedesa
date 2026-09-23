@@ -7,8 +7,7 @@ import { EP } from "@/lib/ep";
  * Mise en mouvement du site — une seule boucle de scroll, tout est coupé sous
  * `prefers-reduced-motion` et les effets lourds s'arrêtent sous 821 px.
  * 1. titre du hero qui se lance + compte à rebours à volets
- * 2. chrono de scroll avec temps de passage et couloir courant
- * 3. bento des épreuves magnétique (icône, inclinaison, record en fond)
+ * 2. bento des épreuves magnétique (icône, inclinaison, record en fond)
  * 4. portrait de l'athlète : photo qui court dans le masque, courbe qui se trace
  */
 export function Motion() {
@@ -61,21 +60,7 @@ export function Motion() {
       off.push(() => obs.disconnect());
     }
 
-    /* ── 2. chrono de scroll ─────────────────────────────────────── */
-    const SECTIONS: [string, string][] = [["epreuves", "Épreuves"], ["actus", "À la une"], ["live", "Résultats"], ["weekend", "Le week-end"], ["agenda", "Calendrier"], ["monde", "Dans le monde"], ["athlete", "Athlète"], ["classement", "Clubs"], ["regions", "Carte"], ["records", "Records"], ["licences", "Licence"], ["histoire", "Histoire"], ["federation", "Fédération"], ["faq", "Questions"]];
-    const marks = SECTIONS.map(([id, label], k) => ({ el: document.getElementById(id), label, lane: String((k % 8) + 1).padStart(2, "0"), done: false })).filter((m) => m.el);
-    let hud: HTMLElement | null = null, hudTime: HTMLElement | null = null, hudLane: HTMLElement | null = null, hudBar: HTMLElement | null = null, hudSplit: HTMLElement | null = null;
-    if (wide && marks.length > 2) {
-      hud = document.createElement("aside"); hud.className = "chrono"; hud.setAttribute("aria-hidden", "true");
-      hud.innerHTML = '<span class="ch-t"><b data-t>00</b><i>&#39;&#39;</i><b data-c>00</b></span><span class="ch-l"><span data-lane>01</span> <span data-sec></span></span><span class="ch-bar"><i></i></span><span class="ch-split" data-split></span>';
-      document.body.appendChild(hud); off.push(() => hud?.remove());
-      hudTime = hud.querySelector("[data-t]"); hudLane = hud.querySelector("[data-lane]"); hudBar = hud.querySelector(".ch-bar i"); hudSplit = hud.querySelector("[data-split]");
-    }
-    const hudCs = hud?.querySelector<HTMLElement>("[data-c]") ?? null;
-    const hudSec = hud?.querySelector<HTMLElement>("[data-sec]") ?? null;
-    let splitTimer = 0;
-
-    /* ── 3. bento magnétique ─────────────────────────────────────── */
+    /* ── 2. bento magnétique ─────────────────────────────────────── */
     const tiles = $$<HTMLElement>("#epreuves .bx");
     tiles.forEach((tile) => {
       const n = Number(tile.dataset.ep ?? 0), e = EP[n];
@@ -96,38 +81,14 @@ export function Motion() {
       on(tile, "mousemove", move as EventListener); on(tile, "mouseleave", leave as EventListener);
     });
 
-    /* ── 4. portrait de l'athlète ────────────────────────────────── */
-    const oval = $<HTMLImageElement>(".spot-fig .oval img");
+    /* ── 3. révélations à l'entrée ───────────────────────────────── */
     const spark = $<SVGPolylineElement>(".spark polyline");
     if (spark) { const len = spark.getTotalLength(); spark.style.strokeDasharray = `${len}`; spark.style.strokeDashoffset = `${len}`; }
     const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "-12% 0px -12% 0px" });
     $$(".spark, .tl-track, .monde-grid").forEach((el) => io.observe(el));
     off.push(() => io.disconnect());
 
-    /* ── boucle unique ───────────────────────────────────────────── */
-    let ticking = false;
-    const update = () => {
-      ticking = false;
-      const y = window.scrollY, vh = window.innerHeight;
-      const max = Math.max(1, document.documentElement.scrollHeight - vh);
-      const p = Math.min(1, Math.max(0, y / max));
-      if (hud) {
-        const s = p * 60, sec = Math.floor(s), cs = Math.floor((s - sec) * 100);
-        if (hudTime) hudTime.textContent = String(sec).padStart(2, "0");
-        if (hudCs) hudCs.textContent = String(cs).padStart(2, "0");
-        if (hudBar) hudBar.style.transform = `scaleX(${p.toFixed(4)})`;
-        hud.classList.toggle("on", y > vh * 0.6);
-        let cur = marks[0];
-        marks.forEach((m) => { const top = m.el!.getBoundingClientRect().top; if (top < vh * 0.45) cur = m; if (!m.done && top < vh * 0.45 && top > -vh) { m.done = true; if (hudSplit) { hudSplit.textContent = `${m.label} ${String(sec).padStart(2, "0")}''${String(cs).padStart(2, "0")}`; hudSplit.classList.add("show"); clearTimeout(splitTimer); splitTimer = window.setTimeout(() => hudSplit?.classList.remove("show"), 1900); } } });
-        if (hudLane && hudLane.textContent !== cur.lane) hudLane.textContent = cur.lane;
-        if (hudSec && hudSec.textContent !== cur.label) hudSec.textContent = cur.label;
-      }
-      if (oval && wide) { const r = oval.parentElement!.getBoundingClientRect(); if (r.bottom > -100 && r.top < vh + 100) { const prog = (vh - r.top) / (vh + r.height); oval.style.transform = `translateY(${((0.5 - prog) * 46).toFixed(1)}px) scale(1.12)`; } }
-    };
-    const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
-    on(window, "scroll", onScroll, { passive: true }); on(window, "resize", onScroll);
-    update();
-    return () => { off.forEach((f) => f()); clearTimeout(splitTimer); };
+    return () => off.forEach((f) => f());
   }, [path]);
   return null;
 }
