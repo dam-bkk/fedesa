@@ -906,5 +906,6 @@ html,body{overflow-x:clip}
 }
 /* réglages après relecture à l'écran */
 .bx-lg:hover .bx-big{color:var(--volt);opacity:.22}
-.chrono .ch-split{right:auto;left:0;bottom:calc(100% + 8px);transform:translateY(6px)}
-.chrono .ch-split.show{transform:none}
+/* médiathèque : respiration sous la bande sombre, galerie resserrée sur mobile */
+#galerie .sec-head{margin-bottom:26px}
+@media(max-width:820px){#galerie{padding-top:clamp(40px,8vw,64px)}.gal{gap:8px}}

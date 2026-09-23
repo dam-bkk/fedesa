@@ -2,7 +2,7 @@
 export default function Galerie({ t }: { t: (s: string) => string }) {
   return (
 <>
-<section  id="galerie" style={{"paddingTop":"0"}}>
+<section  id="galerie">
   <div  className="wrap">
     <div  className="sec-head">
       <div><div  className="eyebrow">{t("Médiathèque")}</div><h2  style={{"marginTop":"14px"}}>{t("Ce que la piste")}<br />{t("a retenu")}</h2></div>
