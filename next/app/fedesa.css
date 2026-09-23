@@ -862,9 +862,9 @@ html,body{overflow-x:clip}
 .hero-h1.pre .hl-i{display:inline-block;transform:translateY(.16em);clip-path:inset(-.22em -.22em 100% -.22em)}
 .hero-h1.go .hl-i{animation:hlin .76s cubic-bezier(.16,.84,.34,1) both}
 @keyframes hlin{from{transform:translateY(.16em);clip-path:inset(-.22em -.22em 100% -.22em)}to{transform:none;clip-path:inset(-.22em -.22em -.22em -.22em)}}
-.hero-copy .hero-kick,.hero-copy .hero-sub,.hero-copy .hero-btns,.hero-mimg{animation:riseIn .7s cubic-bezier(.16,.84,.34,1) both}
-.hero-copy .hero-kick{animation-delay:.05s}.hero-copy .hero-sub{animation-delay:.34s}.hero-copy .hero-btns{animation-delay:.44s}.hero-mimg{animation-delay:.52s}
-.hero-strip,.hero-stats{animation:riseIn .8s cubic-bezier(.16,.84,.34,1) .6s both}
+.hero .hero-kick,.hero .hero-sub,.hero .hero-btns,.hero .hero-mimg{animation:riseIn .7s cubic-bezier(.16,.84,.34,1) both}
+.hero .hero-kick{animation-delay:.05s}.hero .hero-sub{animation-delay:.34s}.hero .hero-btns{animation-delay:.44s}.hero-mimg{animation-delay:.52s}
+.hero .hero-strip,.hero .hero-stats{animation:riseIn .8s cubic-bezier(.16,.84,.34,1) .6s both}
 @keyframes riseIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 .hs-cd .v{display:inline-block;transform-origin:50% 60%}
 .hs-cd .v.flip{animation:flipd .34s cubic-bezier(.4,0,.2,1)}
