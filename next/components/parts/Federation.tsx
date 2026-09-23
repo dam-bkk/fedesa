@@ -6,7 +6,7 @@ export default function Federation({ t }: { t: (s: string) => string }) {
   <div  className="wrap">
     <div  className="reg-in" style={{"alignItems":"center"}}>
       <figure  style={{"margin":"0","position":"relative"}}>
-        <div  className="oval" style={{"maxWidth":"340px"}}><img  src="/img/president.avif" alt={t("Sara Oualy, président de la Fédération Sénégalaise d'Athlétisme")} width="700" height="860" /></div>
+        <div  className="oval" style={{"maxWidth":"340px"}}><img  src="/img/president.avif" loading="lazy" decoding="async" alt={t("Sara Oualy, président de la Fédération Sénégalaise d'Athlétisme")} width="700" height="860" /></div>
       </figure>
       <div>
         <div  className="eyebrow">{t("Le bureau fédéral")}</div>

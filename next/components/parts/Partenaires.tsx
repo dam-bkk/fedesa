@@ -11,18 +11,18 @@ export default function Partenaires({ t }: { t: (s: string) => string }) {
     <div  className="ptier">
       <div  className="plab">{t("Institutions")}</div>
       <div  className="prow">
-        <div  className="plogo real"><img  className="plogo-img" src="/img/logos/wa.svg" alt={t("World Athletics")} style={{"maxHeight":"40px"}} /></div>
-        <div  className="plogo real"><img  className="plogo-img" src="/img/logos/caa.svg" alt={t("CAA")} style={{"maxHeight":"34px"}} /></div>
-        <div  className="plogo real"><img  className="plogo-img" src="/img/logos/cnoss.png" alt={t("CNOSS")} style={{"maxHeight":"72px"}} /></div>
-        <div  className="plogo real"><img  className="plogo-img" src="/img/logos/ministere.png" alt={t("Ministère des Sports")} style={{"maxHeight":"62px"}} /></div>
+        <div  className="plogo real"><img  loading="lazy" decoding="async" className="plogo-img" src="/img/logos/wa.svg" alt={t("World Athletics")} style={{"maxHeight":"40px"}} /></div>
+        <div  className="plogo real"><img  loading="lazy" decoding="async" className="plogo-img" src="/img/logos/caa.svg" alt={t("CAA")} style={{"maxHeight":"34px"}} /></div>
+        <div  className="plogo real"><img  loading="lazy" decoding="async" className="plogo-img" src="/img/logos/cnoss.png" alt={t("CNOSS")} style={{"maxHeight":"72px"}} /></div>
+        <div  className="plogo real"><img  loading="lazy" decoding="async" className="plogo-img" src="/img/logos/ministere.png" alt={t("Ministère des Sports")} style={{"maxHeight":"62px"}} /></div>
       </div>
     </div>
     <div  className="ptier">
       <div  className="plab">{t("Sponsors officiels")}</div>
       <div  className="prow">
-        <div  className="plogo real"><img  className="plogo-img" src="/img/logos/orange.svg" alt={t("Orange Sénégal")} style={{"maxHeight":"48px"}} /></div>
-        <div  className="plogo real"><img  className="plogo-img" src="/img/logos/sonatel.svg" alt={t("Sonatel")} style={{"maxHeight":"40px"}} /></div>
-        <div  className="plogo real"><img  className="plogo-img" src="/img/logos/kirene.svg" alt={t("Kirène")} style={{"maxHeight":"72px"}} /></div>
+        <div  className="plogo real"><img  loading="lazy" decoding="async" className="plogo-img" src="/img/logos/orange.svg" alt={t("Orange Sénégal")} style={{"maxHeight":"48px"}} /></div>
+        <div  className="plogo real"><img  loading="lazy" decoding="async" className="plogo-img" src="/img/logos/sonatel.svg" alt={t("Sonatel")} style={{"maxHeight":"40px"}} /></div>
+        <div  className="plogo real"><img  loading="lazy" decoding="async" className="plogo-img" src="/img/logos/kirene.svg" alt={t("Kirène")} style={{"maxHeight":"72px"}} /></div>
       </div>
     </div>
   </div>
