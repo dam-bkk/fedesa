@@ -909,3 +909,6 @@ html,body{overflow-x:clip}
 /* médiathèque : respiration sous la bande sombre, galerie resserrée sur mobile */
 #galerie .sec-head{margin-bottom:26px}
 @media(max-width:820px){#galerie{padding-top:clamp(40px,8vw,64px)}.gal{gap:8px}}
+/* survol des tableaux : vert de la marque, clair ou sombre selon le fond */
+table.tbl tbody tr:hover{background:rgba(0,224,90,.14)}
+.panel-l table.tbl tbody tr:hover,.light table.tbl tbody tr:hover{background:rgba(0,224,90,.13)}
