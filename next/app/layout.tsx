@@ -19,7 +19,6 @@ export const metadata: Metadata = {
   title: { default: "FEDESA — Fédération Sénégalaise d'Athlétisme", template: "%s · FEDESA" },
   description: "Le site de la Fédération Sénégalaise d'Athlétisme : calendrier, résultats officiels, records, clubs, licences et actualités.",
   openGraph: { type: "website", locale: "fr_SN", siteName: "FEDESA" },
-  alternates: { canonical: "/" },
   applicationName: "FEDESA",
   authors: [{ name: "Fédération Sénégalaise d'Athlétisme" }],
   keywords: ["athlétisme", "Sénégal", "FEDESA", "licence", "compétitions", "records", "clubs"],

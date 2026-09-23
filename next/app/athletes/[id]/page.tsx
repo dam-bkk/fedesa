@@ -5,7 +5,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { api, fmtDate } from "@/lib/api";
 export const revalidate = 600;
-export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> { const a = await api.athlete(Number((await params).id)); return { title: a?.name ?? "Athlète" }; }
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> { const id = Number((await params).id); const a = await api.athlete(id); return { title: a?.name ?? "Athlète", description: a ? `${a.name} — ${a.category}, ${a.club ?? "club"} : records personnels et résultats officiels publiés par la Fédération Sénégalaise d'Athlétisme.` : undefined, alternates: { canonical: `/athletes/${id}` } }; }
 export default async function AthletePage({ params }: { params: Promise<{ id: string }> }) {
   const lang = await getLang(); const t = tr(lang);
   const a = await api.athlete(Number((await params).id));

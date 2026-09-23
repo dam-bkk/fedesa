@@ -6,7 +6,7 @@ import { api } from "@/lib/api";
 import { Fx } from "@/components/Data";
 import { Subscribe } from "@/components/Subscribe";
 export const revalidate = 300;
-export const metadata: Metadata = { title: "Calendrier des compétitions", description: "Calendrier fédéral et régional : stade, cross, route. Statut des engagements et résultats publiés." };
+export const metadata: Metadata = { alternates: { canonical: "/competitions" }, title: "Calendrier des compétitions", description: "Calendrier fédéral et régional : stade, cross, route. Statut des engagements et résultats publiés." };
 const ML = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
 export default async function Competitions({ searchParams }: { searchParams: Promise<{ niveau?: string }> }) {
   const lang = await getLang(); const t = tr(lang);

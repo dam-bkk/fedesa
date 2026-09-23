@@ -7,7 +7,7 @@ import { LiveResults } from "@/components/Data";
 import { Progression } from "@/components/Features";
 import { Subscribe } from "@/components/Subscribe";
 export const revalidate = 300;
-export const metadata: Metadata = { title: "Résultats et bilans", description: "Meilleures performances de la saison par épreuve, résultats officiels publiés par la fédération." };
+export const metadata: Metadata = { alternates: { canonical: "/resultats" }, title: "Résultats et bilans", description: "Meilleures performances de la saison par épreuve, résultats officiels publiés par la fédération." };
 const EVENTS: [string, string][] = [["100", "100 m"], ["200", "200 m"], ["400", "400 m"], ["800", "800 m"], ["1500", "1500 m"], ["5000", "5000 m"], ["HH", "110 m / 100 m haies"], ["400H", "400 m haies"], ["HJ", "Hauteur"], ["PV", "Perche"], ["LJ", "Longueur"], ["TJ", "Triple saut"], ["SP", "Poids"], ["DT", "Disque"], ["JT", "Javelot"], ["HT", "Marteau"], ["10K", "10 km route"], ["MAR", "Marathon"]];
 export default async function Resultats({ searchParams }: { searchParams: Promise<{ ep?: string; sexe?: string }> }) {
   const lang = await getLang(); const t = tr(lang);

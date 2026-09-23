@@ -5,7 +5,7 @@ import { api, nf } from "@/lib/api";
 import { ClubMap } from "@/components/ClubMap";
 import { LIGUES } from "@/lib/content";
 export const revalidate = 3600;
-export const metadata: Metadata = { title: "Trouver un club", description: "Annuaire et carte des clubs affiliés à la Fédération Sénégalaise d'Athlétisme, avec contacts." };
+export const metadata: Metadata = { alternates: { canonical: "/clubs" }, title: "Trouver un club", description: "Annuaire et carte des clubs affiliés à la Fédération Sénégalaise d'Athlétisme, avec contacts." };
 export default async function Clubs({ searchParams }: { searchParams: Promise<{ ligue?: string }> }) {
   const lang = await getLang(); const t = tr(lang);
   const { ligue = "" } = await searchParams;

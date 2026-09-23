@@ -5,14 +5,16 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { api, fmtDate } from "@/lib/api";
 import { Replay } from "@/components/Replay";
+import { EventJsonLd } from "@/components/Jsonld";
 export const revalidate = 300;
-export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> { const c = await api.competition(Number((await params).id)); return { title: "error" in c ? "Résultats" : `Résultats — ${c.name}` }; }
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> { const id = Number((await params).id); const c = await api.competition(id); return { title: "error" in c ? "Résultats" : `Résultats — ${c.name}`, description: "error" in c ? undefined : `Résultats officiels du ${c.name} — ${c.venue}, ${c.city}. Classements, performances et records par épreuve.`, alternates: { canonical: `/competitions/${id}` } }; }
 export default async function CompetitionPage({ params }: { params: Promise<{ id: string }> }) {
   const lang = await getLang(); const t = tr(lang);
   const c = await api.competition(Number((await params).id));
   if ("error" in c) notFound();
   return (
     <main>
+      <EventJsonLd c={c} />
       <div className="wrap page-head"><div className="eyebrow">{fmtDate(c.dateFrom, true)}{c.dateTo !== c.dateFrom ? ` → ${fmtDate(c.dateTo, true)}` : ""} · {c.venue}, {c.city} · {c.level}</div><h1>{c.name}</h1>
         <p className="intro">{t("Résultats officiels publiés par la fédération le")} {fmtDate(c.publishedAt?.slice(0, 10), true)}. {c.events.length} {t("épreuves.")}</p></div>
       <section><div className="wrap">

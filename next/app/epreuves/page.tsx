@@ -2,7 +2,7 @@ import { getLang } from "@/lib/server/lang";
 import { tr } from "@/lib/i18n";
 import type { Metadata } from "next";
 import { Epreuves } from "@/components/Epreuves";
-export const metadata: Metadata = { title: "Les épreuves", description: "Les quatorze familles d'épreuves pratiquées au Sénégal : règles, records du monde et du Sénégal." };
+export const metadata: Metadata = { alternates: { canonical: "/epreuves" }, title: "Les épreuves", description: "Les quatorze familles d'épreuves pratiquées au Sénégal : règles, records du monde et du Sénégal." };
 export default async function EpreuvesPage() {
   const lang = await getLang(); const t = tr(lang);
   return (

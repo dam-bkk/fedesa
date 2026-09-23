@@ -5,7 +5,7 @@ import Link from "next/link";
 import Athlete from "@/components/parts/Athlete";
 import { api } from "@/lib/api";
 export const revalidate = 600;
-export const metadata: Metadata = { title: "Athlètes", description: "Les meilleurs athlètes de la saison, épreuve par épreuve." };
+export const metadata: Metadata = { title: "Athlètes", description: "Les meilleurs athlètes sénégalais de la saison, épreuve par épreuve, avec leurs records personnels et leurs résultats.", alternates: { canonical: "/athletes" } };
 const TOP: [string, "M" | "F"][] = [["100", "M"], ["100", "F"], ["400", "F"], ["400H", "M"], ["TJ", "M"], ["LJ", "F"], ["800", "M"], ["1500", "F"], ["HH", "M"]];
 export default async function Athletes() {
   const lang = await getLang(); const t = tr(lang);

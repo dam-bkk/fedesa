@@ -8,7 +8,7 @@ import { BUREAU, LIGUES, CONTACT } from "@/lib/content";
 import { api } from "@/lib/api";
 import { Timeline } from "@/components/Features";
 export const revalidate = 3600;
-export const metadata: Metadata = { title: "La fédération", description: "Présentation, bureau fédéral, histoire, les 14 ligues régionales et les partenaires de la FEDESA." };
+export const metadata: Metadata = { alternates: { canonical: "/federation" }, title: "La fédération", description: "Présentation, bureau fédéral, histoire, les 14 ligues régionales et les partenaires de la FEDESA." };
 export default async function FederationPage() {
   const lang = await getLang(); const t = tr(lang);
   const stats = await api.stats();

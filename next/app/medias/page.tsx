@@ -2,7 +2,7 @@ import { getLang } from "@/lib/server/lang";
 import { tr } from "@/lib/i18n";
 import type { Metadata } from "next";
 import { GALERIE } from "@/lib/content";
-export const metadata: Metadata = { title: "Médias", description: "Galerie photo de la fédération." };
+export const metadata: Metadata = { title: "Médias", description: "Galerie photo de la Fédération Sénégalaise d'Athlétisme : championnats nationaux, détections régionales, stages et meetings.", alternates: { canonical: "/medias" } };
 export default async function Medias() {
   const lang = await getLang(); const t = tr(lang);
   return (

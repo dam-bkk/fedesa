@@ -5,7 +5,7 @@ import { api } from "@/lib/api";
 import { RecordsTable } from "@/components/Data";
 import { Progression } from "@/components/Features";
 export const revalidate = 3600;
-export const metadata: Metadata = { title: "Records du Sénégal", description: "Records nationaux et régionaux homologués par la fédération." };
+export const metadata: Metadata = { title: "Records du Sénégal", description: "Tous les records du Sénégal homologués, nationaux et régionaux : épreuve, performance, détenteur, lieu et date.", alternates: { canonical: "/records" } };
 export default async function Records() {
   const lang = await getLang(); const t = tr(lang);
   const { items } = await api.records();

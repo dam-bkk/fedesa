@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { getLang } from "@/lib/server/lang";
 import { tr } from "@/lib/i18n";
 import Link from "next/link";
@@ -18,6 +19,7 @@ import { CatCalc } from "@/components/CatCalc";
 import { Subscribe } from "@/components/Subscribe";
 
 export const revalidate = 300;
+export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 export default async function Home() {
   const lang = await getLang(); const t = tr(lang);

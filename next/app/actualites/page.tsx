@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { POSTS } from "@/lib/content";
 import { fmtDate } from "@/lib/api";
-export const metadata: Metadata = { title: "Actualités", description: "Top info de la Fédération Sénégalaise d'Athlétisme : compétitions, sélections, formations." };
+export const metadata: Metadata = { alternates: { canonical: "/actualites" }, title: "Actualités", description: "Top info de la Fédération Sénégalaise d'Athlétisme : compétitions, sélections, formations." };
 export default async function Actualites() {
   const lang = await getLang(); const t = tr(lang);
   const [lead, ...rest] = [...POSTS].sort((a, b) => (a.date < b.date ? 1 : -1));

@@ -7,7 +7,7 @@ import Faq from "@/components/parts/Faq";
 import LicencesBand from "@/components/parts/LicencesBand";
 import { CatCalc } from "@/components/CatCalc";
 export const revalidate = 3600;
-export const metadata: Metadata = { title: "Prendre une licence", description: "Tarifs, pièces à fournir et démarche pour obtenir sa licence auprès d'un club affilié." };
+export const metadata: Metadata = { alternates: { canonical: "/licence" }, title: "Prendre une licence", description: "Tarifs, pièces à fournir et démarche pour obtenir sa licence auprès d'un club affilié." };
 const fcfa = (n: number) => n.toLocaleString("fr-FR") + " FCFA";
 export default async function Licence() {
   const lang = await getLang(); const t = tr(lang);
