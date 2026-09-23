@@ -966,3 +966,10 @@ table.tbl tbody tr:hover .rank.g{background:var(--gold);color:var(--ink)}
 .dir-i:hover,.st-row:hover{background:var(--volt)}
 .dir-i:hover *,.st-row:hover *{color:var(--ink)}
 .st-row:hover .st-rank{color:var(--ink)}
+/* bande de statistiques du hero : voile sombre plein écran, texte blanc lisible sur le vert comme sur la photo */
+.hero .hero-stats::before{content:"";position:absolute;left:50%;transform:translateX(-50%);width:100vw;top:-2px;bottom:-24px;
+  background:linear-gradient(to top,rgba(11,20,16,.82),rgba(11,20,16,.5));z-index:-1;pointer-events:none}
+.hero .hstat{border-right-color:rgba(255,255,255,.22)}
+.hero .hstat:last-child{border-right:0}
+.hero .hstat-n{color:#fff}
+.hero .hstat-l{color:rgba(255,255,255,.82);opacity:1}
