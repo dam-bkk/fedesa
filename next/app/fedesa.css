@@ -912,3 +912,16 @@ html,body{overflow-x:clip}
 /* survol des tableaux : vert de la marque, clair ou sombre selon le fond */
 table.tbl tbody tr:hover{background:rgba(0,224,90,.14)}
 .panel-l table.tbl tbody tr:hover,.light table.tbl tbody tr:hover{background:rgba(0,224,90,.13)}
+/* survol des tableaux : le vert du logo, texte encre */
+table.tbl tbody tr:hover,.panel-l table.tbl tbody tr:hover,.light table.tbl tbody tr:hover{background:var(--volt)}
+table.tbl tbody tr:hover td,table.tbl tbody tr:hover a,table.tbl tbody tr:hover .perf,
+table.tbl tbody tr:hover .dim,table.tbl tbody tr:hover .who-s,table.tbl tbody tr:hover .mono{color:var(--ink)}
+table.tbl tbody tr:hover .rank{background:var(--ink);color:var(--volt)}
+table.tbl tbody tr:hover .rank.g{background:var(--gold);color:var(--ink)}
+/* bande licence : cartes carrées à ombre portée, comme les autres sections */
+.steps{gap:16px}
+.step{background:var(--paper);border:1.5px solid var(--ink);border-radius:0;padding:24px 22px;box-shadow:6px 6px 0 var(--ink);transition:transform .18s var(--ease,ease),box-shadow .18s}
+.step:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--ink)}
+.step-n{color:var(--volt-dim)}
+.step p{color:var(--muted)}
+@media(max-width:900px){.step{box-shadow:4px 4px 0 var(--ink)}}
