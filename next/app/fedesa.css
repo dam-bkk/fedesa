@@ -955,9 +955,12 @@ table.tbl tbody tr:hover .rank.g{background:var(--gold);color:var(--ink)}
 
 /* libellés de statistiques sur fond clair */
 .hstat-l{color:var(--muted)}
-.hero .hstat-l,.dark .hstat-l{color:var(--smoke)}
+.hero .hstat-l{color:var(--ink);opacity:.85}
+.dark .hstat-l{color:var(--smoke)}
 .hstat-l{color:var(--muted);opacity:1}
-.hero .hstat-l,.dark .hstat-l,.spot .hstat-l{color:var(--smoke)}
+.hero .hstat-l{color:var(--ink);opacity:.85}
+.dark .hstat-l{color:var(--smoke)}
+.spot .hstat-l{color:#123322}
 .lead-h{font-family:inherit;font-size:clamp(21px,2.1vw,27px);line-height:1.18;margin:10px 0 0;letter-spacing:-.01em}
 /* listes (annuaire des clubs, classement) : même survol vert vif que les tableaux */
 .dir-i:hover,.st-row:hover{background:var(--volt)}
