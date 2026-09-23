@@ -27,7 +27,7 @@ export function ClubMap({ clubs, active = [], lang = "fr" }: { clubs: Club[]; ac
         <polygon points={poly(SN)} fill="url(#lanes)" stroke="var(--ink)" strokeWidth="1.6" strokeLinejoin="round" style={{ fill: "var(--cmap-land)" }} />
         <polygon points={poly(SN)} fill="url(#lanes)" />
         <polygon points={poly(GM)} fill="var(--paper)" stroke="var(--ink)" strokeWidth="1" strokeDasharray="3 3" />
-        <path className="route" d={tourD} fill="none" stroke="var(--volt-dim)" strokeWidth="1.6" strokeLinejoin="round" strokeLinecap="round" pathLength={1} />
+        <path className="route" d={tourD} fill="none" stroke="var(--volt-dim)" strokeWidth="1.4" strokeDasharray="5 6" strokeLinejoin="round" strokeLinecap="round" pathLength={1} />
         <text x={X(-15.3)} y={Y(13.36)} fontSize="9" fill="var(--muted)" fontFamily="var(--mono)" letterSpacing="2">{t("GAMBIE")}</text>
         {cities.map((c) => { const r = 4 + Math.min(10, Math.sqrt(c.clubs.length) * 2.2); const on = (pinned ?? hover) === c.city; return (
           <g key={c.city} className="city" transform={`translate(${X(c.lon)} ${Y(c.lat)})`} onMouseEnter={() => setHover(c.city)} onClick={() => setPinned(pinned === c.city ? null : c.city)} style={{ cursor: "pointer", ["--i" as string]: order.get(c.city) ?? 0 }} tabIndex={0} onFocus={() => setHover(c.city)} aria-label={`${c.city} : ${c.clubs.length} club${c.clubs.length > 1 ? "s" : ""}`}>

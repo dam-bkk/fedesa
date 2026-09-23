@@ -34,9 +34,13 @@ export function Motion() {
       groups.forEach((g) => {
         const text = g.filter((n) => n.nodeName !== "BR");
         if (text.some((n) => (n.textContent ?? "").trim())) {
+          while (text.length && !(text[0].textContent ?? "").trim()) frag.appendChild(text.shift()!);
+          const tail: Node[] = [];
+          while (text.length && !(text[text.length - 1].textContent ?? "").trim()) tail.unshift(text.pop()!);
           const outer = document.createElement("span"); outer.className = "hl";
           const inner = document.createElement("span"); inner.className = "hl-i"; inner.style.animationDelay = `${i++ * 110}ms`;
           text.forEach((n) => inner.appendChild(n)); outer.appendChild(inner); frag.appendChild(outer);
+          tail.forEach((n) => frag.appendChild(n));
         } else text.forEach((n) => frag.appendChild(n));
         g.filter((n) => n.nodeName === "BR").forEach((n) => frag.appendChild(n));
       });
@@ -74,7 +78,7 @@ export function Motion() {
     let splitTimer = 0;
 
     /* ── 3. couloirs en parallaxe ────────────────────────────────── */
-    const laneTargets = wide ? ["epreuves", "weekend", "regions", "faq", "classement"].map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[] : [];
+    const laneTargets = wide ? ["epreuves", "weekend", "faq", "classement", "agenda"].map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[] : [];
     const lanes: { host: HTMLElement; layers: SVGGElement[] }[] = [];
     laneTargets.forEach((host) => {
       if (host.querySelector(":scope > .lanes")) return;
