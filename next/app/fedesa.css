@@ -914,16 +914,6 @@ html,body{overflow-x:clip}
 .monde-grid.in .mcard:nth-child(n+6),.tl-track.in .tl-card:nth-child(n+6){animation-delay:.35s}
 
 
-/* 7 — mode nuit avant le pied de page */
-.night-zone{background:color-mix(in oklab,var(--paper),var(--ink) calc(var(--night,0) * 100%));color:color-mix(in oklab,var(--ink),var(--paper) calc(var(--night,0) * 100%))}
-.night-zone .dim,.night-zone .sub p.dim{color:color-mix(in oklab,var(--muted),var(--smoke) calc(var(--night,0) * 100%))}
-.night-zone .sub{border-color:color-mix(in oklab,var(--ink),var(--paper) calc(var(--night,0) * 100%));background:transparent}
-.night-zone .sub-f select,.night-zone .sub-f input,.night-zone .seg{border-color:color-mix(in oklab,var(--ink),var(--paper) calc(var(--night,0) * 100%));
-  background:transparent;color:color-mix(in oklab,var(--ink),var(--paper) calc(var(--night,0) * 100%))}
-.night-zone .seg button{color:inherit}
-.night-zone .btn.btn-ink{background:color-mix(in oklab,var(--ink),var(--volt) calc(var(--night,0) * 100%));border-color:transparent;
-  color:color-mix(in oklab,var(--volt),var(--ink) calc(var(--night,0) * 100%))}
-.night-zone .eyebrow{color:var(--volt-dim)}
 
 
 @media(prefers-reduced-motion:reduce){

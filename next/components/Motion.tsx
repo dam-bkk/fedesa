@@ -10,7 +10,6 @@ import { EP } from "@/lib/ep";
  * 2. chrono de scroll avec temps de passage et couloir courant
  * 3. bento des épreuves magnétique (icône, inclinaison, record en fond)
  * 4. portrait de l'athlète : photo qui court dans le masque, courbe qui se trace
- * 5. bascule en mode nuit avant le pied de page
  */
 export function Motion() {
   const path = usePathname();
@@ -105,10 +104,6 @@ export function Motion() {
     $$(".spark, .tl-track, .monde-grid").forEach((el) => io.observe(el));
     off.push(() => io.disconnect());
 
-    /* ── 5. mode nuit avant le pied de page ──────────────────────── */
-    const nightZone = $$<HTMLElement>("main > section").slice(-1)[0] ?? null;
-    nightZone?.classList.add("night-zone");
-
     /* ── boucle unique ───────────────────────────────────────────── */
     let ticking = false;
     const update = () => {
@@ -128,7 +123,6 @@ export function Motion() {
         if (hudSec && hudSec.textContent !== cur.label) hudSec.textContent = cur.label;
       }
       if (oval && wide) { const r = oval.parentElement!.getBoundingClientRect(); if (r.bottom > -100 && r.top < vh + 100) { const prog = (vh - r.top) / (vh + r.height); oval.style.transform = `translateY(${((0.5 - prog) * 46).toFixed(1)}px) scale(1.12)`; } }
-      if (nightZone) { const r = nightZone.getBoundingClientRect(); const n = Math.min(1, Math.max(0, (vh - r.top) / Math.max(1, Math.min(r.height, vh * 0.9)))); nightZone.style.setProperty("--night", n.toFixed(3)); }
     };
     const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
     on(window, "scroll", onScroll, { passive: true }); on(window, "resize", onScroll);
