@@ -8,12 +8,17 @@ const SN: [number, number][] = [[-16.53, 16.06], [-16.2, 16.3], [-15.6, 16.5], [
 const GM: [number, number][] = [[-16.8, 13.15], [-16.0, 13.1], [-15.0, 13.15], [-14.2, 13.25], [-13.8, 13.35], [-13.9, 13.6], [-14.6, 13.6], [-15.4, 13.6], [-16.2, 13.55], [-16.8, 13.5]];
 const X = (lon: number) => (lon + 17.7) * 100, Y = (lat: number) => (16.85 - lat) * 100;
 const poly = (p: [number, number][]) => p.map(([a, b]) => `${X(a).toFixed(1)},${Y(b).toFixed(1)}`).join(" ");
+/* le tour du Sénégal : les quatorze chefs-lieux de ligue, d'ouest en est puis retour par la Casamance */
+const TOUR: [number, number][] = [[-17.45, 14.69], [-16.93, 14.79], [-16.22, 15.62], [-16.49, 16.02], [-13.26, 15.66], [-13.67, 13.77], [-12.18, 12.56], [-14.94, 12.89], [-15.56, 12.71], [-16.27, 12.58], [-16.41, 14.34], [-16.07, 14.15], [-15.55, 14.10], [-16.23, 14.66], [-17.45, 14.69]];
+const tourD = TOUR.map(([a, b], i) => `${i ? "L" : "M"}${X(a).toFixed(1)} ${Y(b).toFixed(1)}`).join(" ");
 
 export function ClubMap({ clubs, active = [], lang = "fr" }: { clubs: Club[]; active?: string[]; lang?: "fr" | "en" }) {
   const t = tr(lang);
   const [hover, setHover] = useState<string | null>(null);
   const [pinned, setPinned] = useState<string | null>(null);
   const cities = useMemo(() => { const m = new Map<string, { city: string; region: string; lon: number; lat: number; clubs: Club[] }>(); clubs.forEach((c) => { if (c.lon == null || c.lat == null) return; const k = c.city; if (!m.has(k)) m.set(k, { city: c.city, region: c.region, lon: c.lon, lat: c.lat, clubs: [] }); m.get(k)!.clubs.push(c); }); return [...m.values()]; }, [clubs]);
+  /* apparition en cascade d'ouest en est, comme un peloton qui s'étire */
+  const order = useMemo(() => new Map([...cities].sort((a, b) => a.lon - b.lon).map((c, i) => [c.city, i])), [cities]);
   const cur = cities.find((c) => c.city === (pinned ?? hover));
   return (
     <div className="cmap">
@@ -22,11 +27,12 @@ export function ClubMap({ clubs, active = [], lang = "fr" }: { clubs: Club[]; ac
         <polygon points={poly(SN)} fill="url(#lanes)" stroke="var(--ink)" strokeWidth="1.6" strokeLinejoin="round" style={{ fill: "var(--cmap-land)" }} />
         <polygon points={poly(SN)} fill="url(#lanes)" />
         <polygon points={poly(GM)} fill="var(--paper)" stroke="var(--ink)" strokeWidth="1" strokeDasharray="3 3" />
+        <path className="route" d={tourD} fill="none" stroke="var(--volt-dim)" strokeWidth="1.6" strokeLinejoin="round" strokeLinecap="round" pathLength={1} />
         <text x={X(-15.3)} y={Y(13.36)} fontSize="9" fill="var(--muted)" fontFamily="var(--mono)" letterSpacing="2">{t("GAMBIE")}</text>
         {cities.map((c) => { const r = 4 + Math.min(10, Math.sqrt(c.clubs.length) * 2.2); const on = (pinned ?? hover) === c.city; return (
-          <g key={c.city} transform={`translate(${X(c.lon)} ${Y(c.lat)})`} onMouseEnter={() => setHover(c.city)} onClick={() => setPinned(pinned === c.city ? null : c.city)} style={{ cursor: "pointer" }} tabIndex={0} onFocus={() => setHover(c.city)} aria-label={`${c.city} : ${c.clubs.length} club${c.clubs.length > 1 ? "s" : ""}`}>
+          <g key={c.city} className="city" transform={`translate(${X(c.lon)} ${Y(c.lat)})`} onMouseEnter={() => setHover(c.city)} onClick={() => setPinned(pinned === c.city ? null : c.city)} style={{ cursor: "pointer", ["--i" as string]: order.get(c.city) ?? 0 }} tabIndex={0} onFocus={() => setHover(c.city)} aria-label={`${c.city} : ${c.clubs.length} club${c.clubs.length > 1 ? "s" : ""}`}>
             {active.includes(c.city) && <circle r={r + 4} className="pulse" fill="none" stroke="var(--volt)" strokeWidth="2" />}<circle r={r + 6} fill={on ? "rgba(0,224,90,.25)" : "transparent"} />
-            <circle r={r} fill={on ? "var(--ink)" : "var(--volt)"} stroke="var(--ink)" strokeWidth="1.5" />
+            <circle className="dot" r={r} fill={on ? "var(--ink)" : "var(--volt)"} stroke="var(--ink)" strokeWidth="1.5" />
             {c.clubs.length > 4 && <text textAnchor="middle" dy="3.5" fontSize="9" fontWeight="700" fill={on ? "var(--volt)" : "var(--ink)"} fontFamily="var(--mono)">{c.clubs.length}</text>}
             {(r > 8 || on) && <text x={r + 5} dy="3.5" fontSize="10.5" fill="var(--ink)" fontFamily="var(--body)" fontWeight="600">{c.city}</text>}
           </g>); })}
