@@ -925,16 +925,11 @@ html,body{overflow-x:clip}
   color:color-mix(in oklab,var(--volt),var(--ink) calc(var(--night,0) * 100%))}
 .night-zone .eyebrow{color:var(--volt-dim)}
 
-/* 8 — changement de page « changement de couloir » */
-.wipe{position:fixed;inset:0;z-index:200;pointer-events:none;display:grid}
-.wipe span{display:block;background:var(--volt);transform:scaleX(0);transform-origin:100% 50%;transition:transform .34s cubic-bezier(.16,.84,.34,1)}
-.wipe.out{pointer-events:auto}
-.wipe.out span{transform:scaleX(1);transform-origin:0% 50%;transition:transform .19s cubic-bezier(.7,0,.84,0)}
 
 @media(prefers-reduced-motion:reduce){
  .hero-h1.go .hl-i,.hero-copy .hero-kick,.hero-copy .hero-sub,.hero-copy .hero-btns,.hero-mimg,.hero-strip,.hero-stats,
  .monde-grid .mcard,.tl-track .tl-card{animation:none!important;opacity:1!important;transform:none!important;clip-path:none!important}
- .spark polyline{stroke-dashoffset:0!important}.wipe{display:none}
+ .spark polyline{stroke-dashoffset:0!important}
 }
 /* réglages après relecture à l'écran */
 .bx-lg:hover .bx-big{color:var(--volt);opacity:.22}

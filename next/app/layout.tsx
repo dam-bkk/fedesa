@@ -5,7 +5,6 @@ import { Header } from "@/components/Header";
 import Footer from "@/components/parts/Footer";
 import { Enhance } from "@/components/Enhance";
 import { Motion } from "@/components/Motion";
-import { Transition } from "@/components/Transition";
 import { getLang } from "@/lib/server/lang";
 import { tr } from "@/lib/i18n";
 import { setLang } from "./actions";
@@ -26,7 +25,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const lang = await getLang(); const t = tr(lang);
   return (
     <html lang={lang} className={`${poster.variable} ${body.variable} ${mono.variable}`}>
-      <body><Header lang={lang} setLang={setLang} />{children}<Footer t={t} /><Enhance /><Motion /><Transition /></body>
+      <body><Header lang={lang} setLang={setLang} />{children}<Footer t={t} /><Enhance /><Motion /></body>
     </html>
   );
 }
