@@ -8,7 +8,7 @@
 :root{
   color-scheme: light;
   --bg:#ffffff; --tile:#f5f5f7; --tile-2:#fbfbfd; --ink:#1d1d1f; --ink-2:#424245; --muted:#6e6e73; --hair:#d2d2d7; --hair-2:#e8e8ed;
-  --accent:#0b6b43; --accent-ink:#075233; --accent-soft:#e6f2ec; --link:#0b6b43;
+  --accent:#00854f; --accent-ink:#00653c; --accent-soft:#e2f7ea; --link:#00854f; --volt:#c8f03c;
   --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Inter","Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
   --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
   --w:1080px; --r:28px; --r-s:18px;
@@ -28,6 +28,7 @@ section{padding-block:clamp(72px,10vw,128px)}
 /* type */
 .eyebrow{font-size:17px;font-weight:600;color:var(--accent);letter-spacing:-.01em}
 .h-xl span{display:block;white-space:nowrap}
+.hl{font-style:normal;background:linear-gradient(transparent 58%,var(--volt) 58% 90%,transparent 90%);padding-inline:.1em}
 .h-xl{font-size:clamp(32px,7.4vw,84px);line-height:1.04;letter-spacing:-.035em}
 .h-l{font-size:clamp(32px,5vw,56px);line-height:1.07;letter-spacing:-.03em}
 .h-m{font-size:clamp(24px,3vw,32px);line-height:1.12;letter-spacing:-.022em}
@@ -39,8 +40,8 @@ section{padding-block:clamp(72px,10vw,128px)}
 .num{font-variant-numeric:tabular-nums}
 
 /* buttons and links */
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 22px;border-radius:980px;font:500 17px/1 var(--sans);letter-spacing:-.01em;text-decoration:none;background:var(--accent);color:#fff;border:1px solid var(--accent);cursor:pointer;transition:background .2s}
-.btn:hover{background:var(--accent-ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 22px;border-radius:980px;font:500 17px/1 var(--sans);letter-spacing:-.01em;text-decoration:none;background:var(--volt);color:var(--ink);border:1px solid var(--volt);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.btn:hover{background:var(--ink);border-color:var(--ink);color:var(--volt)}
 .btn.quiet{background:transparent;color:var(--accent)}
 .btn.quiet:hover{background:var(--accent-soft)}
 .btn.sm{min-height:32px;padding:0 14px;font-size:13px}
@@ -53,7 +54,7 @@ section{padding-block:clamp(72px,10vw,128px)}
 .nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(255,255,255,.78);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.08)}
 .nav .wrap{display:flex;align-items:center;gap:28px;height:52px}
 .mark{display:flex;align-items:center;gap:9px;font-weight:600;font-size:17px;text-decoration:none;letter-spacing:-.02em;white-space:nowrap}
-.mark i{width:18px;height:18px;border-radius:6px;background:var(--accent);display:block}
+.mark i{width:18px;height:18px;border-radius:6px;background:linear-gradient(135deg,var(--accent) 0 50%,var(--volt) 50% 100%);display:block}
 .nav-links{display:flex;gap:26px;margin-inline:auto}
 .nav-links a{font-size:13px;color:var(--ink-2);text-decoration:none}
 .nav-links a:hover{color:var(--ink)}
@@ -77,7 +78,7 @@ section{padding-block:clamp(72px,10vw,128px)}
 .showcase + .stage{margin-top:20px}
 .lic-wrap{perspective:1100px;display:grid;justify-items:center}
 .showcase .lic{width:min(100%,460px);padding:26px;gap:22px;transform:rotateX(var(--rx,4deg)) rotateY(var(--ry,-9deg));transition:transform .25s ease-out,background .3s;transform-style:preserve-3d;position:relative;overflow:hidden;
-  background:radial-gradient(120% 140% at 100% 0%,var(--c1,#1c8a5a) 0%,var(--c2,#0b6b43) 45%,var(--c3,#06432b) 100%);box-shadow:0 40px 60px -28px var(--cs,rgba(6,67,43,.6))}
+  background:radial-gradient(120% 140% at 100% 0%,var(--c1,#12b574) 0%,var(--c2,#00854f) 45%,var(--c3,#004a2c) 100%);box-shadow:0 40px 60px -28px var(--cs,rgba(6,67,43,.6))}
 .showcase .lic::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(40% 60% at var(--mx,70%) var(--my,0%),rgba(255,255,255,.28),transparent 70%)}
 .showcase .lic-name{font-size:clamp(24px,3vw,30px)}
 .showcase .lic-top span:first-child{font-weight:600;font-size:13px;overflow-wrap:anywhere;text-wrap:balance;padding-right:12px}
@@ -126,7 +127,7 @@ section{padding-block:clamp(72px,10vw,128px)}
 
 /* licence card, drawn */
 .card-zone{padding:36px 24px 44px;display:grid;justify-items:center;align-self:end}
-.lic{width:min(100%,400px);border-radius:22px;padding:22px;color:#fff;background:radial-gradient(120% 140% at 100% 0%,#1c8a5a 0%,#0b6b43 45%,#06432b 100%);box-shadow:0 30px 50px -24px rgba(6,67,43,.55);display:grid;gap:18px}
+.lic{width:min(100%,400px);border-radius:22px;padding:22px;color:#fff;background:radial-gradient(120% 140% at 100% 0%,#12b574 0%,#00854f 45%,#004a2c 100%);box-shadow:0 30px 50px -24px rgba(6,67,43,.55);display:grid;gap:18px}
 .lic-top{display:flex;justify-content:space-between;align-items:center;font-size:12px;letter-spacing:.02em;opacity:.9}
 .lic-top span:last-child{font-family:var(--mono);background:rgba(255,255,255,.14);padding:4px 8px;border-radius:6px}
 .lic-mid{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center}
@@ -136,7 +137,7 @@ section{padding-block:clamp(72px,10vw,128px)}
 .qr{width:92px;height:92px;background:#fff;border-radius:12px;padding:4px;overflow:hidden}
 .qr svg{display:block;width:100%;height:100%}
 .lic-ok{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500}
-.lic-ok i{width:8px;height:8px;border-radius:50%;background:#7CF2B0;display:block}
+.lic-ok i{width:8px;height:8px;border-radius:50%;background:var(--volt);display:block}
 
 /* compare list */
 .pairs{display:grid;gap:0;border-top:1px solid var(--hair)}
@@ -152,7 +153,7 @@ section{padding-block:clamp(72px,10vw,128px)}
 .mod{background:var(--tile);border-radius:var(--r-s);padding:28px;display:grid;gap:10px;align-content:start;position:relative}
 .mod svg{width:30px;height:30px;stroke:var(--accent);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;margin-bottom:6px}
 .mod p{font-size:15px;color:var(--muted)}
-.tag{position:absolute;top:22px;right:22px;font-size:12px;font-weight:600;color:var(--accent);background:var(--accent-soft);padding:4px 10px;border-radius:980px}
+.tag{position:absolute;top:22px;right:22px;font-size:12px;font-weight:600;color:var(--ink);background:var(--volt);padding:4px 10px;border-radius:980px}
 @media (max-width:860px){.grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.grid-3{grid-template-columns:1fr}}
 
@@ -170,7 +171,7 @@ section{padding-block:clamp(72px,10vw,128px)}
 /* pricing */
 .plans{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
 .plan{border-radius:var(--r);padding:clamp(28px,4vw,44px);background:var(--tile);display:grid;gap:18px;align-content:start}
-.plan.best{background:#fff;border:1.5px solid var(--accent);box-shadow:0 30px 60px -40px rgba(11,107,67,.5)}
+.plan.best{background:#fff;border:2px solid var(--ink);box-shadow:0 30px 60px -40px rgba(0,133,79,.45)}
 .plan-top{display:flex;align-items:center;gap:10px;justify-content:space-between}
 .plan-top .tag{position:static}
 .price{font-size:clamp(40px,5.4vw,60px);line-height:1;font-weight:600;letter-spacing:-.035em}
@@ -280,7 +281,7 @@ footer a{color:var(--ink-2)}
   <div class="wrap">
     <div class="stack">
       <p class="eyebrow">Licences et compétitions pour fédérations sportives</p>
-      <h1 class="h-xl"><span>Chaque licence.</span> <span>Payée, vérifiée,</span> <span>délivrée en ligne.</span></h1>
+      <h1 class="h-xl"><span>Chaque licence.</span> <span>Payée, vérifiée,</span> <span><em class="hl">délivrée en ligne.</em></span></h1>
       <p class="lede">Le club dépose le dossier et paie depuis un téléphone. La fédération vérifie les pièces et délivre une carte avec QR code. Seuls les licenciés en règle sont engagés en compétition.</p>
       <div class="row">
         <a class="btn" href="https://appfedesa.damien.asia">Essayer la démo</a>
@@ -310,7 +311,7 @@ footer a{color:var(--ink-2)}
           <input type="text" id="fed-name" maxlength="46" placeholder="Nom de votre fédération" autocomplete="off">
         </div>
         <div class="swatches" role="group" aria-label="Couleur de la carte">
-          <button type="button" data-c="vert" aria-pressed="true" aria-label="Vert" style="--sw:#0b6b43"></button>
+          <button type="button" data-c="vert" aria-pressed="true" aria-label="Vert" style="--sw:#00854f"></button>
           <button type="button" data-c="bleu" aria-pressed="false" aria-label="Bleu" style="--sw:#1f4fbf"></button>
           <button type="button" data-c="rouge" aria-pressed="false" aria-label="Rouge" style="--sw:#b3261e"></button>
           <button type="button" data-c="or" aria-pressed="false" aria-label="Or" style="--sw:#a36a00"></button>
