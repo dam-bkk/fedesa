@@ -76,6 +76,49 @@ section{padding-block:clamp(72px,10vw,128px)}
 .nb{display:inline-block}
 @media (max-width:600px){.stage .screen{width:210%;max-width:none}}
 
+/* showcase : la carte en vedette */
+.showcase{margin-top:clamp(40px,6vw,72px);background:var(--tile);border-radius:var(--r);padding:clamp(28px,5vw,64px);display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,5vw,64px);align-items:center;text-align:left}
+.showcase + .stage{margin-top:20px}
+.lic-wrap{perspective:1100px;display:grid;justify-items:center}
+.showcase .lic{width:min(100%,460px);padding:26px;gap:22px;transform:rotateX(var(--rx,4deg)) rotateY(var(--ry,-9deg));transition:transform .25s ease-out,background .3s;transform-style:preserve-3d;position:relative;overflow:hidden;
+  background:radial-gradient(120% 140% at 100% 0%,var(--c1,#1c8a5a) 0%,var(--c2,#0b6b43) 45%,var(--c3,#06432b) 100%);box-shadow:0 40px 60px -28px var(--cs,rgba(6,67,43,.6))}
+.showcase .lic::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(40% 60% at var(--mx,70%) var(--my,0%),rgba(255,255,255,.28),transparent 70%)}
+.showcase .lic-name{font-size:clamp(24px,3vw,30px)}
+.showcase .lic-top span:first-child{font-weight:600;font-size:13px;overflow-wrap:anywhere;text-wrap:balance;padding-right:12px}
+.showcase .qr{width:clamp(104px,13vw,132px);height:auto;aspect-ratio:1;padding:0;overflow:hidden;display:block;position:relative;z-index:1}
+.lic[data-c="bleu"]{--c1:#3b74e6;--c2:#1f4fbf;--c3:#122f78;--cs:rgba(18,47,120,.6)}
+.lic[data-c="rouge"]{--c1:#d9483f;--c2:#b3261e;--c3:#6e120d;--cs:rgba(110,18,13,.6)}
+.lic[data-c="or"]{--c1:#c98a12;--c2:#a36a00;--c3:#5f3d00;--cs:rgba(95,61,0,.6)}
+.lic[data-c="nuit"]{--c1:#4a4a4f;--c2:#1d1d1f;--c3:#000;--cs:rgba(0,0,0,.6)}
+.perso{display:grid;gap:14px;align-content:center}
+.field{display:grid;gap:6px;margin-top:8px}
+.field label{font-size:14px;font-weight:600;color:var(--ink-2)}
+.field input{font:inherit;font-size:17px;height:48px;padding:0 16px;border-radius:12px;border:1px solid var(--hair);background:#fff;color:var(--ink);width:100%;min-width:0}
+.field input:focus{outline:3px solid var(--accent-soft);border-color:var(--accent)}
+.swatches{display:flex;gap:10px}
+.swatches button{width:30px;height:30px;border-radius:50%;border:2px solid #fff;background:var(--sw);cursor:pointer;box-shadow:0 0 0 1px var(--hair);padding:0}
+.swatches button[aria-pressed="true"]{box-shadow:0 0 0 2px var(--ink)}
+@media (max-width:820px){.showcase{grid-template-columns:1fr;text-align:center}.perso{justify-items:center}.field{width:100%;text-align:left}.showcase .lic{text-align:left}}
+@media (prefers-reduced-motion:reduce){.showcase .lic{transform:none}}
+
+/* parcours qui défile */
+.story{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,96px);align-items:start}
+.st{min-height:64vh;display:grid;gap:12px;align-content:center;opacity:.28;transition:opacity .35s}
+.st.on{opacity:1}
+.st .who{font-size:14px;font-weight:600;color:var(--accent)}
+.st .device.inl{display:none}
+.story-phone{position:sticky;top:max(72px,calc(50vh - 260px));display:grid;justify-items:center;padding-block:32px}
+.device{position:relative;width:min(100%,300px);aspect-ratio:780/1120;border-radius:34px;border:9px solid #1d1d1f;background:#fff;overflow:hidden;box-shadow:var(--shadow)}
+.device img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .4s}
+.device img.on,.device.inl img{opacity:1}
+@media (max-width:860px){
+  .story{grid-template-columns:1fr}
+  .story-phone{display:none}
+  .st{min-height:0;opacity:1;padding-block:20px 36px;text-align:center;justify-items:center}
+  .st .device.inl{display:block;margin-top:16px;width:min(100%,280px)}
+}
+.live{display:inline-block;width:8px;height:8px;border-radius:50%;background:#19a463;margin-right:8px;vertical-align:1px;box-shadow:0 0 0 4px rgba(25,164,99,.18)}
+
 /* figures strip */
 .figures{background:var(--tile);padding-block:clamp(40px,6vw,64px)}
 .fig-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:28px 16px;text-align:center}
@@ -267,6 +310,36 @@ footer a{color:var(--ink-2)}
       </div>
       <p class="hero-note">Sans compte ni mot de passe. La démo tourne avec les données fictives d'une fédération d'athlétisme.</p>
     </div>
+    <div class="showcase">
+      <div class="lic-wrap" id="lic-wrap">
+        <div class="lic" id="lic">
+          <div class="lic-top"><span id="lic-fed">Votre fédération</span><span>2025-2026</span></div>
+          <div class="lic-mid">
+            <div>
+              <div class="lic-name">Abdoulaye Ba</div>
+              <div class="lic-meta"><span>N° <b>SN107637</b></span><span>Juniors · Compétition</span><span>Valide jusqu'au 31.10.2026</span></div>
+            </div>
+            <a class="qr" href="https://appfedesa.damien.asia/verifier?no=SN107637" aria-label="Ouvrir la page de vérification de cette licence"><svg viewBox="-2 -2 37 37" shape-rendering="crispEdges" aria-hidden="true"><rect x="-2" y="-2" width="37" height="37" fill="#fff"/><path fill="#111" d="M0 0h7v1h-7zM8 0h2v1h-2zM11 0h4v1h-4zM16 0h3v1h-3zM21 0h2v1h-2zM26 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM9 1h1v1h-1zM11 1h1v1h-1zM16 1h1v1h-1zM20 1h1v1h-1zM24 1h1v1h-1zM26 1h1v1h-1zM32 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM8 2h2v1h-2zM12 2h2v1h-2zM15 2h3v1h-3zM19 2h1v1h-1zM21 2h1v1h-1zM23 2h1v1h-1zM26 2h1v1h-1zM28 2h3v1h-3zM32 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM10 3h3v1h-3zM19 3h1v1h-1zM21 3h1v1h-1zM24 3h1v1h-1zM26 3h1v1h-1zM28 3h3v1h-3zM32 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM9 4h1v1h-1zM11 4h1v1h-1zM15 4h1v1h-1zM19 4h1v1h-1zM21 4h1v1h-1zM24 4h1v1h-1zM26 4h1v1h-1zM28 4h3v1h-3zM32 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM8 5h4v1h-4zM13 5h3v1h-3zM19 5h1v1h-1zM22 5h1v1h-1zM26 5h1v1h-1zM32 5h1v1h-1zM0 6h7v1h-7zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM18 6h1v1h-1zM20 6h1v1h-1zM22 6h1v1h-1zM24 6h1v1h-1zM26 6h7v1h-7zM9 7h3v1h-3zM14 7h3v1h-3zM18 7h3v1h-3zM23 7h2v1h-2zM0 8h1v1h-1zM2 8h1v1h-1zM6 8h2v1h-2zM9 8h2v1h-2zM12 8h1v1h-1zM16 8h1v1h-1zM20 8h1v1h-1zM24 8h1v1h-1zM27 8h1v1h-1zM30 8h1v1h-1zM32 8h1v1h-1zM1 9h1v1h-1zM7 9h1v1h-1zM12 9h6v1h-6zM19 9h2v1h-2zM23 9h2v1h-2zM26 9h1v1h-1zM29 9h1v1h-1zM32 9h1v1h-1zM0 10h2v1h-2zM3 10h2v1h-2zM6 10h1v1h-1zM8 10h1v1h-1zM10 10h1v1h-1zM12 10h1v1h-1zM15 10h1v1h-1zM19 10h1v1h-1zM21 10h4v1h-4zM29 10h2v1h-2zM32 10h1v1h-1zM0 11h1v1h-1zM3 11h2v1h-2zM10 11h4v1h-4zM17 11h1v1h-1zM23 11h7v1h-7zM32 11h1v1h-1zM1 12h2v1h-2zM4 12h3v1h-3zM8 12h1v1h-1zM10 12h1v1h-1zM13 12h1v1h-1zM17 12h1v1h-1zM19 12h2v1h-2zM22 12h3v1h-3zM26 12h1v1h-1zM31 12h2v1h-2zM1 13h5v1h-5zM7 13h7v1h-7zM22 13h1v1h-1zM24 13h1v1h-1zM26 13h1v1h-1zM30 13h3v1h-3zM0 14h1v1h-1zM4 14h3v1h-3zM9 14h1v1h-1zM15 14h1v1h-1zM17 14h1v1h-1zM19 14h3v1h-3zM23 14h1v1h-1zM27 14h1v1h-1zM30 14h1v1h-1zM32 14h1v1h-1zM5 15h1v1h-1zM7 15h1v1h-1zM13 15h2v1h-2zM18 15h1v1h-1zM22 15h2v1h-2zM25 15h2v1h-2zM29 15h1v1h-1zM1 16h2v1h-2zM5 16h3v1h-3zM11 16h1v1h-1zM15 16h2v1h-2zM19 16h2v1h-2zM23 16h2v1h-2zM26 16h2v1h-2zM29 16h1v1h-1zM31 16h1v1h-1zM0 17h1v1h-1zM2 17h2v1h-2zM7 17h1v1h-1zM9 17h2v1h-2zM13 17h4v1h-4zM19 17h2v1h-2zM22 17h3v1h-3zM26 17h1v1h-1zM29 17h1v1h-1zM31 17h2v1h-2zM0 18h4v1h-4zM6 18h2v1h-2zM11 18h2v1h-2zM15 18h1v1h-1zM17 18h4v1h-4zM23 18h2v1h-2zM27 18h1v1h-1zM29 18h2v1h-2zM32 18h1v1h-1zM1 19h5v1h-5zM8 19h1v1h-1zM13 19h1v1h-1zM15 19h1v1h-1zM18 19h1v1h-1zM20 19h1v1h-1zM22 19h1v1h-1zM26 19h1v1h-1zM28 19h2v1h-2zM31 19h1v1h-1zM2 20h1v1h-1zM6 20h2v1h-2zM9 20h1v1h-1zM11 20h2v1h-2zM14 20h7v1h-7zM22 20h2v1h-2zM26 20h1v1h-1zM32 20h1v1h-1zM1 21h1v1h-1zM4 21h2v1h-2zM9 21h2v1h-2zM13 21h1v1h-1zM16 21h3v1h-3zM22 21h1v1h-1zM24 21h1v1h-1zM26 21h2v1h-2zM29 21h1v1h-1zM32 21h1v1h-1zM0 22h2v1h-2zM4 22h4v1h-4zM13 22h2v1h-2zM16 22h1v1h-1zM19 22h1v1h-1zM22 22h2v1h-2zM25 22h2v1h-2zM28 22h2v1h-2zM32 22h1v1h-1zM2 23h2v1h-2zM8 23h2v1h-2zM11 23h2v1h-2zM14 23h3v1h-3zM19 23h2v1h-2zM22 23h1v1h-1zM24 23h2v1h-2zM27 23h1v1h-1zM29 23h1v1h-1zM32 23h1v1h-1zM0 24h2v1h-2zM3 24h1v1h-1zM6 24h5v1h-5zM18 24h3v1h-3zM24 24h6v1h-6zM31 24h2v1h-2zM8 25h1v1h-1zM10 25h1v1h-1zM15 25h3v1h-3zM19 25h2v1h-2zM23 25h2v1h-2zM28 25h1v1h-1zM32 25h1v1h-1zM0 26h7v1h-7zM8 26h3v1h-3zM12 26h1v1h-1zM15 26h1v1h-1zM19 26h2v1h-2zM24 26h1v1h-1zM26 26h1v1h-1zM28 26h3v1h-3zM32 26h1v1h-1zM0 27h1v1h-1zM6 27h1v1h-1zM9 27h3v1h-3zM17 27h1v1h-1zM19 27h2v1h-2zM23 27h2v1h-2zM28 27h2v1h-2zM32 27h1v1h-1zM0 28h1v1h-1zM2 28h3v1h-3zM6 28h1v1h-1zM10 28h1v1h-1zM12 28h1v1h-1zM15 28h1v1h-1zM17 28h1v1h-1zM22 28h7v1h-7zM32 28h1v1h-1zM0 29h1v1h-1zM2 29h3v1h-3zM6 29h1v1h-1zM11 29h1v1h-1zM13 29h1v1h-1zM17 29h1v1h-1zM19 29h1v1h-1zM22 29h1v1h-1zM25 29h1v1h-1zM27 29h2v1h-2zM30 29h3v1h-3zM0 30h1v1h-1zM2 30h3v1h-3zM6 30h1v1h-1zM8 30h1v1h-1zM10 30h1v1h-1zM12 30h2v1h-2zM15 30h1v1h-1zM19 30h1v1h-1zM21 30h4v1h-4zM27 30h2v1h-2zM30 30h3v1h-3zM0 31h1v1h-1zM6 31h1v1h-1zM9 31h3v1h-3zM13 31h2v1h-2zM19 31h1v1h-1zM22 31h8v1h-8zM0 32h7v1h-7zM8 32h3v1h-3zM12 32h1v1h-1zM15 32h2v1h-2zM19 32h2v1h-2zM22 32h3v1h-3zM27 32h3v1h-3zM32 32h1v1h-1z"/></svg></a>
+          </div>
+          <div class="lic-ok"><i></i>Licence en règle</div>
+        </div>
+      </div>
+      <div class="perso">
+        <h2 class="h-m">Scannez la carte avec votre téléphone.</h2>
+        <p class="body">Le QR code est réel. Il ouvre la page que verra un juge au départ d'une course : licence valide, ou non.</p>
+        <div class="field">
+          <label for="fed-name">Essayez avec le nom de votre fédération</label>
+          <input type="text" id="fed-name" maxlength="46" placeholder="Nom de votre fédération" autocomplete="off">
+        </div>
+        <div class="swatches" role="group" aria-label="Couleur de la carte">
+          <button type="button" data-c="vert" aria-pressed="true" aria-label="Vert" style="--sw:#0b6b43"></button>
+          <button type="button" data-c="bleu" aria-pressed="false" aria-label="Bleu" style="--sw:#1f4fbf"></button>
+          <button type="button" data-c="rouge" aria-pressed="false" aria-label="Rouge" style="--sw:#b3261e"></button>
+          <button type="button" data-c="or" aria-pressed="false" aria-label="Or" style="--sw:#a36a00"></button>
+          <button type="button" data-c="nuit" aria-pressed="false" aria-label="Noir" style="--sw:#1d1d1f"></button>
+        </div>
+      </div>
+    </div>
     <div class="stage">
       <img class="screen" src="/brief/img/c_dash.avif" width="1200" height="500" alt="Tableau de bord de la fédération : licenciés en règle, demandes à instruire, licences à renouveler, résultats du week-end et prochains événements">
     </div>
@@ -276,14 +349,14 @@ footer a{color:var(--ink-2)}
 <div class="figures">
   <div class="wrap">
     <div class="fig-grid num">
-      <div class="fig"><b>300</b><span>clubs</span></div>
-      <div class="fig"><b>14</b><span>ligues régionales</span></div>
-      <div class="fig"><b>2 603</b><span>athlètes</span></div>
-      <div class="fig"><b>9 909</b><span>licences sur 8 saisons</span></div>
-      <div class="fig"><b>17</b><span>compétitions</span></div>
-      <div class="fig"><b>1 958</b><span>résultats</span></div>
+      <div class="fig"><b data-k="licensees">2 217</b><span>licenciés en règle</span></div>
+      <div class="fig"><b data-k="women">962</b><span>femmes licenciées</span></div>
+      <div class="fig"><b data-k="clubs">281</b><span>clubs affiliés</span></div>
+      <div class="fig"><b data-k="ligues">14</b><span>ligues régionales</span></div>
+      <div class="fig"><b data-k="competitionsPublished">11</b><span>compétitions publiées</span></div>
+      <div class="fig"><b data-k="results">1 958</b><span>résultats</span></div>
     </div>
-    <p class="fig-cap">La démo est chargée au volume d'une vraie fédération.</p>
+    <p class="fig-cap" id="fig-cap">La démo est chargée au volume d'une vraie fédération.</p>
   </div>
 </div>
 
@@ -309,54 +382,55 @@ footer a{color:var(--ink-2)}
       <p class="eyebrow">Le parcours d'une licence</p>
       <h2 class="h-l">Du formulaire du club à la ligne de départ.</h2>
     </div>
-    <div class="bento">
-      <article class="tile span-5">
-        <div class="copy">
-          <p class="who">Le club</p>
+    <div class="story" id="story">
+      <div class="story-steps">
+        <article class="st on" data-i="0">
+          <p class="who">1 · Le club</p>
           <h3 class="h-m">Dépose la demande depuis un téléphone.</h3>
           <p class="body">Première licence, renouvellement ou mutation. Le formulaire connaît les catégories d'âge et la grille tarifaire, et demande seulement les pièces utiles.</p>
-        </div>
-        <div class="phone"><img src="/brief/img/c_mobile.avif" width="780" height="1100" loading="lazy" alt="Formulaire de demande sur téléphone : renouvellement, nouvelle licence ou mutation"></div>
-      </article>
-      <article class="tile span-7">
+          <div class="device inl"><img src="/brief/img/p_1.avif" width="780" height="1120" loading="lazy" alt="Formulaire de demande sur téléphone : renouvellement, nouvelle licence ou mutation"></div>
+        </article>
+        <article class="st" data-i="1">
+          <p class="who">2 · Le club</p>
+          <h3 class="h-m">Paie par Wave ou Orange Money.</h3>
+          <p class="body">Le montant s'affiche avant l'envoi. Le club valide dans son application habituelle, et le reçu se joint tout seul au dossier.</p>
+          <div class="device inl"><img src="/brief/img/p_2.avif" width="780" height="1120" loading="lazy" alt="Étape de règlement : licence compétition, 5 000 FCFA, paiement par Wave"></div>
+        </article>
+        <article class="st" data-i="2">
+          <p class="who">3 · La fédération</p>
+          <h3 class="h-m">Vérifie les pièces et valide.</h3>
+          <p class="body">Le service licences accepte ou refuse chaque pièce. Un complément demandé part au club avec son motif. Chaque décision est datée et signée.</p>
+          <div class="device inl"><img src="/brief/img/p_3.avif" width="780" height="1120" loading="lazy" alt="Dossier côté fédération : pièces justificatives acceptées ou à vérifier, règlement Wave confirmé"></div>
+        </article>
+        <article class="st" data-i="3">
+          <p class="who">4 · Le licencié</p>
+          <h3 class="h-m">Reçoit une carte que tout le monde peut vérifier.</h3>
+          <p class="body">Un juge scanne le QR code au départ. La page publique répond en une seconde : licence valide, catégorie, club.</p>
+          <div class="device inl"><img src="/brief/img/p_4.avif" width="780" height="1120" loading="lazy" alt="Page publique de contrôle : licence valide, numéro, catégorie, club et date de validité"></div>
+        </article>
+      </div>
+      <div class="story-phone" aria-hidden="true"><div class="device"><img src="/brief/img/p_1.avif" width="780" height="1120" alt="" class='on' data-i="0"><img src="/brief/img/p_2.avif" width="780" height="1120" alt="" data-i="1"><img src="/brief/img/p_3.avif" width="780" height="1120" alt="" data-i="2"><img src="/brief/img/p_4.avif" width="780" height="1120" alt="" data-i="3"></div></div>
+    </div>
+    <div class="bento" style="margin-top:clamp(48px,7vw,88px)">
+      <article class="tile span-6">
         <div class="copy">
-          <p class="who">La fédération</p>
-          <h3 class="h-m">Vérifie les pièces et délivre la licence.</h3>
-          <p class="body">Le service licences accepte ou refuse chaque pièce. Un complément demandé part au club avec son motif. À la validation, le numéro de licence et la carte sont créés.</p>
+          <p class="who">Côté fédération</p>
+          <h3 class="h-m">Tout le dossier sur un seul écran.</h3>
+          <p class="body">Identité, pièces, règlement et historique des décisions. À la validation, le numéro de licence et la carte sont créés.</p>
           <ul class="ticks">
             <li>Relances automatiques avant l'expiration</li>
             <li>Chaque décision est datée et signée dans le journal</li>
           </ul>
         </div>
-        <div class="media"><img src="/brief/img/c_dossier.avif" width="1200" height="608" loading="lazy" alt="Écran d'instruction d'une demande : identité, règlement Wave confirmé, pièces justificatives"></div>
+        <div class="media"><img src="/brief/img/c_dossier.avif" width="1200" height="608" loading="lazy" alt="Écran d'instruction d'une demande : identité, règlement Wave confirmé, pièces justificatives"></div>
       </article>
-      <article class="tile span-5">
-        <div class="copy">
-          <p class="who">Le licencié</p>
-          <h3 class="h-m">Reçoit une carte que tout le monde peut vérifier.</h3>
-          <p class="body">Le QR code ouvre une page publique de vérification. Aux couleurs de votre fédération.</p>
-        </div>
-        <div class="card-zone">
-          <div class="lic" role="img" aria-label="Exemple de carte de licence numérique avec QR code">
-            <div class="lic-top"><span>Votre fédération</span><span>2025-2026</span></div>
-            <div class="lic-mid">
-              <div>
-                <div class="lic-name">Abdoulaye Ba</div>
-                <div class="lic-meta"><span>N° <b>SN107637</b></span><span>Espoirs M · Compétition</span><span>Valide jusqu'au 31.10.2026</span></div>
-              </div>
-              <div class="qr" id="qr"></div>
-            </div>
-            <div class="lic-ok"><i></i>Licence en règle</div>
-          </div>
-        </div>
-      </article>
-      <article class="tile span-7">
+      <article class="tile span-6">
         <div class="copy">
           <p class="who">La compétition</p>
           <h3 class="h-m">N'engage que des licenciés en règle.</h3>
           <p class="body">Les clubs engagent leurs athlètes épreuve par épreuve. La plateforme vérifie la licence et le certificat médical à la date de l'épreuve. Les officiels saisissent les résultats, la fédération les publie.</p>
         </div>
-        <div class="media"><img src="/brief/img/c_comp.avif" width="1200" height="608" loading="lazy" alt="Fiche d'une compétition : programme par épreuve et engagements, contrôle d'éligibilité automatique"></div>
+        <div class="media"><img src="/brief/img/c_comp.avif" width="1200" height="608" loading="lazy" alt="Fiche d'une compétition : programme par épreuve et engagements, contrôle d'éligibilité automatique"></div>
       </article>
     </div>
   </div>
@@ -634,16 +708,42 @@ footer a{color:var(--ink-2)}
   }
   vol.addEventListener('input',upd);upd();
 
-  // QR décoratif de la carte d'exemple (motif fixe, non lisible)
-  var N=21,s=7,r='';
-  function finder(x,y){return x<7&&y<7||x>=N-7&&y<7||x<7&&y>=N-7}
-  function fOn(x,y){var a=x<7?x:x-(N-7),b=y<7?y:y-(N-7);return a===0||a===6||b===0||b===6||(a>=2&&a<=4&&b>=2&&b<=4)}
-  for(var y=0;y<N;y++)for(var x=0;x<N;x++){
-    s=(s*1103515245+12345)&0x7fffffff;
-    var on=finder(x,y)?fOn(x,y):((s>>16)&1)===1;
-    if(on)r+='<rect x="'+x+'" y="'+y+'" width="1" height="1"/>';
+  // Carte : inclinaison à la souris, nom et couleur de la fédération
+  var card=document.getElementById('lic'),wrap=document.getElementById('lic-wrap'),fed=document.getElementById('lic-fed'),inp=document.getElementById('fed-name');
+  var calm=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!calm){
+    wrap.addEventListener('pointermove',function(e){
+      if(e.pointerType!=='mouse')return;
+      var r=wrap.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+      card.style.setProperty('--ry',((x-.5)*22).toFixed(1)+'deg');card.style.setProperty('--rx',((.5-y)*16).toFixed(1)+'deg');
+      card.style.setProperty('--mx',(x*100).toFixed(0)+'%');card.style.setProperty('--my',(y*100).toFixed(0)+'%');
+    });
+    wrap.addEventListener('pointerleave',function(){['--rx','--ry','--mx','--my'].forEach(function(k){card.style.removeProperty(k)})});
   }
-  document.getElementById('qr').innerHTML='<svg viewBox="0 0 '+N+' '+N+'" fill="#1d1d1f" shape-rendering="crispEdges" aria-hidden="true">'+r+'</svg>';
+  function setName(v){fed.textContent=v.trim()||'Votre fédération'}
+  inp.addEventListener('input',function(){setName(inp.value)});
+  var sw=document.querySelectorAll('.swatches button');
+  function setColor(c){var ok=false;sw.forEach(function(b){var on=b.dataset.c===c;if(on)ok=true;b.setAttribute('aria-pressed',on)});if(ok){if(c==='vert')card.removeAttribute('data-c');else card.setAttribute('data-c',c)}else sw[0].setAttribute('aria-pressed','true')}
+  sw.forEach(function(b){b.addEventListener('click',function(){setColor(b.dataset.c)})});
+  // lien personnalisé : /brief?f=Nom de la fédération&c=bleu
+  try{var q=new URLSearchParams(location.search),n=q.get('f'),c=q.get('c');if(n){inp.value=n.slice(0,46);setName(inp.value)}if(c)setColor(c)}catch(e){}
+
+  // Parcours : l'écran du téléphone suit l'étape lue
+  var sts=document.querySelectorAll('#story .st'),shots=document.querySelectorAll('.story-phone img');
+  function show(i){sts.forEach(function(e,k){e.classList.toggle('on',k===i)});shots.forEach(function(e,k){e.classList.toggle('on',k===i)})}
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)show(+e.target.dataset.i)})},{rootMargin:'-45% 0px -45% 0px'});
+    sts.forEach(function(e){io.observe(e)});
+  }else sts.forEach(function(e){e.classList.add('on')});
+
+  // Chiffres lus en direct depuis la démo (les valeurs de la page restent si la lecture échoue)
+  if(window.fetch)fetch('https://appfedesa.damien.asia/api/public/stats').then(function(r){return r.ok?r.json():null}).then(function(d){
+    if(!d)return;
+    document.querySelectorAll('.fig b[data-k]').forEach(function(b){var v=d[b.dataset.k];if(typeof v==='number')b.textContent=f(v)});
+    var cap=document.getElementById('fig-cap');cap.textContent='';
+    var dot=document.createElement('i');dot.className='live';cap.appendChild(dot);
+    cap.appendChild(document.createTextNode('Chiffres lus à l\'instant dans la démo, saison '+(d.season||'en cours')+'.'));
+  }).catch(function(){});
 })();
 </script>
 </body>

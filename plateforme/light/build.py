@@ -14,6 +14,6 @@ page = ('<!doctype html>\n<html lang="fr">\n<head>\n<meta charset="utf-8">\n'
         + head + "</style>\n</head>\n<body>" + body + "</body>\n</html>\n")
 (out / "img").mkdir(parents=True, exist_ok=True)
 (out / "index.html").write_text(page, encoding="utf-8")
-for n in re.findall(r'/brief/img/(\w+\.(?:avif|jpg))', page):
+for n in set(re.findall(r'/brief/img/(\w+\.(?:avif|jpg))', page)):
     shutil.copy(root.parent / "img" / n, out / "img" / n)
 print(len(page) // 1024, "KB ->", out)
