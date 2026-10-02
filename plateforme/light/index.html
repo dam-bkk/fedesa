@@ -185,6 +185,9 @@ section{padding-block:clamp(72px,10vw,128px)}
 @media (max-width:900px){.gw{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:480px){.gw{grid-template-columns:1fr}}
 
+.tile.white,.plan.white{background:#fff}
+#site .steps-cap{margin-top:64px;margin-bottom:28px}
+
 /* security */
 .sec-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px 40px}
 .sec-grid div{display:grid;gap:6px;align-content:start}
@@ -225,6 +228,7 @@ footer a{color:var(--ink-2)}
       <a href="#parcours">Parcours</a>
       <a href="#paiement">Paiement</a>
       <a href="#modules">Modules</a>
+      <a href="#site">Site</a>
       <a href="#tarifs">Tarifs</a>
       <a href="#donnees">Données</a>
       <a href="#faq">FAQ</a>
@@ -370,7 +374,7 @@ footer a{color:var(--ink-2)}
     <div class="head">
       <p class="eyebrow">Ce que contient la plateforme</p>
       <h2 class="h-l">Six modules. Une seule base de licenciés.</h2>
-      <p class="lede">Les cinq premiers sont inclus. Le site public est une option, qui lit les mêmes données.</p>
+      <p class="lede">Tout est compris dans le forfait. Le site public est offert, et lit les mêmes données.</p>
     </div>
     <div class="grid-3">
       <div class="mod"><svg viewBox="0 0 32 32"><rect x="5" y="7" width="22" height="18" rx="3"/><circle cx="12" cy="15" r="2.5"/><path d="M8.5 21c.8-2 2-3 3.500-3s2.700 1 3.500 3M19 13h5M19 17h5"/></svg><h3 class="h-s">Licences</h3><p>Demandes, pièces, instruction, numéro, carte QR, mutations, renouvellements et relances.</p></div>
@@ -378,7 +382,7 @@ footer a{color:var(--ink-2)}
       <div class="mod"><svg viewBox="0 0 32 32"><rect x="5" y="7" width="22" height="20" rx="3"/><path d="M5 13h22M11 4v5M21 4v5M10 18h4M10 22h8"/></svg><h3 class="h-s">Compétitions</h3><p>Calendrier, programme par catégorie, engagements avec contrôle d'éligibilité, clôture.</p></div>
       <div class="mod"><svg viewBox="0 0 32 32"><path d="M10 6h12v7a6 6 0 0 1-12 0zM10 8H6v2a4 4 0 0 0 4 4M22 8h4v2a4 4 0 0 1-4 4M16 19v5M11 26h10"/></svg><h3 class="h-s">Résultats et bilans</h3><p>Saisie par les officiels, publication, records personnels, classement des clubs.</p></div>
       <div class="mod"><svg viewBox="0 0 32 32"><path d="M6 26V6M6 26h20M11 22v-6M16 22V10M21 22v-9"/></svg><h3 class="h-s">Statistiques</h3><p>Effectifs par ligue, pyramide des âges, part des femmes, fidélisation, délais de traitement.</p></div>
-      <div class="mod"><span class="tag">Option</span><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="11"/><path d="M5 16h22M16 5c3.500 3 3.500 19 0 22M16 5c-3.500 3-3.500 19 0 22"/></svg><h3 class="h-s">Site public</h3><p>Calendrier, résultats, records et carte des clubs, mis à jour depuis la plateforme. Sur votre domaine.</p></div>
+      <div class="mod"><span class="tag">Offert</span><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="11"/><path d="M5 16h22M16 5c3.500 3 3.500 19 0 22M16 5c-3.500 3-3.500 19 0 22"/></svg><h3 class="h-s">Site public</h3><p>Calendrier, résultats, records et carte des clubs, mis à jour depuis la plateforme. Sur votre domaine.</p></div>
     </div>
     <div class="bento" style="margin-top:20px">
       <article class="tile span-12 center">
@@ -389,6 +393,65 @@ footer a{color:var(--ink-2)}
         <div class="media"><img src="img/c_stats.avif" width="1200" height="500" loading="lazy" alt="Statistiques de la fédération : licenciés actifs, part des femmes, fidélisation, licences par saison, pyramide des catégories"></div>
       </article>
     </div>
+  </div>
+</section>
+
+<section class="alt" id="site">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Le site public</p>
+      <h2 class="h-l"><span class="nb">Un site officiel,</span> <span class="nb">alimenté par la plateforme.</span></h2>
+      <p class="lede">Calendrier, résultats, records et clubs viennent directement de la plateforme. Rien n'est ressaisi.</p>
+    </div>
+    <div class="bento">
+      <article class="tile white span-7">
+        <div class="copy">
+          <h3 class="h-m">La vitrine de la fédération.</h3>
+          <p class="body">Un site à vos couleurs, sur votre nom de domaine, en français et en anglais. Il reste à vous.</p>
+        </div>
+        <div class="media"><img src="img/s_home.jpg" width="1400" height="831" loading="lazy" alt="Page d'accueil du site de démonstration d'une fédération d'athlétisme"></div>
+      </article>
+      <article class="tile white span-5">
+        <div class="copy">
+          <h3 class="h-m">Les résultats se publient seuls.</h3>
+          <p class="body">Dès que la fédération valide une compétition, les résultats, les bilans et les records s'affichent sur le site.</p>
+        </div>
+        <div class="media"><img src="img/s_results.jpg" width="1400" height="831" loading="lazy" alt="Page des bilans du site de démonstration : meilleures performances de la saison par épreuve"></div>
+      </article>
+    </div>
+    <p class="steps-cap">Ce que le site comprend</p>
+    <div class="sec-grid">
+      <div><h3 class="h-s">Les pages de la fédération</h3><p>Accueil, actualités, présentation de la fédération, médias, contact.</p></div>
+      <div><h3 class="h-s">Calendrier et compétitions</h3><p>Les compétitions de la saison, à jour dès qu'elles sont inscrites au calendrier.</p></div>
+      <div><h3 class="h-s">Résultats, bilans et records</h3><p>Affichés automatiquement, épreuve par épreuve, sans ressaisie.</p></div>
+      <div><h3 class="h-s">Clubs et licences</h3><p>Carte des clubs, tarifs officiels, accès direct à la demande de licence.</p></div>
+      <div><h3 class="h-s">Visibilité sur Google</h3><p>Pages rapides, lisibles sur téléphone, préparées pour le référencement.</p></div>
+      <div><h3 class="h-s">Hébergement et entretien</h3><p>Mise en ligne, mises à jour et sécurité assurées par nous.</p></div>
+    </div>
+    <p class="steps-cap">Deux façons de l'obtenir</p>
+    <div class="plans">
+      <div class="plan white">
+        <div class="plan-top"><h3 class="h-m">Le site seul</h3></div>
+        <div class="price num">1 800 €</div>
+        <p class="body">à la création, sans la plateforme.</p>
+        <ul>
+          <li><span>Conception et réalisation</span><span>1 800 €</span></li>
+          <li><span>Hébergement, entretien, référencement</span><span>En supplément</span></li>
+          <li><span>Résultats et calendrier</span><span>Saisis à la main</span></li>
+        </ul>
+      </div>
+      <div class="plan best">
+        <div class="plan-top"><h3 class="h-m">Avec le forfait</h3><span class="tag">Offert</span></div>
+        <div class="price num">0 €</div>
+        <p class="body">Le site est offert avec le forfait à 300 € par mois. Vous économisez 1 800 €.</p>
+        <ul>
+          <li><span>Conception et réalisation</span><span>Offertes</span></li>
+          <li><span>Hébergement, entretien, référencement</span><span>Compris</span></li>
+          <li><span>Résultats et calendrier</span><span>Automatiques</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="row" style="margin-top:36px"><a class="more" href="https://fedesa.damien.asia">Voir le site de démonstration</a></div>
   </div>
 </section>
 
@@ -408,6 +471,7 @@ footer a{color:var(--ink-2)}
           <li><span>Frais pour les clubs</span><span>Aucun</span></li>
           <li><span>Mise en place et formation</span><span>Incluses</span></li>
           <li><span>Hébergement, sauvegardes, mises à jour et support</span><span>Inclus</span></li>
+          <li><span>Site public (valeur 1 800 €)</span><span>Offert</span></li>
         </ul>
       </div>
       <div class="plan">
@@ -424,7 +488,7 @@ footer a{color:var(--ink-2)}
         </ul>
       </div>
     </div>
-    <p class="fine">Le calcul par licence est un repère : rien n'est prélevé sur les licences, la fédération règle uniquement le forfait. Parité fixe : 1 € = 655,957 FCFA. Le site public est chiffré à part. Les frais des opérateurs de paiement restent ceux de votre contrat marchand.</p>
+    <p class="fine">Le calcul par licence est un repère : rien n'est prélevé sur les licences, la fédération règle uniquement le forfait. Parité fixe : 1 € = 655,957 FCFA. Les frais des opérateurs de paiement restent ceux de votre contrat marchand.</p>
   </div>
 </section>
 
