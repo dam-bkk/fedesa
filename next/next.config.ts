@@ -3,6 +3,8 @@ const nextConfig: NextConfig = {
   output: "standalone",
   images: { unoptimized: true },
   poweredByHeader: false,
+  /* page de présentation statique (public/brief, assemblée par ../plateforme/light/build.py) */
+  async rewrites() { return [{ source: "/brief", destination: "/brief/index.html" }]; },
   async headers() { return [{
     /* images et logos : les noms de fichiers sont stables → RENOMMER un fichier quand on le remplace, sinon le cache ne voit rien */
     source: "/img/:path*",

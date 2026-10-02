@@ -1,0 +1,571 @@
+<title>Plateforme Licences</title>
+<meta name="description" content="Plateforme de licences et de compétitions pour les fédérations sportives : demande par le club, paiement mobile, carte avec QR code, engagements et résultats.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: centred product-page rhythm. White ground, large quiet headlines, soft grey tiles that hold the screens. Light only, by choice. */
+:root{
+  color-scheme: light;
+  --bg:#ffffff; --tile:#f5f5f7; --tile-2:#fbfbfd; --ink:#1d1d1f; --ink-2:#424245; --muted:#6e6e73; --hair:#d2d2d7; --hair-2:#e8e8ed;
+  --accent:#0b6b43; --accent-ink:#075233; --accent-soft:#e6f2ec; --link:#0b6b43;
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Inter","Segoe UI",Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --w:1080px; --r:28px; --r-s:18px;
+  --shadow:0 30px 60px -30px rgba(0,0,0,.22),0 12px 24px -16px rgba(0,0,0,.12);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.47 var(--sans);letter-spacing:-.011em;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;text-wrap:balance}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3{margin:0;font-weight:600;text-wrap:balance}
+.wrap{max-width:var(--w);margin:0 auto;padding-inline:clamp(16px,4vw,24px)}
+section{padding-block:clamp(72px,10vw,128px)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+/* type */
+.eyebrow{font-size:17px;font-weight:600;color:var(--accent);letter-spacing:-.01em}
+.h-xl span{display:block;white-space:nowrap}
+.h-xl{font-size:clamp(32px,7.4vw,84px);line-height:1.04;letter-spacing:-.035em}
+.h-l{font-size:clamp(32px,5vw,56px);line-height:1.07;letter-spacing:-.03em}
+.h-m{font-size:clamp(24px,3vw,32px);line-height:1.12;letter-spacing:-.022em}
+.h-s{font-size:19px;line-height:1.25;letter-spacing:-.015em}
+.lede{font-size:clamp(19px,2.1vw,24px);line-height:1.38;color:var(--muted);letter-spacing:-.015em;max-width:34em}
+.body{color:var(--muted)}
+.head{display:grid;gap:14px;justify-items:center;text-align:center;margin-bottom:clamp(40px,6vw,64px)}
+.head .lede{margin-inline:auto}
+.num{font-variant-numeric:tabular-nums}
+
+/* buttons and links */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 22px;border-radius:980px;font:500 17px/1 var(--sans);letter-spacing:-.01em;text-decoration:none;background:var(--accent);color:#fff;border:1px solid var(--accent);cursor:pointer;transition:background .2s}
+.btn:hover{background:var(--accent-ink)}
+.btn.quiet{background:transparent;color:var(--accent)}
+.btn.quiet:hover{background:var(--accent-soft)}
+.btn.sm{min-height:32px;padding:0 14px;font-size:13px}
+.more{color:var(--link);text-decoration:none;font-size:19px}
+.more::after{content:" ›"}
+.more:hover{text-decoration:underline}
+.row{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center;justify-content:center}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(255,255,255,.78);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.08)}
+.nav .wrap{display:flex;align-items:center;gap:28px;height:52px}
+.mark{display:flex;align-items:center;gap:9px;font-weight:600;font-size:17px;text-decoration:none;letter-spacing:-.02em;white-space:nowrap}
+.mark i{width:18px;height:18px;border-radius:6px;background:var(--accent);display:block}
+.nav-links{display:flex;gap:26px;margin-inline:auto}
+.nav-links a{font-size:13px;color:var(--ink-2);text-decoration:none}
+.nav-links a:hover{color:var(--ink)}
+.nav .btn{margin-left:auto}
+.nav-links + .btn{margin-left:0}
+@media (max-width:820px){.nav-links{display:none}.nav .btn{margin-left:auto}}
+
+/* hero */
+.hero{padding-block:clamp(56px,8vw,104px) 0;text-align:center}
+.hero .stack{display:grid;gap:22px;justify-items:center}
+.hero .lede{max-width:30em}
+.hero-note{font-size:14px;color:var(--muted)}
+.stage{margin-top:clamp(40px,6vw,72px);background:linear-gradient(180deg,var(--tile) 0%,#eef1ef 100%);border-radius:var(--r) var(--r) 0 0;padding:clamp(20px,5vw,64px) clamp(14px,5vw,64px) 0;overflow:hidden}
+.screen{display:block;width:100%;height:auto;border-radius:14px 14px 0 0;border:1px solid var(--hair-2);border-bottom:0;box-shadow:var(--shadow);background:#fff}
+
+.nb{display:inline-block}
+@media (max-width:600px){.stage .screen{width:210%;max-width:none}}
+
+/* figures strip */
+.figures{background:var(--tile);padding-block:clamp(40px,6vw,64px)}
+.fig-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:28px 16px;text-align:center}
+.fig b{display:block;font-size:clamp(28px,3.6vw,44px);line-height:1;font-weight:600;letter-spacing:-.03em}
+.fig span{display:block;margin-top:8px;font-size:14px;color:var(--muted)}
+.fig-cap{margin-top:28px;text-align:center;font-size:14px;color:var(--muted)}
+@media (max-width:820px){.fig-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:420px){.fig-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* bento */
+.bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:20px}
+.tile{background:var(--tile);border-radius:var(--r);overflow:hidden;display:grid;align-content:start;min-width:0}
+.tile .copy{padding:clamp(28px,4vw,48px) clamp(24px,4vw,48px) 0;display:grid;gap:12px;max-width:640px}
+.tile .copy .who{font-size:14px;font-weight:600;color:var(--accent)}
+.tile .media{padding:clamp(24px,4vw,40px) clamp(20px,4vw,48px) 0;align-self:end}
+.tile .media img{display:block;width:100%;height:auto;border-radius:12px 12px 0 0;border:1px solid var(--hair-2);border-bottom:0;box-shadow:var(--shadow);background:#fff}
+.span-12{grid-column:span 12}.span-7{grid-column:span 7}.span-5{grid-column:span 5}.span-6{grid-column:span 6}
+.tile.center .copy{justify-items:center;text-align:center;margin-inline:auto}
+.ticks{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:8px;color:var(--ink-2);font-size:15px}
+.ticks li{padding-left:24px;position:relative}
+.ticks li::before{content:"";position:absolute;left:2px;top:.42em;width:12px;height:7px;border-left:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(-45deg)}
+.phone{padding:32px 24px 0;display:grid;justify-items:center;align-self:end}
+.phone img{width:min(100%,300px);height:auto;display:block;border-radius:30px 30px 0 0;border:8px solid #1d1d1f;border-bottom:0;box-shadow:var(--shadow);background:#fff}
+@media (max-width:860px){.span-7,.span-5,.span-6{grid-column:span 12}}
+
+/* licence card, drawn */
+.card-zone{padding:36px 24px 44px;display:grid;justify-items:center;align-self:end}
+.lic{width:min(100%,400px);border-radius:22px;padding:22px;color:#fff;background:radial-gradient(120% 140% at 100% 0%,#1c8a5a 0%,#0b6b43 45%,#06432b 100%);box-shadow:0 30px 50px -24px rgba(6,67,43,.55);display:grid;gap:18px}
+.lic-top{display:flex;justify-content:space-between;align-items:center;font-size:12px;letter-spacing:.02em;opacity:.9}
+.lic-top span:last-child{font-family:var(--mono);background:rgba(255,255,255,.14);padding:4px 8px;border-radius:6px}
+.lic-mid{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center}
+.lic-name{font-size:24px;line-height:1.1;font-weight:600;letter-spacing:-.02em}
+.lic-meta{margin-top:10px;display:grid;gap:3px;font-size:13px;opacity:.88}
+.lic-meta b{font-family:var(--mono);font-weight:500}
+.qr{width:92px;height:92px;background:#fff;border-radius:12px;padding:8px}
+.qr svg{display:block;width:100%;height:100%}
+.lic-ok{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500}
+.lic-ok i{width:8px;height:8px;border-radius:50%;background:#7CF2B0;display:block}
+
+/* compare list */
+.pairs{display:grid;gap:0;border-top:1px solid var(--hair)}
+.pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:12px 40px;padding-block:26px;border-bottom:1px solid var(--hair)}
+.pair .was{color:var(--muted)}
+.pair .now b{display:block;font-weight:600;font-size:19px;letter-spacing:-.015em}
+.pair .now span{display:block;margin-top:4px;color:var(--muted);font-size:15px}
+.pairs-h{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:40px;padding-bottom:12px;font-size:13px;font-weight:600;color:var(--muted)}
+@media (max-width:700px){.pair{grid-template-columns:1fr}.pairs-h{display:none}.pair .was::before{content:"Aujourd'hui : ";font-weight:600}}
+
+/* modules */
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.mod{background:var(--tile);border-radius:var(--r-s);padding:28px;display:grid;gap:10px;align-content:start;position:relative}
+.mod svg{width:30px;height:30px;stroke:var(--accent);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;margin-bottom:6px}
+.mod p{font-size:15px;color:var(--muted)}
+.tag{position:absolute;top:22px;right:22px;font-size:12px;font-weight:600;color:var(--accent);background:var(--accent-soft);padding:4px 10px;border-radius:980px}
+@media (max-width:860px){.grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.grid-3{grid-template-columns:1fr}}
+
+/* settings */
+.alt{background:var(--tile)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:40px}
+.chips span{font-size:14px;padding:7px 14px;border-radius:980px;background:#fff;border:1px solid var(--hair-2);color:var(--ink-2)}
+.chips span.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.defs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px;border-top:1px solid var(--hair)}
+.defs div{padding-block:18px;border-bottom:1px solid var(--hair);display:grid;gap:2px}
+.defs b{font-weight:600}
+.defs span{font-size:15px;color:var(--muted)}
+@media (max-width:700px){.defs{grid-template-columns:1fr}}
+
+/* pricing */
+.plans{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.plan{border-radius:var(--r);padding:clamp(28px,4vw,44px);background:var(--tile);display:grid;gap:18px;align-content:start}
+.plan.best{background:#fff;border:1.5px solid var(--accent);box-shadow:0 30px 60px -40px rgba(11,107,67,.5)}
+.plan-top{display:flex;align-items:center;gap:10px;justify-content:space-between}
+.plan-top .tag{position:static}
+.price{font-size:clamp(40px,5.4vw,60px);line-height:1;font-weight:600;letter-spacing:-.035em}
+.plan .body{font-size:15px}
+.plan ul{list-style:none;margin:0;padding:18px 0 0;border-top:1px solid var(--hair);display:grid;gap:10px;font-size:15px}
+.plan li{display:flex;justify-content:space-between;gap:16px}
+.plan li span:last-child{color:var(--muted);text-align:right}
+.calc-in{display:grid;gap:6px;font-size:15px;color:var(--ink-2)}
+.plan input[type=range]{width:100%;accent-color:var(--accent);height:28px}
+.plan output{font-weight:600;color:var(--ink)}
+.calc{margin-top:20px;border-radius:var(--r);background:var(--tile);padding:clamp(28px,4vw,44px);display:grid;gap:24px}
+.calc-top{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:baseline;justify-content:space-between}
+.calc-top output{font-size:32px;font-weight:600;letter-spacing:-.03em}
+.calc input[type=range]{width:100%;accent-color:var(--accent);height:28px}
+.calc-out{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.calc-out div{background:#fff;border-radius:var(--r-s);padding:22px;display:grid;gap:4px}
+.calc-out small{font-size:13px;color:var(--muted)}
+.calc-out b{font-size:26px;font-weight:600;letter-spacing:-.025em}
+.fine{margin-top:20px;font-size:13px;color:var(--muted);text-align:center;max-width:60em;margin-inline:auto}
+@media (max-width:760px){.plans,.calc-out{grid-template-columns:1fr}}
+
+/* weeks */
+.weeks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.week{border-top:2px solid var(--ink);padding-top:18px;display:grid;gap:6px;align-content:start}
+.week small{font-size:13px;font-weight:600;color:var(--accent)}
+.week p{font-size:15px;color:var(--muted)}
+@media (max-width:860px){.weeks{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.weeks{grid-template-columns:1fr}}
+
+.weeks.three{grid-template-columns:repeat(3,minmax(0,1fr));margin-bottom:56px}
+@media (max-width:860px){.weeks.three{grid-template-columns:1fr}}
+.steps-cap{text-align:center;font-size:14px;font-weight:600;color:var(--muted);margin-bottom:18px}
+
+.gw{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:48px}
+.gw-card{background:#fff;border:1px solid var(--hair-2);border-radius:var(--r-s);padding:24px;display:grid;gap:6px;align-content:start;position:relative}
+.gw-card b{font-size:30px;font-weight:600;letter-spacing:-.03em;line-height:1.1}
+.gw-card p{font-size:14px;color:var(--muted);margin-top:4px}
+.gw-card .tag{top:18px;right:18px}
+@media (max-width:900px){.gw{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.gw{grid-template-columns:1fr}}
+
+/* security */
+.sec-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px 40px}
+.sec-grid div{display:grid;gap:6px;align-content:start}
+.sec-grid p{font-size:15px;color:var(--muted)}
+@media (max-width:860px){.sec-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.sec-grid{grid-template-columns:1fr}}
+
+/* profiles */
+.profiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:36px}
+.profiles a{background:#fff;border:1px solid var(--hair-2);border-radius:var(--r-s);padding:20px;text-decoration:none;display:grid;gap:3px;transition:border-color .2s,box-shadow .2s}
+.profiles a:hover{border-color:var(--accent);box-shadow:0 14px 28px -20px rgba(0,0,0,.3)}
+.profiles b{font-weight:600}
+.profiles span{font-size:14px;color:var(--muted)}
+@media (max-width:760px){.profiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:440px){.profiles{grid-template-columns:1fr}}
+
+/* faq */
+.faq{max-width:780px;margin-inline:auto;border-top:1px solid var(--hair)}
+.faq details{border-bottom:1px solid var(--hair)}
+.faq summary{list-style:none;cursor:pointer;padding:22px 40px 22px 0;font-size:19px;font-weight:600;letter-spacing:-.015em;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:6px;top:28px;width:10px;height:10px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(-135deg);top:32px}
+.faq p{padding:0 40px 24px 0;color:var(--muted)}
+
+/* closing */
+.close{text-align:center}
+.close .stack{display:grid;gap:20px;justify-items:center}
+footer{border-top:1px solid var(--hair-2);padding-block:28px 40px;font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+footer a{color:var(--ink-2)}
+</style>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="mark" href="#top"><i></i>Licences</a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#parcours">Parcours</a>
+      <a href="#paiement">Paiement</a>
+      <a href="#modules">Modules</a>
+      <a href="#tarifs">Tarifs</a>
+      <a href="#donnees">Données</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn sm" href="https://appfedesa.damien.asia">Ouvrir la démo</a>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap">
+    <div class="stack">
+      <p class="eyebrow">Licences et compétitions pour fédérations sportives</p>
+      <h1 class="h-xl"><span>Chaque licence.</span> <span>Payée, vérifiée,</span> <span>délivrée en ligne.</span></h1>
+      <p class="lede">Le club dépose le dossier et paie depuis un téléphone. La fédération vérifie les pièces et délivre une carte avec QR code. Seuls les licenciés en règle sont engagés en compétition.</p>
+      <div class="row">
+        <a class="btn" href="https://appfedesa.damien.asia">Essayer la démo</a>
+        <a class="more" href="#tarifs">Voir les tarifs</a>
+      </div>
+      <p class="hero-note">Sans compte ni mot de passe. La démo tourne avec les données fictives d'une fédération d'athlétisme.</p>
+    </div>
+    <div class="stage">
+      <img class="screen" src="img/c_dash.avif" width="1200" height="500" alt="Tableau de bord de la fédération : licenciés en règle, demandes à instruire, licences à renouveler, résultats du week-end et prochains événements">
+    </div>
+  </div>
+</section>
+
+<div class="figures">
+  <div class="wrap">
+    <div class="fig-grid num">
+      <div class="fig"><b>300</b><span>clubs</span></div>
+      <div class="fig"><b>14</b><span>ligues régionales</span></div>
+      <div class="fig"><b>2 603</b><span>athlètes</span></div>
+      <div class="fig"><b>9 909</b><span>licences sur 8 saisons</span></div>
+      <div class="fig"><b>17</b><span>compétitions</span></div>
+      <div class="fig"><b>1 958</b><span>résultats</span></div>
+    </div>
+    <p class="fig-cap">La démo est chargée au volume d'une vraie fédération.</p>
+  </div>
+</div>
+
+<section id="probleme">
+  <div class="wrap">
+    <div class="head">
+      <h2 class="h-l">Cinq problèmes que chaque fédération connaît.</h2>
+    </div>
+    <div class="pairs-h"><span>Aujourd'hui</span><span>Avec la plateforme</span></div>
+    <div class="pairs">
+      <div class="pair"><p class="was">Des dossiers papier qui traînent des semaines entre le club, la ligue et la fédération.</p><p class="now"><b>Le club dépose en ligne, la fédération valide depuis un seul écran.</b><span>Chaque pièce est acceptée ou refusée avec un motif. Le club voit ce qui manque.</span></p></div>
+      <div class="pair"><p class="was">Des licences payées en espèces, sans reçu ni rapprochement.</p><p class="now"><b>Le paiement fait partie de la demande.</b><span>Wave ou Orange Money depuis le téléphone, reçu joint au dossier. Virement et espèces restent possibles, avec justificatif.</span></p></div>
+      <div class="pair"><p class="was">Personne ne sait exactement qui est licencié, ni dans quel club.</p><p class="now"><b>Un registre national et une carte avec QR code.</b><span>Un organisateur scanne la carte au départ et voit si la licence est valide.</span></p></div>
+      <div class="pair"><p class="was">Des résultats qui restent dans les cahiers des juges.</p><p class="now"><b>Saisis par les officiels, publiés par la fédération.</b><span>Les bilans et les meilleures performances de la saison se recalculent à chaque publication.</span></p></div>
+      <div class="pair"><p class="was">Aucun chiffre fiable à présenter au ministère ou au comité olympique.</p><p class="now"><b>Des statistiques à jour en permanence.</b><span>Licenciés par ligue, par âge et par sexe, taux de renouvellement, délais de traitement.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<section id="parcours" style="padding-top:0">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Le parcours d'une licence</p>
+      <h2 class="h-l">Du formulaire du club à la ligne de départ.</h2>
+    </div>
+    <div class="bento">
+      <article class="tile span-5">
+        <div class="copy">
+          <p class="who">Le club</p>
+          <h3 class="h-m">Dépose la demande depuis un téléphone.</h3>
+          <p class="body">Première licence, renouvellement ou mutation. Le formulaire connaît les catégories d'âge et la grille tarifaire, et demande seulement les pièces utiles.</p>
+        </div>
+        <div class="phone"><img src="img/c_mobile.avif" width="780" height="1100" loading="lazy" alt="Formulaire de demande sur téléphone : renouvellement, nouvelle licence ou mutation"></div>
+      </article>
+      <article class="tile span-7">
+        <div class="copy">
+          <p class="who">La fédération</p>
+          <h3 class="h-m">Vérifie les pièces et délivre la licence.</h3>
+          <p class="body">Le service licences accepte ou refuse chaque pièce. Un complément demandé part au club avec son motif. À la validation, le numéro de licence et la carte sont créés.</p>
+          <ul class="ticks">
+            <li>Relances automatiques avant l'expiration</li>
+            <li>Chaque décision est datée et signée dans le journal</li>
+          </ul>
+        </div>
+        <div class="media"><img src="img/c_dossier.avif" width="1200" height="608" loading="lazy" alt="Écran d'instruction d'une demande : identité, règlement Wave confirmé, pièces justificatives"></div>
+      </article>
+      <article class="tile span-5">
+        <div class="copy">
+          <p class="who">Le licencié</p>
+          <h3 class="h-m">Reçoit une carte que tout le monde peut vérifier.</h3>
+          <p class="body">Le QR code ouvre une page publique de vérification. Aux couleurs de votre fédération.</p>
+        </div>
+        <div class="card-zone">
+          <div class="lic" role="img" aria-label="Exemple de carte de licence numérique avec QR code">
+            <div class="lic-top"><span>Votre fédération</span><span>2025-2026</span></div>
+            <div class="lic-mid">
+              <div>
+                <div class="lic-name">Abdoulaye Ba</div>
+                <div class="lic-meta"><span>N° <b>SN107637</b></span><span>Espoirs M · Compétition</span><span>Valide jusqu'au 31.10.2026</span></div>
+              </div>
+              <div class="qr" id="qr"></div>
+            </div>
+            <div class="lic-ok"><i></i>Licence en règle</div>
+          </div>
+        </div>
+      </article>
+      <article class="tile span-7">
+        <div class="copy">
+          <p class="who">La compétition</p>
+          <h3 class="h-m">N'engage que des licenciés en règle.</h3>
+          <p class="body">Les clubs engagent leurs athlètes épreuve par épreuve. La plateforme vérifie la licence et le certificat médical à la date de l'épreuve. Les officiels saisissent les résultats, la fédération les publie.</p>
+        </div>
+        <div class="media"><img src="img/c_comp.avif" width="1200" height="608" loading="lazy" alt="Fiche d'une compétition : programme par épreuve et engagements, contrôle d'éligibilité automatique"></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="paiement">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Paiement des licences</p>
+      <h2 class="h-l">L'argent va directement à la fédération.</h2>
+      <p class="lede">Les comptes marchands sont ouverts au nom de la fédération. Les fonds ne passent jamais par nous.</p>
+    </div>
+    <div class="weeks">
+      <div class="week"><small>1. Le club choisit</small><h3 class="h-s">Wave ou Orange Money</h3><p>À la dernière étape de la demande, le montant de la licence s'affiche avec les moyens de paiement de la fédération.</p></div>
+      <div class="week"><small>2. Le club paie</small><h3 class="h-s">Depuis son téléphone</h3><p>Il valide dans son application habituelle, avec son code secret. Aucune carte bancaire n'est nécessaire.</p></div>
+      <div class="week"><small>3. La fédération encaisse</small><h3 class="h-s">Sur son propre compte</h3><p>L'argent arrive sur le compte marchand de la fédération. La plateforme ne garde que la référence de la transaction.</p></div>
+      <div class="week"><small>4. Le dossier est à jour</small><h3 class="h-s">Reçu joint, paiement confirmé</h3><p>Le service licences voit le montant, le moyen, la référence et la date. Plus de rapprochement à la main.</p></div>
+    </div>
+    <div class="gw">
+      <div class="gw-card"><span class="tag">Recommandé</span><h3 class="h-s">Wave</h3><b class="num">1 %</b><p>Versement immédiat sur le compte de la fédération. L'application la plus utilisée au Sénégal.</p></div>
+      <div class="gw-card"><h3 class="h-s">Orange Money</h3><b class="num">2,5 %</b><p>2 % au-delà de 5 millions de FCFA encaissés dans le mois. Versement le jour ouvré suivant. Couverture nationale.</p></div>
+      <div class="gw-card"><h3 class="h-s">Agrégateur</h3><b class="num">1,5 à 2,2 %</b><p>Un seul prestataire pour tous les moyens de paiement, avec le rapprochement fourni. Versement sous 24 à 72 heures.</p></div>
+      <div class="gw-card"><h3 class="h-s">Espèces au club</h3><b class="num">0 %</b><p>Aucune commission, mais un justificatif à déposer et un contrôle manuel. À réserver aux zones mal couvertes.</p></div>
+    </div>
+    <p class="fine">Commissions prélevées par l'opérateur, pas par la plateforme. Taux publics constatés en 2026, hors négociation. Exemple : 3 000 licences à 10 000 FCFA payées par Wave coûtent 300 000 FCFA de commission sur la saison.</p>
+  </div>
+</section>
+
+<section id="modules">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Ce que contient la plateforme</p>
+      <h2 class="h-l">Six modules. Une seule base de licenciés.</h2>
+      <p class="lede">Les cinq premiers sont inclus. Le site public est une option, qui lit les mêmes données.</p>
+    </div>
+    <div class="grid-3">
+      <div class="mod"><svg viewBox="0 0 32 32"><rect x="5" y="7" width="22" height="18" rx="3"/><circle cx="12" cy="15" r="2.5"/><path d="M8.5 21c.8-2 2-3 3.500-3s2.700 1 3.500 3M19 13h5M19 17h5"/></svg><h3 class="h-s">Licences</h3><p>Demandes, pièces, instruction, numéro, carte QR, mutations, renouvellements et relances.</p></div>
+      <div class="mod"><svg viewBox="0 0 32 32"><rect x="9" y="4" width="14" height="24" rx="3"/><path d="M14 8h4M13 17l2.200 2.200L19.500 15"/></svg><h3 class="h-s">Paiements</h3><p>Wave et Orange Money dans le parcours, virement et espèces avec justificatif. Reçu joint au dossier.</p></div>
+      <div class="mod"><svg viewBox="0 0 32 32"><rect x="5" y="7" width="22" height="20" rx="3"/><path d="M5 13h22M11 4v5M21 4v5M10 18h4M10 22h8"/></svg><h3 class="h-s">Compétitions</h3><p>Calendrier, programme par catégorie, engagements avec contrôle d'éligibilité, clôture.</p></div>
+      <div class="mod"><svg viewBox="0 0 32 32"><path d="M10 6h12v7a6 6 0 0 1-12 0zM10 8H6v2a4 4 0 0 0 4 4M22 8h4v2a4 4 0 0 1-4 4M16 19v5M11 26h10"/></svg><h3 class="h-s">Résultats et bilans</h3><p>Saisie par les officiels, publication, records personnels, classement des clubs.</p></div>
+      <div class="mod"><svg viewBox="0 0 32 32"><path d="M6 26V6M6 26h20M11 22v-6M16 22V10M21 22v-9"/></svg><h3 class="h-s">Statistiques</h3><p>Effectifs par ligue, pyramide des âges, part des femmes, fidélisation, délais de traitement.</p></div>
+      <div class="mod"><span class="tag">Option</span><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="11"/><path d="M5 16h22M16 5c3.500 3 3.500 19 0 22M16 5c-3.500 3-3.500 19 0 22"/></svg><h3 class="h-s">Site public</h3><p>Calendrier, résultats, records et carte des clubs, mis à jour depuis la plateforme. Sur votre domaine.</p></div>
+    </div>
+    <div class="bento" style="margin-top:20px">
+      <article class="tile span-12 center">
+        <div class="copy">
+          <h3 class="h-m">Des chiffres prêts pour le ministère et le comité olympique.</h3>
+          <p class="body">Licenciés actifs, part des femmes, fidélisation, licences par saison, pyramide des catégories.</p>
+        </div>
+        <div class="media"><img src="img/c_stats.avif" width="1200" height="500" loading="lazy" alt="Statistiques de la fédération : licenciés actifs, part des femmes, fidélisation, licences par saison, pyramide des catégories"></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="reglages">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Votre sport, vos règles</p>
+      <h2 class="h-l">Réglée sur votre fédération pendant la mise en place.</h2>
+      <p class="lede">La démo est réglée pour l'athlétisme. Pour une autre discipline ou un autre pays, on reprend ces réglages avec vous, en trois temps.</p>
+    </div>
+    <div class="weeks three">
+      <div class="week"><small>1. Un atelier d'une heure</small><h3 class="h-s">Vous expliquez, on note</h3><p>En visio, avec votre responsable des licences. On part de vos documents : règlement, grille tarifaire, formulaire de licence actuel, calendrier de la saison.</p></div>
+      <div class="week"><small>2. Une version d'essai</small><h3 class="h-s">On règle, vous vérifiez</h3><p>Nous saisissons vos réglages, puis vous recevez un accès d'essai. Vous y testez vos propres cas : un cadet, une mutation, un dirigeant.</p></div>
+      <div class="week"><small>3. Votre accord</small><h3 class="h-s">Vous validez, on ouvre</h3><p>Rien n'ouvre aux clubs sans votre validation. Ensuite, vous modifiez vous-même les tarifs et les dates de saison depuis l'administration.</p></div>
+    </div>
+    <p class="steps-cap">Ce que l'on règle ensemble</p>
+    <div class="chips"><span class="on">Athlétisme</span><span>Lutte</span><span>Judo</span><span>Handball</span><span>Volley-ball</span><span>Cyclisme</span><span>Taekwondo</span><span>Natation</span></div>
+    <div class="defs">
+      <div><b>Catégories d'âge</b><span>Selon le règlement de votre fédération internationale</span></div>
+      <div><b>Types de licence et tarifs</b><span>Compétition, loisir, dirigeant, officiel ; montants en FCFA</span></div>
+      <div><b>Pièces demandées</b><span>Certificat médical, pièce d'identité, autorisation parentale pour les mineurs</span></div>
+      <div><b>Saison</b><span>Dates d'ouverture et de clôture, campagne de renouvellement</span></div>
+      <div><b>Organisation</b><span>Ligues, districts ou régions, clubs, rôles de chacun</span></div>
+      <div><b>Épreuves et résultats</b><span>Temps, distances, points, combats ou classements</span></div>
+      <div><b>Paiement</b><span>Comptes marchands Wave et Orange Money au nom de la fédération</span></div>
+      <div><b>Langues et identité</b><span>Français et anglais, logo et couleurs de la fédération</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="tarifs">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Tarifs</p>
+      <h2 class="h-l"><span class="nb">Un forfait.</span> <span class="nb">Tout est compris.</span></h2>
+    </div>
+    <div class="plans">
+      <div class="plan best">
+        <div class="plan-top"><h3 class="h-m">Forfait</h3><span class="tag">Tout compris</span></div>
+        <div class="price num">300 €</div>
+        <p class="body">par mois, soit 196 787 FCFA, facturés au trimestre. 3 200 € en paiement annuel.</p>
+        <ul>
+          <li><span>Clubs, licenciés, utilisateurs</span><span>Sans limite</span></li>
+          <li><span>Frais pour les clubs</span><span>Aucun</span></li>
+          <li><span>Mise en place et formation</span><span>Incluses</span></li>
+          <li><span>Hébergement, sauvegardes, mises à jour et support</span><span>Inclus</span></li>
+        </ul>
+      </div>
+      <div class="plan">
+        <div class="plan-top"><h3 class="h-m">Ramené à la licence</h3></div>
+        <div class="price num" id="c-lic">840 FCFA</div>
+        <p class="body">par licence et par an, pour <output id="vol-out" for="vol" class="num">2 500</output> licences délivrées dans la saison.</p>
+        <div class="calc-in">
+          <label for="vol">Licences délivrées par saison</label>
+          <input type="range" id="vol" min="500" max="10000" step="100" value="2500">
+        </div>
+        <ul>
+          <li><span>Coût annuel du forfait</span><span>2 099 062 FCFA</span></li>
+          <li><span>Prix selon le volume</span><span>Identique</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="fine">Le calcul par licence est un repère : rien n'est prélevé sur les licences, la fédération règle uniquement le forfait. Parité fixe : 1 € = 655,957 FCFA. Le site public est chiffré à part. Les frais des opérateurs de paiement restent ceux de votre contrat marchand.</p>
+  </div>
+</section>
+
+<section id="mise-en-place" style="padding-top:0">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Mise en place</p>
+      <h2 class="h-l">Six semaines entre la signature et la première licence en ligne.</h2>
+      <p class="lede">Vos licenciés actuels sont importés, pas ressaisis. Numéros conservés.</p>
+    </div>
+    <div class="weeks">
+      <div class="week"><small>Semaine 1</small><h3 class="h-s">Réglages</h3><p>Catégories, tarifs, pièces, saison, ligues. Ouverture des comptes marchands.</p></div>
+      <div class="week"><small>Semaines 2 et 3</small><h3 class="h-s">Import</h3><p>Registres Excel ou papier numérisé repris. Chaque club reçoit sa liste à confirmer.</p></div>
+      <div class="week"><small>Semaines 4 et 5</small><h3 class="h-s">Formation</h3><p>Service licences, ligues, puis clubs. Une heure suffit à un club.</p></div>
+      <div class="week"><small>Semaine 6</small><h3 class="h-s">Ouverture</h3><p>Les demandes passent en ligne. Le papier reste accepté pendant la transition.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="donnees">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Données et sécurité</p>
+      <h2 class="h-l">Vous gardez la main sur les données de vos licenciés.</h2>
+      <p class="lede">Une partie de vos licenciés sont mineurs. La plateforme est construite pour ça.</p>
+    </div>
+    <div class="sec-grid">
+      <div><h3 class="h-s">Accès par rôle et par périmètre</h3><p>Un club ne voit que son club, une ligue que sa région. Le contrôle se fait sur le serveur.</p></div>
+      <div><h3 class="h-s">Journal de chaque action</h3><p>Qui a validé, refusé, modifié ou consulté une pièce, et quand.</p></div>
+      <div><h3 class="h-s">Sauvegarde chaque nuit, copie hors site</h3><p>Chaque sauvegarde porte une empreinte qui prouve qu'elle n'a pas été altérée.</p></div>
+      <div><h3 class="h-s">Protection des mineurs</h3><p>Pièces consultables par le seul service licences. Déclaration auprès de l'autorité de protection des données accompagnée.</p></div>
+      <div><h3 class="h-s">Export complet à tout moment</h3><p>Si vous arrêtez, vous repartez avec toutes vos données, sans frais.</p></div>
+      <div><h3 class="h-s">Hébergement</h3><p>En Europe par défaut. Dans votre pays si la réglementation l'exige, chiffré à part.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="demo">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Essayer</p>
+      <h2 class="h-l">Entrez dans la démo avec le profil de votre choix.</h2>
+      <p class="lede">Pas de mot de passe. Chaque profil voit ce que verrait la vraie personne, rien de plus.</p>
+    </div>
+    <div class="profiles">
+      <a href="https://appfedesa.damien.asia"><b>Président de fédération</b><span>Tout voir, tout valider</span></a>
+      <a href="https://appfedesa.damien.asia"><b>Service licences</b><span>Instruire les demandes, délivrer</span></a>
+      <a href="https://appfedesa.damien.asia"><b>Ligue régionale</b><span>Suivre les clubs de sa région</span></a>
+      <a href="https://appfedesa.damien.asia"><b>Club</b><span>Déposer, payer, engager</span></a>
+      <a href="https://appfedesa.damien.asia"><b>Officiel</b><span>Saisir les résultats</span></a>
+      <a href="https://appfedesa.damien.asia"><b>Athlète</b><span>Sa carte, ses résultats, ses records</span></a>
+    </div>
+    <div class="row"><a class="btn" href="https://appfedesa.damien.asia">Ouvrir la démo</a></div>
+  </div>
+</section>
+
+<section id="faq" style="padding-top:0">
+  <div class="wrap">
+    <div class="head"><h2 class="h-l">Les questions posées par les fédérations.</h2></div>
+    <div class="faq">
+      <details open><summary>Qui paie, concrètement ?</summary><p>La fédération règle le forfait, et rien d'autre. Aucun frais n'est ajouté pour les clubs ni prélevé sur les licences. L'argent des licences arrive directement sur les comptes marchands de la fédération.</p></details>
+      <details><summary>Nos clubs n'ont pas tous un ordinateur.</summary><p>Tout se fait depuis un téléphone : la demande, le paiement et la carte. Les pages sont légères pour fonctionner en 3G.</p></details>
+      <details><summary>Et nos licenciés actuels ?</summary><p>Ils sont importés pendant les semaines 2 et 3, depuis vos fichiers Excel ou vos registres. Les numéros de licence sont conservés. Chaque club confirme ensuite sa liste.</p></details>
+      <details><summary>Qui s'occupe de la maintenance ?</summary><p>Nous. Les mises à jour de sécurité, les sauvegardes, les corrections et le support sont compris dans le forfait. Vous avez un interlocuteur unique, par WhatsApp et par e-mail.</p></details>
+      <details><summary>Que se passe-t-il si nous arrêtons ?</summary><p>Vous recevez un export complet de vos données (licenciés, licences, compétitions, résultats) dans un format ouvert, sans frais.</p></details>
+      <details><summary>Notre fédération internationale fournit déjà un outil.</summary><p>C'est le cas en football et en basket-ball. Dans les autres disciplines, les outils internationaux gèrent rarement les licences nationales et le paiement mobile. Nous pouvons exporter vos données vers leurs formats.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="alt close">
+  <div class="wrap">
+    <div class="stack">
+      <h2 class="h-l">Montrez-nous votre saison,<br>on vous montre la plateforme.</h2>
+      <p class="lede">Trente minutes en visio : vous décrivez comment vos licences fonctionnent aujourd'hui, on vous montre la démo réglée sur votre discipline.</p>
+      <div class="row">
+        <a class="btn" href="https://damien.asia">Prendre rendez-vous</a>
+        <a class="more" href="https://appfedesa.damien.asia">Ouvrir la démo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Damien Fleury · Conception, développement et support de la plateforme · <a href="https://damien.asia">damien.asia</a></span>
+    <span>Captures issues de la démo, données fictives</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Tarifs : forfait annuel ramené au coût par licence
+  var vol=document.getElementById('vol'),out=document.getElementById('vol-out'),lic=document.getElementById('c-lic');
+  var YEAR=2099062;
+  function f(n){return n.toLocaleString('fr-FR').replace(/\u202f|\u00a0/g,' ')}
+  function upd(){
+    var n=+vol.value;
+    out.textContent=f(n);
+    lic.textContent=f(Math.round(YEAR/n))+' FCFA';
+  }
+  vol.addEventListener('input',upd);upd();
+
+  // QR décoratif de la carte d'exemple (motif fixe, non lisible)
+  var N=21,s=7,r='';
+  function finder(x,y){return x<7&&y<7||x>=N-7&&y<7||x<7&&y>=N-7}
+  function fOn(x,y){var a=x<7?x:x-(N-7),b=y<7?y:y-(N-7);return a===0||a===6||b===0||b===6||(a>=2&&a<=4&&b>=2&&b<=4)}
+  for(var y=0;y<N;y++)for(var x=0;x<N;x++){
+    s=(s*1103515245+12345)&0x7fffffff;
+    var on=finder(x,y)?fOn(x,y):((s>>16)&1)===1;
+    if(on)r+='<rect x="'+x+'" y="'+y+'" width="1" height="1"/>';
+  }
+  document.getElementById('qr').innerHTML='<svg viewBox="0 0 '+N+' '+N+'" fill="#1d1d1f" shape-rendering="crispEdges" aria-hidden="true">'+r+'</svg>';
+})();
+</script>
